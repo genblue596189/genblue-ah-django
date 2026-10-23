@@ -1,0 +1,21 @@
+
+const medicationGroupLabelsV64={oral:'口服藥',injection:'針劑',other:'其他用藥'};
+let clinicalMedicationGroupsV64=null;
+function prepareMedicationGroupsV64(prescriptions){
+ const groups=new Map();for(const p of prescriptions){const medicine=loadedMedicinesMap[p.medicine_id],qty=Number(p.quantity);if(!medicine||!Number.isFinite(qty)||qty<=0)throw Error('請確認每筆處方都已選取藥品，且實際開立數量大於0');const route=p.medicine_name?.match(/^\[([^\]]+)\]/)?.[1]||medicine.route||'',kind=['oral','injection','other'].includes(p.billing_kind)?p.billing_kind:(route.includes('注射')||route==='針劑'?'injection':route.includes('口服')?'oral':'other');if(!groups.has(kind))groups.set(kind,{kind,drugs:[]});groups.get(kind).drugs.push({medicine_id:p.medicine_id,quantity:qty,item_name:p.medicine_name+' ['+normalizePrescriptionDoseV91(p)+'] 總量：'+medicalHistoryQuantityV913(p)+' ('+p.instruction+')',label:p.medicine_name});}
+ if(prescriptions.length>200)throw Error('一次最多200筆處方');return ['oral','injection','other'].filter(k=>groups.has(k)).map(k=>groups.get(k));
+}
+function appendMedicationGroupsV64(groups){
+ if(!groups.length){clinicalMedicationGroupsV64=null;return;}const container=document.getElementById('invoiceItemsList');clinicalMedicationGroupsV64={scope:doctorScopeV51(),tenantId:CURRENT_TENANT_ID,petId:currentPetId,ownerId:currentOwnerId,appointmentId:currentAppointmentId||null,groups};
+ const note=document.createElement('p');note.className='medication-fee-note-v64';note.style.cssText='color:#64748b;font-size:.9rem;margin:8px 0';note.textContent='藥費由醫師填寫；不收費可填0。完整藥品清單保留在處方箋。';container.appendChild(note);
+ for(const group of groups){const row=document.createElement('div');row.className='list-row';row.dataset.medicationGroupV64=group.kind;const name=document.createElement('input'),qty=document.createElement('input'),price=document.createElement('input'),hint=document.createElement('span');name.type='text';name.className='invoice-name';name.value=medicationGroupLabelsV64[group.kind];name.readOnly=true;name.setAttribute('aria-label',name.value+'項目');qty.type='number';qty.className='invoice-qty';qty.value='1';qty.readOnly=true;qty.style.flex='.5';qty.title='整組收費一筆';price.type='number';price.className='invoice-price';price.min='0';price.step='.01';price.placeholder='醫師填寫金額';price.required=true;price.setAttribute('aria-label',name.value+'總費用');price.oninput=calculateInvoiceTotal;hint.textContent=group.drugs.length+' 筆處方';hint.style.cssText='font-size:.8rem;white-space:nowrap;color:#64748b';row.append(name,qty,price,hint);container.appendChild(row);}
+}
+function collectMedicationFeesV64(){
+ const rows=[...document.querySelectorAll('#invoiceItemsList .list-row[data-medication-group-v64]')];if(!clinicalMedicationGroupsV64){if(rows.length)throw Error('用藥來源已改變，請重新由門診轉入結帳');return [];}
+ const s=clinicalMedicationGroupsV64,c=clinicalInvoiceContext;if(s.scope!==doctorScopeV51()||s.tenantId!==CURRENT_TENANT_ID||!c||c.tenantId!==s.tenantId||c.petId!==s.petId||c.ownerId!==s.ownerId||c.appointmentId!==s.appointmentId||document.getElementById('invoiceOwnerSelect').value!==(s.ownerId||''))throw Error('藥品與目前門診飼主／寵物不符，請重新由門診轉入結帳');
+ if(rows.length!==s.groups.length)throw Error('合併藥費項目已被移除，請重新由門診轉入結帳');const groups=[];for(const source of s.groups){const matching=rows.filter(r=>r.dataset.medicationGroupV64===source.kind);if(matching.length!==1)throw Error('合併藥費項目不完整');const row=matching[0],raw=row.querySelector('.invoice-price').value.trim();if(!/^\d+(?:\.\d{1,2})?$/.test(raw)||Number(raw)>100000000)throw Error('請填寫「'+medicationGroupLabelsV64[source.kind]+'」總費用，最多兩位小數；不收費可填0');if(row.querySelector('.invoice-name').value!==medicationGroupLabelsV64[source.kind]||Number(row.querySelector('.invoice-qty').value)!==1)throw Error('合併藥費名稱與數量不可變更');for(const drug of source.drugs){if(!loadedMedicinesMap[drug.medicine_id])throw Error('藥品資料已變更，請重新核對');}groups.push({kind:source.kind,price:Number(raw),drugs:source.drugs.map(({label,...drug})=>drug)});}return groups;
+}
+const previousReceiptMedicationV64=openReceiptModal;
+openReceiptModal=function(invoice,owner,pet,items){return previousReceiptMedicationV64(invoice,owner,pet,(items||[]).filter(x=>x.receipt_visible_v64!==false));};
+const previousLogoutMedicationV64=logoutSupabase;logoutSupabase=function(...args){clinicalMedicationGroupsV64=null;return previousLogoutMedicationV64.apply(this,args);};
+

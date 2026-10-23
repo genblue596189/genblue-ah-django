@@ -1,0 +1,1 @@
+document.getElementById('genblueVersionV84').textContent=' · v90.6';

@@ -1,0 +1,3 @@
+
+/* Keep the form layout while excluding oral-course fields for injections. */
+.injection-inactive-v70:disabled{background:#f1f5f9!important;color:#94a3b8!important;border-color:#e2e8f0!important;cursor:not-allowed;opacity:1}

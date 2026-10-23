@@ -1,0 +1,11 @@
+
+#online_booking{max-width:1100px;margin:auto;padding:20px;color:#444a3e}#online_booking h1{font-size:23px}#online_booking h2{font-size:18px}
+#online_booking .row{display:flex;flex-wrap:wrap;align-items:end;gap:8px}#online_booking label{display:inline-block;margin:6px}#online_booking label input{display:block;margin-top:5px}
+#online_booking input,#online_booking textarea,#online_booking select{font:inherit;padding:9px;border:1px solid #c6cbb7;border-radius:7px;box-sizing:border-box;max-width:100%}
+#online_booking button{margin:4px;padding:9px 12px;border-radius:7px;background:#657954;color:white;border:0;cursor:pointer}#online_booking button:disabled{opacity:.45}
+#online_booking .card{border:1px solid #ddd9c9;border-radius:10px;padding:14px;margin:12px 0;background:#fffef9}#online_booking .small{font-size:13px;color:#68715d}
+#online_booking .msg{white-space:pre-wrap;background:#eaf0e1;padding:12px;border-radius:8px}#online_booking .request p{margin:5px 0}
+#online_booking .result{display:block;background:#edf1e6;color:#394333;text-align:left;width:100%;margin:6px 0}#ob59-pet-results{max-height:260px;overflow:auto}
+#online_booking .notice{line-height:1.7}#online_booking textarea{width:100%;min-height:65px}#online_booking a{color:#476343}#online_booking details{margin:15px 0}
+body.role-no-appointment #nav-online_booking{display:none!important}
+@media(max-width:600px){#online_booking{padding:12px}#online_booking .row input{width:100%}}

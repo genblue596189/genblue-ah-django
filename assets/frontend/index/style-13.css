@@ -1,0 +1,9 @@
+
+#medicalPurchasesV90{margin:14px 0;padding:12px 14px;border:1px solid #dadecb;border-radius:8px;background:#f6f5eb}
+#medicalPurchasesV90>summary{cursor:pointer;font-weight:600;color:#567047}
+#purchaseFiltersV90{display:flex;gap:8px;flex-wrap:wrap;align-items:end;margin:12px 0}
+#purchaseFiltersV90 label{font-size:12px;display:flex;flex-direction:column;gap:4px}
+#purchaseFiltersV90 input,#purchaseFiltersV90 select{padding:7px;max-width:100%}
+#purchaseResultsV90{max-height:360px;overflow:auto}#purchaseResultsV90 table{width:100%;min-width:640px;font-size:12px}
+#purchaseResultsV90 th{position:sticky;top:0;background:#eeeedf}#purchaseResultsV90 td{overflow-wrap:anywhere}
+#purchaseStatusV90{font-size:12px;margin:8px 0;color:#617754}

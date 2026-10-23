@@ -1,0 +1,11 @@
+#online_booking .calendar-grid-v60{display:grid;grid-template-columns:repeat(7,minmax(105px,1fr));gap:8px;overflow-x:auto;padding:6px 0}
+#online_booking .calendar-day-v60{border:1px solid #ddd8c9;border-radius:12px;background:#faf8f0;padding:10px;min-height:110px;min-width:100px;color:#394333}
+#online_booking .calendar-day-v60.selected{outline:2px solid #68805a;background:#eef2e5}
+#online_booking .calendar-day-v60 strong,#online_booking .calendar-day-v60 span{display:block;margin:5px 0}
+#online_booking .pending-v60{color:#a56013}#online_booking .confirmed-v60{color:#316342}
+#online_booking .slot-v60{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;border-bottom:1px solid #e4dfd2;padding:12px 0}
+#online_booking .slot-v60 .time-v60{min-width:120px;font-weight:600}#online_booking .slot-v60 .events-v60{flex:1;min-width:180px}
+#online_booking .slot-v60 p{margin:4px 0}#online_booking .weekly-row-v60{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:10px 0}
+#online_booking .weekly-row-v60 input{width:145px}#online_booking .weekly-row-v60 select{width:120px}
+#online_booking [hidden]{display:none!important}
+@media(max-width:650px){#online_booking .calendar-grid-v60{grid-template-columns:repeat(7,115px)}}
