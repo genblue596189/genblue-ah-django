@@ -1,6 +1,9 @@
 import json
+import base64, copy, hashlib, threading, time
+from collections import OrderedDict
 from datetime import datetime, timezone
-from urllib.request import Request, urlopen
+from urllib.request import Request
+from .transport import urlopen
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlsplit
 from django.conf import settings
@@ -93,6 +96,7 @@ def bearer_token(request):
     return parts[1]
 
 def verified_context(token):
+    invalidate_context(token)
     user = upstream('/auth/v1/user', token)
     if not isinstance(user, dict) or not user.get('id'):
         raise GatewayError(401)
@@ -111,6 +115,48 @@ def verified_context(token):
         if expiry <= datetime.now(timezone.utc):
             raise GatewayError(403, '醫院試用期已結束，請聯絡平台管理者。')
     return {'user':{'id':user['id'], 'email':user.get('email')}, 'profile':profiles[0], 'trial_end':trial}
+
+# Read-only verification reuse. Writes always verify live and invalidate this entry.
+_context_cache = OrderedDict()
+_context_cache_lock = threading.RLock()
+_context_locks = [threading.RLock() for _ in range(32)]
+
+def invalidate_context(token):
+    key = _context_key(token)
+    with _context_cache_lock:
+        _context_cache.pop(key, None)
+
+def _context_key(token):
+    return hashlib.sha256((settings.SUPABASE_URL + '\0' + settings.SUPABASE_PUBLISHABLE_KEY + '\0' + token).encode()).digest()
+
+def read_context(token):
+    key = _context_key(token)
+    # Serialize only matching token buckets, avoiding duplicate burst verification.
+    with _context_locks[key[0] % len(_context_locks)]:
+        with _context_cache_lock:
+            entry = _context_cache.get(key)
+            if entry and entry[0] > time.monotonic():
+                _context_cache.move_to_end(key)
+                return copy.deepcopy(entry[1])
+            _context_cache.pop(key, None)
+        context = verified_context(token)
+        ttl = 5.0
+        # Claims are used only to shorten reuse AFTER remote authentication succeeds.
+        # Opaque or malformed tokens remain valid upstream but are never cached.
+        try:
+            part = token.split('.')[1]
+            claims = json.loads(base64.urlsafe_b64decode(part + '=' * (-len(part) % 4)))
+            ttl = min(ttl, float(claims['exp']) - time.time())
+            if context['trial_end'] is not None:
+                ttl = min(ttl, (datetime.fromisoformat(context['trial_end'].replace('Z', '+00:00')) - datetime.now(timezone.utc)).total_seconds())
+        except (ValueError, TypeError, KeyError, IndexError):
+            ttl = 0
+        if ttl > 0:
+            with _context_cache_lock:
+                _context_cache[key] = (time.monotonic() + ttl, copy.deepcopy(context))
+                while len(_context_cache) > 256:
+                    _context_cache.popitem(last=False)
+        return context
 
 def error_response(exc):
     messages = {400:'輸入資料不正確，請核對後重試。',409:'掛號資料已變更，請更新候診核對後再試。',401:'登入已失效，請重新登入。',403:'無法取得院所權限，請聯絡管理者。',503:'Django 尚未設定 Supabase 連線。',502:'無法確認院所狀態或取得搜尋結果，請稍後再試。'}

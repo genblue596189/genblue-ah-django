@@ -14,7 +14,8 @@ from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_http_methods
-from .views import bearer_token,verified_context,GatewayError,error_response
+from .transport import urlopen as pooled_open
+from .views import bearer_token,verified_context,read_context,invalidate_context,GatewayError,error_response
 
 MANIFEST=json.loads((Path(__file__).parent/'api_manifest.json').read_text(encoding='utf-8'))
 REQUEST_HEADERS={'accept','content-type','prefer','range','range-unit','x-upsert','if-none-match','if-match','x-client-info','x-supabase-api-version','origin'}
@@ -64,7 +65,7 @@ def destination(path,query):
 
 def send(req):
     # No retry or authenticated redirects, including for money/stock writes.
-    return build_opener(NoRedirect()).open(req,timeout=settings.GENBLUE_UPSTREAM_TIMEOUT)
+    return pooled_open(req,timeout=settings.GENBLUE_UPSTREAM_TIMEOUT)
 
 
 def copy_response(response,status):
@@ -90,15 +91,24 @@ def gateway(request,upstream_path):
         token=request.headers.get('Authorization','')
         if kind=='private':
             bearer=bearer_token(request)
-            verified_context(bearer)  # SQL/RLS independently checks the same caller.
+            if request.method in ('GET', 'HEAD'):
+                read_context(bearer)
+            else:
+                invalidate_context(bearer)
+                verified_context(bearer)  # Writes always check current permissions.
         headers={key:value for key,value in request.headers.items() if key.lower() in REQUEST_HEADERS}
         headers['apikey']=settings.SUPABASE_PUBLISHABLE_KEY
         if token:headers['Authorization']=token
+        if kind=='auth' and token.lower().startswith('bearer '):
+            invalidate_context(token.split(None, 1)[1])
         body=request.body if request.method not in ('GET','HEAD') else None
         req=Request(url,data=body,headers=headers,method=request.method)
         try:
-            with send(req) as response:return copy_response(response,response.status)
+            with send(req) as response:
+                if kind=='private' and response.status in (401,403):invalidate_context(bearer)
+                return copy_response(response,response.status)
         except HTTPError as exc:
+            if kind=='private' and exc.code in (401,403):invalidate_context(bearer)
             # Pass SQL rejection codes unchanged for existing retry/CAS handling.
             return copy_response(exc,exc.code)
         except (URLError,TimeoutError,OSError):
