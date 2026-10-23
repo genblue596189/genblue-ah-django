@@ -1,0 +1,23 @@
+{
+  "pages": [
+    {
+      "page": "booking.html",
+      "local_asset_references": 2
+    },
+    {
+      "page": "imaging-share.html",
+      "local_asset_references": 2
+    },
+    {
+      "page": "index.html",
+      "local_asset_references": 96
+    }
+  ],
+  "frontend_assets": 100,
+  "javascript_files": 78,
+  "literal_table_or_bucket_references": 31,
+  "literal_rpc_references": 34,
+  "all_literal_api_references_allowlisted": true,
+  "database_interface_names_matched": true,
+  "uses_live_patient_data": false
+}

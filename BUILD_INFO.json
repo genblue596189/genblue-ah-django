@@ -1,0 +1,780 @@
+{
+  "edition": "final-20261022",
+  "canonical_package": "genblue-AH.zip",
+  "python_tests": 153,
+  "ui_simulations": 9,
+  "javascript_syntax_checks": 78,
+  "frontend_http_assets_checked": 100,
+  "legacy_prescription_reference_cases": 144,
+  "sdk_http_smoke_passed": true,
+  "sdk_version": "2.118.0",
+  "sdk_smoke_upstream": "local fixture, not live Supabase",
+  "sql_installer_user_confirmed_success": true,
+  "sql_rebuild_byte_identical": true,
+  "live_patient_data_tested": false,
+  "cloud_deployed": false,
+  "edge_functions_modified": false,
+  "production_database_modified": false,
+  "files": [
+    {
+      "path": "FRONTEND_GUIDE.md",
+      "sha256": "2ee7b85e9e0a17b5e82a447da109cf48ec8b9ebfefe03aa8d8b4a4206f6eb6eb"
+    },
+    {
+      "path": "FRONTEND_SPLIT.json",
+      "sha256": "e7a1dc29dfbfc941fce30fd12a18b53356afffe1dfdf23fc4805e53780043856"
+    },
+    {
+      "path": "PROGRESS.md",
+      "sha256": "666ffe6451b9a7aa71c8f8247c15ab84dd21217c6b1c574dd2f615842ed479a5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "34654ce6c868aaf2bb6c0e30fb4ddaa2087b4750c62df8aa06cc937f5c5578a8"
+    },
+    {
+      "path": "SOURCE_AUDIT.json",
+      "sha256": "23beaedb42debd8d23ac5238bff7f0ded0d40985469998c2b022beb935526ab8"
+    },
+    {
+      "path": "assets/frontend/booking/block-01.js",
+      "sha256": "daa3e76dbd45d064ae86f2561e96d7be5c8f0506b3de0383257ed9f2011cf445"
+    },
+    {
+      "path": "assets/frontend/booking/style-01.css",
+      "sha256": "7c262bcbe4e4a9ec69fbbc289cd2f44ca4aa6714d695f7be38520d809b51d71b"
+    },
+    {
+      "path": "assets/frontend/images/789849913983b15ee2975041.png",
+      "sha256": "789849913983b15ee29750416235990eab1c7b484b68648956611c41893e3454"
+    },
+    {
+      "path": "assets/frontend/images/eae9d2ca583da77860b1a714.jpg",
+      "sha256": "eae9d2ca583da77860b1a7140b3efded87c8c08102b9079ac0a7e1fcbcf0e1f1"
+    },
+    {
+      "path": "assets/frontend/imaging-share/imagingShareViewerV76.js",
+      "sha256": "51e539586f277b3d6b774b5898452f5be47445fae29c1db702c79b1ae9dc562d"
+    },
+    {
+      "path": "assets/frontend/imaging-share/style-01.css",
+      "sha256": "20c156f62b3557cc2ca99e5f99020b5c61f28357793b325dd8940d9afca19220"
+    },
+    {
+      "path": "assets/frontend/index/billingPresetsV80.js",
+      "sha256": "57220dbe25092368586516d132d746e7f523e95157dfff150f0c104292bbc46d"
+    },
+    {
+      "path": "assets/frontend/index/block-01.js",
+      "sha256": "9b8f3ac57d3d68d1566573e4d7d656037eccd698a003a116b045cfef208f2684"
+    },
+    {
+      "path": "assets/frontend/index/block-02.js",
+      "sha256": "2653f22f39541beb50a0d0af9782b5ff038dbc1a4ed642d40c465d1084afb94d"
+    },
+    {
+      "path": "assets/frontend/index/block-03.js",
+      "sha256": "6c9ece5225858c485e9805e018439139404bfdee0e14ee78714f158581aa86ec"
+    },
+    {
+      "path": "assets/frontend/index/block-04.js",
+      "sha256": "7c10c26030d8d8866b6a6893fc040fa351da09789f808058b821a364ebbda4ac"
+    },
+    {
+      "path": "assets/frontend/index/block-05.js",
+      "sha256": "f8238cd603a90f84fceba259a592562460243df61d2293ed9793c867439ff3ab"
+    },
+    {
+      "path": "assets/frontend/index/block-23.js",
+      "sha256": "16c14fe857801f9fa615b27c5f32ef765144388d627236c33f689b2d5914e2f2"
+    },
+    {
+      "path": "assets/frontend/index/block-28.js",
+      "sha256": "0f5f4f060d11967b892235b9520c72603e372ecec6b501c58a7fcc65bbdf4206"
+    },
+    {
+      "path": "assets/frontend/index/block-30.js",
+      "sha256": "ebb3ff6a4910fcfaac55db8302340402eb525cc31f0efc485b7d6e9018b58824"
+    },
+    {
+      "path": "assets/frontend/index/block-31.js",
+      "sha256": "decf2f51ef3823a4c37c70820642a6bee56a9d23fd15755f3c2b6017070966d0"
+    },
+    {
+      "path": "assets/frontend/index/block-46.js",
+      "sha256": "8fcfcd565a697fe524e9dc99b9f9ce0a835f71af9ee2086252cfd0a28376104e"
+    },
+    {
+      "path": "assets/frontend/index/block-47.js",
+      "sha256": "6f6c8ca57fbba6ad629c1139e702764db3de54cdf9990a063d7946dcac6b506d"
+    },
+    {
+      "path": "assets/frontend/index/block-66.js",
+      "sha256": "1fe6856795a079e26ae7bf28be0aedb307e966d6f20182ae4efdf466128567dd"
+    },
+    {
+      "path": "assets/frontend/index/block-71.js",
+      "sha256": "cd68071565e94660aaf5107c544e37d0fa8cd33c5d8e1198ff2904dbb2f0efe7"
+    },
+    {
+      "path": "assets/frontend/index/block-72.js",
+      "sha256": "92e8abdebe03de4a5b8b0c175c1d7883a7b82fbc4d5dfba3aff5326bb8915e82"
+    },
+    {
+      "path": "assets/frontend/index/block-73.js",
+      "sha256": "266802cbadeb79023a135c06795c91770d0650b465f39d735a88904874a7ee63"
+    },
+    {
+      "path": "assets/frontend/index/block-74.js",
+      "sha256": "f89ec4bf4fd852a2f753ff0f53aadf7f47d81a0e7ff57d003e2fd7f4da9c2b6d"
+    },
+    {
+      "path": "assets/frontend/index/block-75.js",
+      "sha256": "8a5bee35cb5904791c77d9553aec6a7cb9894cec7086a7b0795f37d4c21d0d27"
+    },
+    {
+      "path": "assets/frontend/index/block-76.js",
+      "sha256": "5f508133314777975a99ee8000ed2bff9f3e3b034bc457a09b55aa5c631dc184"
+    },
+    {
+      "path": "assets/frontend/index/closedReviewV905.js",
+      "sha256": "9bdff8e500261e6af064fe81214669104a65401f9e7a5128e75f2e99c14eb8af"
+    },
+    {
+      "path": "assets/frontend/index/dicomEmbeddedV791.js",
+      "sha256": "c60aa89575154791dbc57f0fa170f30c0f3292bf02afd862f558d91d50fd166e"
+    },
+    {
+      "path": "assets/frontend/index/dicomImportV77.js",
+      "sha256": "0cb1df1efb8baad1ce2bd3a8c0fde2c4bbaa25a46a68d7b62906a5ad0cc01b8b"
+    },
+    {
+      "path": "assets/frontend/index/dispensingGroupsV75.js",
+      "sha256": "0f2adecddb56353a4a883fe5ee9ee489b4620dec7d0bd22b41f25b94595a55b6"
+    },
+    {
+      "path": "assets/frontend/index/doctorOverviewV55.js",
+      "sha256": "bcfb1754a145ad4776370a456b91283355f9a1b20dbf0b0ece9e30a0926ffff4"
+    },
+    {
+      "path": "assets/frontend/index/doctorStatsV57.js",
+      "sha256": "c8aa0728580729b71208f722cdb2a38d1fa2f3be3c1fcadf1c8f18377fb53414"
+    },
+    {
+      "path": "assets/frontend/index/enterNavigationV9123.js",
+      "sha256": "8511c089c5cb3da88faca994b20b5e596b133631718834a3c2ccc7ef942afc77"
+    },
+    {
+      "path": "assets/frontend/index/familyFeaturesV74.js",
+      "sha256": "288ce7423d0c32ff07b02c1bf5fed2d32c7013df0683688868d62271e3e29ef9"
+    },
+    {
+      "path": "assets/frontend/index/familyRecoveryV903.js",
+      "sha256": "5d29974a42eb8c191a04eb06679b4301e339c9ac7130288fb29564a0470841a6"
+    },
+    {
+      "path": "assets/frontend/index/fastOwnerPetV908.js",
+      "sha256": "e3bc459cd978c17ba8844b91d1cb5e6b9a989f8be4ff909c08ee9c5b6db36764"
+    },
+    {
+      "path": "assets/frontend/index/imagingDeleteV79.js",
+      "sha256": "221bd8df5322363c9655666e84f58572833ab50736a66e294c28eeb557fe07bb"
+    },
+    {
+      "path": "assets/frontend/index/imagingRefreshV781.js",
+      "sha256": "86a9b719119bc8484418ebb8da108be9153f672c9698ddb35b782b614635ed41"
+    },
+    {
+      "path": "assets/frontend/index/imagingShareAdminV76.js",
+      "sha256": "4cfdba5e6d33c738d43a733defb3d4f0a460e88a64e494677d677ef07af65508"
+    },
+    {
+      "path": "assets/frontend/index/imagingUploadV61.js",
+      "sha256": "2c33f02d1033654af2fab0bec32980e65b9696695b52e5db6d1080882bfb97a6"
+    },
+    {
+      "path": "assets/frontend/index/labEightFieldHeaderV35.js",
+      "sha256": "31bba4dfb954f43bedde6df016f7ec155ce7366b0876d04131cdb50faf671480"
+    },
+    {
+      "path": "assets/frontend/index/mediaBackupV62.js",
+      "sha256": "4de44e561177d4b1197dc7556d9ca48781f24e8bd5e392f39d2bdd04813c1977"
+    },
+    {
+      "path": "assets/frontend/index/medicalBillingHistoryV37.js",
+      "sha256": "fb7a5c0a5dddf0960eeddea2a86e10e5b39154917fc311e4c5882e9d4c0fc17f"
+    },
+    {
+      "path": "assets/frontend/index/medicalExchangeNavigationV47.js",
+      "sha256": "d8ed2f7661280aa92eb50b50df789933eaa98bcbadaae6cbe3f8bd3a312c9cdb"
+    },
+    {
+      "path": "assets/frontend/index/medicalImageShareV762.js",
+      "sha256": "074767587db553d6264c2008d0cecc97a5a122a955797f3579ef41043abcd4f1"
+    },
+    {
+      "path": "assets/frontend/index/medicalPetEditV792.js",
+      "sha256": "c4572e1bd571dc6b198debbd1966202d5235ffc4effeb1e9600fb40b79fe5a8b"
+    },
+    {
+      "path": "assets/frontend/index/medicalPurchaseHistoryV90.js",
+      "sha256": "453bd12f23731b03c51be2ce5ae2f59864b83ce3a7c6fca034dd286648cac340"
+    },
+    {
+      "path": "assets/frontend/index/medicalReturnV918.js",
+      "sha256": "579934d03f33279f5a90791f2c5a13a2998a36ae20b72b88eaec8d63ba79785a"
+    },
+    {
+      "path": "assets/frontend/index/medicalReturnWithoutSaveV75_4.js",
+      "sha256": "d6b72202be1a3d1076d658d315c0ad95bf841602f90189281400f47e93632dfe"
+    },
+    {
+      "path": "assets/frontend/index/medicalRevisionV53.js",
+      "sha256": "08f5f257b7bfcbf135e6a9c2903219f2b4abe14ed07ddfc97bf776868722bdf5"
+    },
+    {
+      "path": "assets/frontend/index/medicalTemperatureV43.js",
+      "sha256": "caeafe2540b462fe3dbfdb9e5333adfed201700166224bada36443905249a99a"
+    },
+    {
+      "path": "assets/frontend/index/medicalVitalsV9121.js",
+      "sha256": "c8d8df777b46a53a42b7587a977f6d49378024b2adfb89ae42b8ee0a8279196f"
+    },
+    {
+      "path": "assets/frontend/index/medicalVitalsV9132.js",
+      "sha256": "21a24db4e33afebd6b7ad70ad6bb7e277e0a7547c27ec5814ec8c632c9bd22af"
+    },
+    {
+      "path": "assets/frontend/index/medicalWeightV42.js",
+      "sha256": "ba1ebec3db4eb8c06be45b6e80f31127417905a6c96591b959fa47f0307d353a"
+    },
+    {
+      "path": "assets/frontend/index/medicationBillingV64.js",
+      "sha256": "6fb96e174a09e3c023697d833483911eff9003d0b298eb3ce81493df2c566e2a"
+    },
+    {
+      "path": "assets/frontend/index/movementCorrectionV9119.js",
+      "sha256": "af46f43953acc57196fc8621a5f7a03c53ff5dcb21f015a9ee1b0488008f567f"
+    },
+    {
+      "path": "assets/frontend/index/movementFeedbackV9118.js",
+      "sha256": "edbb4b2ab24b10e581bb03d4a2a88bc315ed798a9095782ec3849856cc43efcd"
+    },
+    {
+      "path": "assets/frontend/index/multiDoctorV51.js",
+      "sha256": "1e5fea1f1616179b5f3366418da94229b42b12bc3ccd4730aff3fe09dfb69be6"
+    },
+    {
+      "path": "assets/frontend/index/paidHistoryV907.js",
+      "sha256": "85acc24fa92fd9baea40dab54c4138e8d3cd97d7d60e03fd7da3799d3668251c"
+    },
+    {
+      "path": "assets/frontend/index/paidMedicalResetV9117.js",
+      "sha256": "908b3d5f3fa3f7a0e7ab2d0ea3bb07d37e17bd10150b86722c3717b83507dc2c"
+    },
+    {
+      "path": "assets/frontend/index/paymentTotalV904.js",
+      "sha256": "5532a34517520669ea25e6b14002f73b570fa76ad2a057b58c4c236856490e7c"
+    },
+    {
+      "path": "assets/frontend/index/pharmacyRoomV9133.js",
+      "sha256": "82e06e2c6a4e502495ffd4a4cf76985c22156d96768bbb4dba38e13b23b951f0"
+    },
+    {
+      "path": "assets/frontend/index/prescriptionDoseUnitV763.js",
+      "sha256": "b6ed3d36e03e1597e2c4618b6d2dd7c915af332ed1ebd4787ca80bf58d728d8b"
+    },
+    {
+      "path": "assets/frontend/index/prescriptionKeyboardV901.js",
+      "sha256": "8860b1254e21235249421e6d7e74b337567e5f13656a6784ab74e2ff2f5b10db"
+    },
+    {
+      "path": "assets/frontend/index/prescriptionRoutesV66.js",
+      "sha256": "b8c2b5ec0cdae8e79467428655de00c77470e5c3be263913ff848a4b99b597d3"
+    },
+    {
+      "path": "assets/frontend/index/previousChargesV75_2.js",
+      "sha256": "84658c80b6efb915b1ef6825c456cf50350f3949d227e1d902cbed99d978cb25"
+    },
+    {
+      "path": "assets/frontend/index/qrEncoderV76.js",
+      "sha256": "e8d4ce625fe7ca304f9c243fdb203aac1a9a3123fec3cba32420f23b2eb4de2b"
+    },
+    {
+      "path": "assets/frontend/index/rabiesDefaultsV9112.js",
+      "sha256": "b8db53feafa4b4be36f1acee38df8265c77647f6c02e7e1ed679b089c9426ffd"
+    },
+    {
+      "path": "assets/frontend/index/rapidDefaultFeeV41.js",
+      "sha256": "4fb5d0450eb2a8b40346f8e870c407d4e61157ddb484e0917fd791376e4433f6"
+    },
+    {
+      "path": "assets/frontend/index/restoreCenterScriptV63.js",
+      "sha256": "e2e0bfa215deb2b948bb193ca13c626d9a9524947fb7e2e66d4cf51e9fe19c4a"
+    },
+    {
+      "path": "assets/frontend/index/sharedRefreshV50.js",
+      "sha256": "46edb23bb9a434d503573635854600a7a097380250f3351484726a511a0c7873"
+    },
+    {
+      "path": "assets/frontend/index/skylaIntegrationV33.js",
+      "sha256": "f5116f65cab6b4e41af3bc0aa09a9de4dea5e7b67536a580fa87d34654ffdd24"
+    },
+    {
+      "path": "assets/frontend/index/skylaSolutionParserV33.js",
+      "sha256": "5babfd0a0e03f7e232ddc7edaad490512ee83e7995a1e3d6628a36927ed4fe24"
+    },
+    {
+      "path": "assets/frontend/index/staffClinicianV52.js",
+      "sha256": "b8b120b3ee974221748d8fec33d968aa6ad7dee5333d281c3026aefa65bba3eb"
+    },
+    {
+      "path": "assets/frontend/index/staffNamesV56.js",
+      "sha256": "a2b0917ad8d734639c98833e79daeb0bb350e538df14614229c2e9e08ce06c59"
+    },
+    {
+      "path": "assets/frontend/index/style-01.css",
+      "sha256": "9b0b6c19f9f20797e7d4729af8179e03abcf52960def505db5c5cb8274c38d94"
+    },
+    {
+      "path": "assets/frontend/index/style-02.css",
+      "sha256": "607c070aea45a67621083773da9d767e19a9b3b295952b8408e6bd90fe0e5c72"
+    },
+    {
+      "path": "assets/frontend/index/style-03.css",
+      "sha256": "375f943189f48b8e0d0c39cc074515bb0819deb767dd5e9fa929cf3542bc2c1e"
+    },
+    {
+      "path": "assets/frontend/index/style-04.css",
+      "sha256": "c4630d1c2c59f82af7a26032d56dcd7f8ab4db48da5b5000ec016c94d04bc76b"
+    },
+    {
+      "path": "assets/frontend/index/style-05.css",
+      "sha256": "8533c53e78a6846c2602bebd1f470634fe694c47be103aee6ed628b722143b81"
+    },
+    {
+      "path": "assets/frontend/index/style-06.css",
+      "sha256": "fdf88a912da5f192bd668b3bc34433c898bb16fe3f9a99a25a933dfb693e19a8"
+    },
+    {
+      "path": "assets/frontend/index/style-07.css",
+      "sha256": "26fba9eaa79b2ae6f98a738bf60b873e7b589677a256060a3327ab843db6219d"
+    },
+    {
+      "path": "assets/frontend/index/style-08.css",
+      "sha256": "aa51f4cd4f8d61fc51d5e7808ff6a853222a49d528611e79cb998875964ea9dd"
+    },
+    {
+      "path": "assets/frontend/index/style-09.css",
+      "sha256": "5dc7bde9470470fc97fa9570bda6e5f59d35e18e40a2b266ebfcc9f315aa7a35"
+    },
+    {
+      "path": "assets/frontend/index/style-10.css",
+      "sha256": "cc5e6f9bb5f656706aa5983cf4929985c5fc86b257e849837bb93802c5019700"
+    },
+    {
+      "path": "assets/frontend/index/style-11.css",
+      "sha256": "d6bfa075504433d18a68dd49336753c87c5fe3ee447bf4e4b3f1b51aeddb5805"
+    },
+    {
+      "path": "assets/frontend/index/style-12.css",
+      "sha256": "738bf9a0cfe450931e94ca5da9f71959f268606f32b5f846063b366ab839aa04"
+    },
+    {
+      "path": "assets/frontend/index/style-13.css",
+      "sha256": "8533d3ea3cd332bce05d55bb89a034a701d1310178674a31d8466c3a74044c2e"
+    },
+    {
+      "path": "assets/frontend/index/style-14.css",
+      "sha256": "6e60039e63aa9cf2ac5868109486a3cf0cc808af94f9b36e2e89c2c4ef209c76"
+    },
+    {
+      "path": "assets/frontend/index/style-15.css",
+      "sha256": "3bacd583882e5540fa16cbc601414a5f850109a0050b4b3e6a829f4d471a7dff"
+    },
+    {
+      "path": "assets/frontend/index/style-16.css",
+      "sha256": "5b75e9e50a599dc326c7e2012d957c914793ebff11ae107009f568b2dbfcf19b"
+    },
+    {
+      "path": "assets/frontend/index/style-17.css",
+      "sha256": "abb990eb70216b98cb41dd55e6950c429dc1d7c42c9ff08e16763b4f16b850c2"
+    },
+    {
+      "path": "assets/frontend/index/style-18.css",
+      "sha256": "0291edffe2ec7b17700c77bd5dd558f04b4041cfd24304445e712febe4f8d938"
+    },
+    {
+      "path": "assets/frontend/index/vaccineCheckoutResetV9115.js",
+      "sha256": "7aa79d49975cad8483ab2162610befa33a1e0eb3c1fcbd6f41d222c2c43f9cc6"
+    },
+    {
+      "path": "assets/frontend/index/vaccineDueV9114.js",
+      "sha256": "09dfeeea7ec04214add9207329ad7c46f0632fc19d7966c1242bd09c752ae8be"
+    },
+    {
+      "path": "assets/frontend/index/vaccineRabiesRemindersV39.js",
+      "sha256": "525105e4020fbd44b595ee473f9f18a408fc74241cdc6c58d0c334ff09e908b9"
+    },
+    {
+      "path": "assets/frontend/index/versionV9010.js",
+      "sha256": "aba2f84086f69b93efe8dcbaba9cbda303da1a728e14470c5dc338c0bc811ada"
+    },
+    {
+      "path": "assets/frontend/index/versionV902.js",
+      "sha256": "304917c1dcd3a3a26b4f5663b58378eee4524196ec2174eeed5a49099c713799"
+    },
+    {
+      "path": "assets/frontend/index/versionV906.js",
+      "sha256": "eb5608083f6e127d1f5eb599833bbaa39055d3f9b0f430c75aaf7723b48bab61"
+    },
+    {
+      "path": "assets/frontend/index/versionV91.js",
+      "sha256": "79b8bc92fc907be403a94b682c49da8e46dbb2fb194b10319d073ce2aaa501ae"
+    },
+    {
+      "path": "assets/frontend/index/waitingDoctorV54.js",
+      "sha256": "f6dee08c8915d7a9a6e96d35a683266c509abce554124c50e624dc079661f3b5"
+    },
+    {
+      "path": "assets/frontend/manifest.json",
+      "sha256": "395429dd512318f535948f4fb4fd730a01f50ec07da9945bfb732583ce413c56"
+    },
+    {
+      "path": "assets/integrated-gateway.js",
+      "sha256": "f549b36e2c815917947212f10ec92d6e9f6f5877d9b809b873e230637c2506b9"
+    },
+    {
+      "path": "clinic/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "clinic/api_manifest.json",
+      "sha256": "1edc4fa6325ca8a048290390e6dc7658b854b4eb6a410cd9ae805df4d604864d"
+    },
+    {
+      "path": "clinic/checkout.py",
+      "sha256": "e2dc875c19794a35e1ea59bd17eaad082023797e25197f35e8b9449cf7b9ff9e"
+    },
+    {
+      "path": "clinic/doctors.py",
+      "sha256": "1114197e2da64b0886e53d37cac7b58791100fa343b6c4f0c4e136f46800f0b4"
+    },
+    {
+      "path": "clinic/frontend_assets.py",
+      "sha256": "e766ca74a6f31b8c6516e06bacf84d05c042fb5b9a41363e1d9f7a6a276c7fad"
+    },
+    {
+      "path": "clinic/gateway.py",
+      "sha256": "13b8cb50986a412fa703a3686815f9c9344543ea4798fd4b9940b44f53135e61"
+    },
+    {
+      "path": "clinic/medical.py",
+      "sha256": "199cbd5810a7a00f28ebbcf7a35f256a37674971d17b199dac0faa4fa05300c5"
+    },
+    {
+      "path": "clinic/prescription.py",
+      "sha256": "d094d5933ae4424abe0512300704e5686ea5341fec45d2d0fdb27ae1a5deb6af"
+    },
+    {
+      "path": "clinic/prescription_math.py",
+      "sha256": "52bdd659a423f22c1a318978a100972db031084d91619df71446009223b5bd83"
+    },
+    {
+      "path": "clinic/prescription_validation.py",
+      "sha256": "46725fcbd52e174463ced35fa908bebdfc04fc324cd880f0eade9169f773eb79"
+    },
+    {
+      "path": "clinic/records.py",
+      "sha256": "33cca4c164fe3389dec92808f0442fd13448de130989bb40e9035cf14d8f738a"
+    },
+    {
+      "path": "clinic/registration.py",
+      "sha256": "cd32df9ed2085c323eff898fd4c369f921c5a39422ddcf322384eaa1b6600402"
+    },
+    {
+      "path": "clinic/search.py",
+      "sha256": "78a40f73487ae40614417e2777d6cf2f03a67fc7d9e4a87718df8b0039885bb8"
+    },
+    {
+      "path": "clinic/tests.py",
+      "sha256": "2d86dbc84c20de8273340b010bca8b410ca41e82fb1404541ef8ef3d3b0c7b96"
+    },
+    {
+      "path": "clinic/tests_checkout.py",
+      "sha256": "b49bbcb75f1c1757aca9d09640e1ecb6e8f6b4a2bbabaff406c8ad73a6c153aa"
+    },
+    {
+      "path": "clinic/tests_frontend_assets.py",
+      "sha256": "72280ddabe8200d8b567dbf3edeef06cbf619e1bf285dafa1bd0f2cdd6fb406b"
+    },
+    {
+      "path": "clinic/tests_gateway.py",
+      "sha256": "350018ee066234f0f6465e04602d77377d1bc93ad254a2ad65192b778e8295a5"
+    },
+    {
+      "path": "clinic/tests_medical.py",
+      "sha256": "83e73d841e57086b280d10adafdb5fb77b8f9feb8c0a23fd06e337d0c4be8867"
+    },
+    {
+      "path": "clinic/tests_prescription.py",
+      "sha256": "dbbf75cc8a4d5c483145ea0a18e888ef874d6e82081bf32b8dd778e45ce86d99"
+    },
+    {
+      "path": "clinic/tests_prescription_validation.py",
+      "sha256": "1da9085a5f89e030ebc6b153df4cafbb2191eefae778713264835d4d940bcba9"
+    },
+    {
+      "path": "clinic/tests_records.py",
+      "sha256": "25ff778b90cc5a7088f6ab39eb557be329de0d05816f032c5c0dcd8018966d67"
+    },
+    {
+      "path": "clinic/tests_records_transport.py",
+      "sha256": "58a0acc572cb8313cdb6d418f404dffb26319caec26bc6e3047d81cd0b9c95a1"
+    },
+    {
+      "path": "clinic/tests_regression.py",
+      "sha256": "1aa5094dc393a7fafd55cc1653f950e48c14876e055c08b25704abc0cdc247a0"
+    },
+    {
+      "path": "clinic/tests_visit_status.py",
+      "sha256": "4b526b0a2084d676140a9095421e7a77aefe9f0b15e398917d291741121bdfb0"
+    },
+    {
+      "path": "clinic/views.py",
+      "sha256": "ba3fcc2d4da576d913470f3cafeded84fd95ba68a17b44b51083717e5869b5d2"
+    },
+    {
+      "path": "clinic/visit_status.py",
+      "sha256": "0a2574cb7a3131d46fbfeb15eef6a7883a27d5f790e7d0287a8beac566f3df67"
+    },
+    {
+      "path": "config/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "config/production.py",
+      "sha256": "d247adcb4922f633c6f79070637b262b2a6da6ba1d1bce3380354061bb077c6c"
+    },
+    {
+      "path": "config/settings.py",
+      "sha256": "f0a4a6386dfcf9e96c31a806b86ffe557927bfa0be7199db5905a05bb77035bc"
+    },
+    {
+      "path": "config/urls.py",
+      "sha256": "122959988751cb423a8544481452bc40942f38d3d047fe179cfb41f182a08848"
+    },
+    {
+      "path": "config/wsgi.py",
+      "sha256": "a9beeacbe9117edab64fe1d5bc3fd8672cb3c060ceee12d53f8766d4a9f8e7bb"
+    },
+    {
+      "path": "database/00_install_empty.sql",
+      "sha256": "50bb1b793b4a5a443da7aa8734f9b9db64aa50d6dbf027ab38d1571d198b8871"
+    },
+    {
+      "path": "database/BUILD-RESULT.json",
+      "sha256": "a2ad2ccbdab157277a516681eadd3b31910f27bdf3e493b6b152e28f69404008"
+    },
+    {
+      "path": "database/CHANGES.md",
+      "sha256": "c82b5d29cf353b8d9f9e602d80e8b93d85b593f97b4e509cc239767eee893d7a"
+    },
+    {
+      "path": "database/FUNCTIONS.csv",
+      "sha256": "ab728ac492808aebb6b3fa625bea956bfa35cd072a4a2fa330a40697d4ddf9ba"
+    },
+    {
+      "path": "database/OBJECTS.csv",
+      "sha256": "9c72980de2c1ae42c1f7ca6993c2a2f2f82498a7269d7c721531890870f1a6e6"
+    },
+    {
+      "path": "database/README.md",
+      "sha256": "68a1b35ccaa2569e11451e614991a2dad5c89e070df91914a56f88823cef5b0a"
+    },
+    {
+      "path": "database/SHA256SUMS.txt",
+      "sha256": "f7567075d527b72a50e47f8367b34a8c60b1b541d0bf02f54a0e0c1547511b30"
+    },
+    {
+      "path": "database/SOURCE-MANIFEST.json",
+      "sha256": "4868b1d0675ea3ada76d832550cdaae1b4893de1d61fd180a68b29ab9987de9d"
+    },
+    {
+      "path": "database/VALIDATION.json",
+      "sha256": "4a28078aae170f3f1c6572ee67c4c8845a20fa9c8d00aad00ebf6561d4770273"
+    },
+    {
+      "path": "database/VALIDATION.md",
+      "sha256": "7ad4d812a9ca4b97e9e488d4183de685c8f58ec5f6695ffec8cf4daf9e1de6b9"
+    },
+    {
+      "path": "database/existing/00_read_only_catalog_audit.sql",
+      "sha256": "648ac7b442fffcb615a3bc9ff8e7b72e83bcc48c790d2d4a764229309cd1e039"
+    },
+    {
+      "path": "database/existing/01_optional_doctor_role.sql",
+      "sha256": "17a848aff49d9b1e129bb9bca289ae9bef503c78b9941a44b22e165435012ef7"
+    },
+    {
+      "path": "database/modules/00_preflight.sql",
+      "sha256": "40b977ceb22514e05d23d5f354e94a35a7675c90dd531e0b32dd25fbd91f7e83"
+    },
+    {
+      "path": "database/modules/01_session_schemas.sql",
+      "sha256": "d37bac6d73847a904ba0a5d2bda4957f74d83105819c6fc7661adf898662d11b"
+    },
+    {
+      "path": "database/modules/02_functions_rowtype_prerequisite.sql",
+      "sha256": "07ad6553bbc6ed22a47c63352896d9c411b515f407ec7dd8f167bf5bc8e26614"
+    },
+    {
+      "path": "database/modules/03_tables_views.sql",
+      "sha256": "255f35a9e5b4c36a642768483cc098f0a30482ee762d16d43d229cdd20057838"
+    },
+    {
+      "path": "database/modules/04_constraints_indexes.sql",
+      "sha256": "b452bbf39da2984cd06629e2ac9a421939332be7056eaa6b2fc62c9bd02dab6c"
+    },
+    {
+      "path": "database/modules/05_triggers_foreign_keys.sql",
+      "sha256": "77911c6b06efb2f802e850a7aae7de72e4ca721f6e777d8d6c36db8c1ca3dd10"
+    },
+    {
+      "path": "database/modules/06_rls_policies.sql",
+      "sha256": "ed1365390d5097b3cea499c817999d7ed62877d1b44edae8339e55ac2d9134b5"
+    },
+    {
+      "path": "database/modules/07_explicit_grants.sql",
+      "sha256": "79a66cc95f0b3b1bddabd349454b1ed178d23ead1f2aebc47b20befbc39e542b"
+    },
+    {
+      "path": "database/modules/08_default_privileges.sql",
+      "sha256": "bbe4b4eb0953aa543125a8a888961a3c569f03ce8245a1475014d4d488c54a59"
+    },
+    {
+      "path": "database/modules/09_storage.sql",
+      "sha256": "f29ff92857dd1529a7645a5a3ef6adc8e74f5edd1728be6f686e1885a2454897"
+    },
+    {
+      "path": "database/modules/10_commit.sql",
+      "sha256": "e83e8c1f4ad612a5bd92067c29bdb9b1597fd541ebed41026079aabd6a4a5bf3"
+    },
+    {
+      "path": "database/source/00_original_snapshot.sql",
+      "sha256": "6ec351b8d6dc98b7934e895602d7370814b8002f0019f94e01f560f00e40a1ea"
+    },
+    {
+      "path": "database/source/extensions.json",
+      "sha256": "a77e7bc0d85bae8e28af762b4d64fb75741f5f389ca9eba365fdbcf2e2914a93"
+    },
+    {
+      "path": "database/source/storage_buckets.json",
+      "sha256": "27704872ca0db783b336c139176e4e2ac4bde5613358eec7c9ed17043fd19555"
+    },
+    {
+      "path": "database/source/storage_policies.json",
+      "sha256": "88c74d4fa95f07fd58edd11c85d40393228ed1756e2bb5e68439671901e8a5a1"
+    },
+    {
+      "path": "database/tools/build_install.py",
+      "sha256": "440a310e0bd0dea3948622f32993348fcf655e8c7b997b60054c9d9bf959b7dc"
+    },
+    {
+      "path": "database/tools/validate_sql.py",
+      "sha256": "2c40499702742bbb50c3744cad11af8b61ec0e68360bad27bf5def8ec659e253"
+    },
+    {
+      "path": "gunicorn.conf.py",
+      "sha256": "cd71223e242c6b392cf3aa25b28c9ded676506e414daa97e83014d49386bf651"
+    },
+    {
+      "path": "manage.py",
+      "sha256": "2cf9b707231b5e0a2e9d63e0fe184e4dbf0210101fbeef8dc03e5950b4c1b709"
+    },
+    {
+      "path": "render.yaml",
+      "sha256": "56bdbb82a68895f485fcd44bfc5a88f8021950b6418f9953120d59c4d14014de"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "acf91890e9932e4410e650890a695661510d35f4ff45b48cbdd5179f6fb2c768"
+    },
+    {
+      "path": "start-local.ps1",
+      "sha256": "f9358af5b4b6310a42d854583dcc20e7ddd790f92b58d6457b3d428946271acb"
+    },
+    {
+      "path": "tests/checkout-ui.cjs",
+      "sha256": "764d930f5265f7a300479b070bbaa492cfda377bffed744371d20218ad5eff3c"
+    },
+    {
+      "path": "tests/doctors-ui.cjs",
+      "sha256": "4b07b4a8212f823d3adf46929bb7028c7aa1cf4a4cd52234b898b1878423e894"
+    },
+    {
+      "path": "tests/medical-ui.cjs",
+      "sha256": "f377c98a3df98154e87c3845e70a2687d6f4af3aee51e01f9cf4729593600218"
+    },
+    {
+      "path": "tests/page-source.cjs",
+      "sha256": "de5436e0991d79fe2c51e2c26b9fd88f9c5a4771cb8688e2fe2860997dd8c762"
+    },
+    {
+      "path": "tests/prescription-parity.json",
+      "sha256": "ed6e394cb35b5bd2af42930dbc90603f64d1f898a329a5cc53d143af15b21faa"
+    },
+    {
+      "path": "tests/prescription-ui.cjs",
+      "sha256": "9d8bbb5c12fb9e7af96d8292da2bd0e9c17064ef0ecbd758c2526a89f6cb9570"
+    },
+    {
+      "path": "tests/records-ui.cjs",
+      "sha256": "1ddbf80cfed1c0661cebbd5f18d143aef0488fc8acd75be8059454e79da94bbc"
+    },
+    {
+      "path": "tests/registration-batch-ui.cjs",
+      "sha256": "ceaf3934402f707d24c5d3346dce6dfdda3b5460498d69c8a11dd3973d690040"
+    },
+    {
+      "path": "tests/registration-ui.cjs",
+      "sha256": "406fd5f4c426a77630bbf47d5e58955306c5751622ffad0772585a6d7f702287"
+    },
+    {
+      "path": "tests/search-ui.cjs",
+      "sha256": "3960f1dfd1a6e1df2c8e885107264f0aa47c6e2bb526cebd43e71b961788a055"
+    },
+    {
+      "path": "tests/visit-status-ui.cjs",
+      "sha256": "bcded54feb3742d91721355214171d3ae1d5db287397189ddaf0183daf3c0a51"
+    },
+    {
+      "path": "tools/check_project.py",
+      "sha256": "23b15273c1b84dedf85460894009c625b9cd6d0d4872768f17940fa79a3a2889"
+    },
+    {
+      "path": "tools/http_smoke.py",
+      "sha256": "71f612b9e0e927fbc7a9ac57d2df7e648b8f5f5df21cd7ea5efe0d1791c4a952"
+    },
+    {
+      "path": "tools/sdk_smoke.cjs",
+      "sha256": "911d40c35a1576e04c368d8a4daf2f568ec361b739beb0ab183fd72a9866fddd"
+    },
+    {
+      "path": "tools/update_frontend_manifest.py",
+      "sha256": "8861ffc4ed807cd25d2797d4ff2a07bda8611010476faf6e042df17ea39777c9"
+    },
+    {
+      "path": "web/booking.html",
+      "sha256": "5a1a5e8bb94c933532b3de669a58e4cf8d14f9221e268f27d95479374b3b582e"
+    },
+    {
+      "path": "web/imaging-share.html",
+      "sha256": "e66a7513691a29af57094e5ac630496cacaaa4e970725d5081c8da2044a847ff"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "d4e6caf6e34a3b9ead0dde7c24774d7248415779457b9a91f1a37562542aa09c"
+    }
+  ]
+}

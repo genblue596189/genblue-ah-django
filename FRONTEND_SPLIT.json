@@ -1,0 +1,20 @@
+[
+  {
+    "page": "booking.html",
+    "scripts": 1,
+    "styles": 1,
+    "images": 0
+  },
+  {
+    "page": "imaging-share.html",
+    "scripts": 1,
+    "styles": 1,
+    "images": 0
+  },
+  {
+    "page": "index.html",
+    "scripts": 76,
+    "styles": 18,
+    "images": 2
+  }
+]

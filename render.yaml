@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: genblue-ah
+    runtime: python
+    plan: free
+    numInstances: 1
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn config.wsgi:application --config gunicorn.conf.py
+    healthCheckPath: /api/health/
+    autoDeployTrigger: off
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.production
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false

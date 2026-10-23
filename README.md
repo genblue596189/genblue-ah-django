@@ -1,2 +1,59 @@
-# genblue-ah-django
-Private
+# genblue AH — 唯一整合版
+
+**只使用 genblue-AH.zip。之前的階段包與小更新包不必依序安裝。**
+
+## 一次更新、集中實操
+
+1. 原 Django PowerShell 按 Ctrl+C，先保留尚未儲存的操作。
+2. 將本包解壓內容複製到目前 Django 專案，覆蓋同名檔案。manage.py 與 start-local.ps1 應在同一層；保留原本 .venv。
+3. 執行原指令：powershell -ExecutionPolicy Bypass -File .\start-local.ps1
+4. 開啟 http://127.0.0.1:8000/，按 Ctrl+F5。畫面版本標示為「Django 整合版 2026-10-22」。
+
+這次不需在 Supabase 執行 SQL，不需重建資料庫，也不需更新 Edge Functions。本包沒有 .venv，會沿用原有 Python 環境。既有 GitHub 正式站不因本機覆蓋而變動。
+
+localhost 仍沿用目前正式 Supabase，是真實資料操作。同一筆病患或帳款避免由兩邊同時修改；收款結果不明時，沿用原有核對上次收款，不另建第二筆。
+
+## 整合後的分工
+
+| 部分 | 維護位置與行為 |
+| --- | --- |
+| 畫面 | web/*.html，保留原介面、Enter 搜尋、檢驗跳格、收合、異常紅字與列印 |
+| 前端程式／樣式 | assets/frontend/，78 個 classic scripts，保留原載入順序；FRONTEND_GUIDE.md 提供導覽 |
+| Django 業務入口 | clinic/，包含搜尋、掛號、醫師、病歷、候診／歸檔、結帳、處方換算及建檔 |
+| 其餘資料服務 | clinic/gateway.py 承接原 SDK 的 Auth／查詢／寫入／RPC／Storage／Edge 請求；固定專案與允許清單，沿用使用者 token |
+| SQL 唯一維護來源 | database/modules/；修改後由 database/tools/build_install.py 產生完整安裝檔 |
+| 正式資料庫更新 | 有功能變更才另外產生具名差異 SQL，不把完整 installer 貼進現有正式庫 |
+| Edge Functions | 沿用現有部署，這次不修改、不重新部署 |
+
+資料服務接入範圍涵蓋建檔、門診病歷、檢驗、疫苗、藥品／商品、庫存、住院寄養、人員／試用、預約、影像分享、備份還原、配藥室、夜間作業、期間費用、日曆及 POS 管理。介面清單包含 47 個資料表／view、43 個 RPC、4 個 Edge Functions 與影像桶。
+
+Django 不使用 service-role key。原 SQL／RLS／Edge Functions 仍負責資料隔離、權限、交易、扣庫存與請求重播；沒有建立另一套帳。部分功能透過相容路由承接，不代表每段業務規則均改寫成 Python。畫面互動、參考文字及配藥指示仍有 JavaScript，瀏覽器可查看這些前端程式。
+
+## 這次補齊的重點
+
+- 處方數量換算移至 Python：從本院資料庫讀取藥品規格，保留口服總顆數、注射單次 ml、IU/kg、mg/kg、ml/kg、PRN 與精度規則。
+- 舊計算回應與另一病患的回應不覆蓋目前欄位；等待換算完成才加入處方。
+- 病歷儲存驗證處方數量與單位、組別頻次天數及已填交付總量；保留原始 JSON，不把交付總量再乘上頻次、天數。不重新推算舊版 per metadata。
+- 新增飼主／寵物與同主新增由 Django 承接；原 SQL 產生系統編號。相同 UUID 核對已存結果，不以新 UUID 重複建檔；內容不同不覆寫。飼主與寵物仍是可部分成功的兩步，沒有宣稱新增跨表原子交易。
+- 既有飼主／寵物修改刪除經 SDK 相容路由，原 RLS 繼續生效。
+- 三頁程式與可獨立樣式／圖片分開維護，前端資源由明確清單提供。HTML 與資源更新不靠保留舊快取。
+- Request 物件轉送改成保留明確 body bytes，支援本機 Django；原 SQL 錯誤碼、篩選、筆數與二進位資料保留，不自動重試業務寫入。
+- 主頁 Supabase SDK 固定為這次 HTTP 驗證使用的 2.118.0。
+
+## 驗證與界線
+
+153 項 Python 測試、九組前端模擬、78 個外部 JS 語法及 100 個前端資源 HTTP 檢查通過。144 組原 JavaScript 算式結果已保存為可重跑的比對案例。
+
+實際 Supabase SDK → 本機 Django HTTP → 模擬上游的登入、查詢／筆數／分頁、RPC 錯誤、二進位上傳下載、簽名網址、Edge 請求、Request body 與未允許路徑阻擋檢查通過。使用模擬資料，不存取正式帳號或寫入病患／帳款。
+
+SQL 整合 installer 的空白試裝成功由使用者先前回報 INSTALL SUCCESS；本包收錄相同 SQL。SQL 維護工具補明確 UTF-8，以利 Windows 使用，沒有改動 SQL 定義。
+
+尚未在真實瀏覽器與院內資料重新跑完整操作；集中實操時只針對實際問題修正，不要求重新做已完成的備份還原及逐段驗收。此次未執行雲端部署。localhost 產生的連結仍須等部署後才適合外部使用。
+
+## 開發檢查
+
+python tools/check_project.py 可一次執行檔案／介面核對、Django 與 Node 流程檢查，需具備 Django 和 Node.js。只執行 Python 可加 --python-only。
+
+HTTP SDK 檢查使用 python tools/http_smoke.py --sdk-file SDK檔案路徑，使用本機模擬上游。一般院內使用者不必執行這些開發檢查。
+
+修改或新增前端資源後執行 python tools/update_frontend_manifest.py，重啟 Django。SQL 來源以 database/modules/ 為準；database/source/ 是追溯快照，不在那裡維護第二份定義。

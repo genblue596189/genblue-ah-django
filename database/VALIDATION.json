@@ -1,0 +1,23 @@
+{
+  "sql_files_parsed": 15,
+  "installer_statements": 1116,
+  "source_ast_preserved_except_documented_settings_and_role": true,
+  "function_bodies_unchanged": 114,
+  "sql_function_bodies_parsed": 13,
+  "plpgsql_function_bodies_parsed": 89,
+  "plpgsql_parser_namespace_limit": [
+    "booking.generate_v60",
+    "private.capture_doctor_visit_v57",
+    "private.guard_medical_claim_v51",
+    "private.guard_visit_status_v51",
+    "private.observe_clinical_record_v57",
+    "public.amend_medical_text_v53",
+    "public.claim_clinic_visit_v51",
+    "public.ob_public",
+    "public.ob_restore_slot_v91_26",
+    "public.ob_staff",
+    "public.release_clinic_visit_v51",
+    "public.save_archive_medical_v53"
+  ],
+  "live_database_execution": false
+}

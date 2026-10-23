@@ -1,0 +1,20 @@
+{
+  "source_sha256": "6ec351b8d6dc98b7934e895602d7370814b8002f0019f94e01f560f00e40a1ea",
+  "source_statements": 1107,
+  "object_counts": {
+    "function": 114,
+    "table": 54,
+    "view": 2,
+    "index": 55,
+    "trigger": 27,
+    "policy": 127
+  },
+  "table_columns": 617,
+  "enabled_rls_tables": 51,
+  "storage_policies_added": 3,
+  "buckets_added": [
+    "clinic-imaging",
+    "genblue"
+  ],
+  "original_default_privilege_statements_preserved": 12
+}

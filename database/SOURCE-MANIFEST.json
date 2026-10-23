@@ -1,0 +1,16 @@
+{
+  "sources": [
+    {
+      "name": "00_original_snapshot.sql",
+      "sha256": "6ec351b8d6dc98b7934e895602d7370814b8002f0019f94e01f560f00e40a1ea"
+    },
+    {
+      "name": "genblue_AH_inventory_20261021(1).zip",
+      "sha256": "3c3f24517d905a9ca60875688d601eee109cf4b73e3ccb12dd85b660bb93e175"
+    },
+    {
+      "name": "03_local_storage_policies.sql",
+      "sha256": "be0d8a34cd377f87e3d1819caefee514be0d43a4f4cadb21e67a9eb69abf3b62"
+    }
+  ]
+}

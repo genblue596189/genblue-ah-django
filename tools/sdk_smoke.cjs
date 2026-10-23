@@ -1,0 +1,31 @@
+// Real SDK -> actual local Django HTTP -> local fixture server. No cloud writes.
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const [sdkPath,app,upstream]=process.argv.slice(2);
+if(!sdkPath||!app||!upstream)throw Error('Run through tools/http_smoke.py --sdk-file PATH');
+global.window=globalThis;global.location={href:app+'/',origin:app};
+if(!global.WebSocket)global.WebSocket=class {};
+(async()=>{
+ const script=await (await fetch(app+'/assets/integrated-gateway.js')).text();
+ vm.runInThisContext(script);
+ vm.runInThisContext(fs.readFileSync(sdkPath,'utf8'),{filename:'supabase-sdk.js'});
+ const {createClient}=global.supabase;
+ const client=createClient(upstream,'public-test-key',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+ let result=await client.auth.signInWithPassword({email:'fixture@example.test',password:'fixture-only'});
+ assert.ifError(result.error);assert.equal(result.data.user.id,'00000000-0000-4000-8000-000000000001');
+ result=await client.from('pets').select('id,name',{count:'exact'}).eq('id','00000000-0000-4000-8000-000000000002').range(0,9);
+ assert.ifError(result.error);assert.equal(result.count,1);assert.equal(result.data[0].name,'Fixture');
+ result=await client.rpc('pos_v77',{p_action:'fixture-reject',p_data:{id:'stable-id'}});
+ assert.equal(result.error.code,'P0001');
+ result=await client.storage.from('clinic-imaging').upload('clinic-A/pet/file.bin',new Uint8Array([0,255,1]),{contentType:'application/octet-stream'});
+ assert.ifError(result.error);
+ result=await client.storage.from('clinic-imaging').createSignedUrl('clinic-A/pet/file.bin',60);
+ assert.ifError(result.error);assert(result.data.signedUrl.includes('token=fixture'));
+ const binary=await fetch(result.data.signedUrl);assert.deepEqual([...new Uint8Array(await binary.arrayBuffer())],[0,255,1]);
+ result=await client.functions.invoke('manage-staff',{body:{action:'list'}});assert.ifError(result.error);
+ const token=(await client.auth.getSession()).data.session.access_token;
+ const request=new Request(upstream+'/rest/v1/rpc/night_work_v93',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:'{"fixture":true}'});
+ const response=await fetch(request);assert.equal(response.status,200);assert.deepEqual(await response.json(),{fixture:true});
+ result=await client.from('not-allowed').select('*');assert.equal(result.status,404);
+ await client.auth.signOut({scope:'local'});
+ console.log('HTTP SDK smoke passed: auth, query/count/range, SQL error, binary upload/download, signed URL, Edge request, Request body and blocked route.');
+})().catch(error=>{console.error(error);process.exitCode=1});

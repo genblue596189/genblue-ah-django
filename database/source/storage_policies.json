@@ -1,0 +1,38 @@
+[
+  {
+    "cmd": "DELETE",
+    "qual": "((bucket_id = 'clinic-imaging'::text) AND (split_part(name, '/'::text, 1) = current_tenant_id()) AND private.has_ability(current_tenant_id(), 'clinical'::text) AND (NOT (EXISTS ( SELECT 1\n   FROM imaging_assets a\n  WHERE ((a.tenant_id = current_tenant_id()) AND (a.storage_path = objects.name))))))",
+    "roles": [
+      "authenticated"
+    ],
+    "tablename": "objects",
+    "permissive": "PERMISSIVE",
+    "policyname": "imaging_v61_cleanup",
+    "schemaname": "storage",
+    "with_check": null
+  },
+  {
+    "cmd": "SELECT",
+    "qual": "((bucket_id = 'clinic-imaging'::text) AND (split_part(name, '/'::text, 1) = current_tenant_id()) AND private.has_ability(current_tenant_id(), 'read'::text) AND (EXISTS ( SELECT 1\n   FROM pets p\n  WHERE (((p.id)::text = split_part(objects.name, '/'::text, 2)) AND ((p.tenant_id)::text = current_tenant_id())))))",
+    "roles": [
+      "authenticated"
+    ],
+    "tablename": "objects",
+    "permissive": "PERMISSIVE",
+    "policyname": "imaging_v61_read",
+    "schemaname": "storage",
+    "with_check": null
+  },
+  {
+    "cmd": "INSERT",
+    "qual": null,
+    "roles": [
+      "authenticated"
+    ],
+    "tablename": "objects",
+    "permissive": "PERMISSIVE",
+    "policyname": "imaging_v61_upload",
+    "schemaname": "storage",
+    "with_check": "((bucket_id = 'clinic-imaging'::text) AND (split_part(name, '/'::text, 1) = current_tenant_id()) AND private.has_ability(current_tenant_id(), 'clinical'::text) AND (name ~ '^[^/]+/[0-9a-f-]{36}/[0-9a-f-]{36}/[0-9a-f-]{36}\\.(jpg|png|webp|mp4|mov|webm)$'::text) AND (EXISTS ( SELECT 1\n   FROM pets p\n  WHERE (((p.id)::text = split_part(objects.name, '/'::text, 2)) AND ((p.tenant_id)::text = current_tenant_id())))))"
+  }
+]

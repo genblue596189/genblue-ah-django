@@ -1,0 +1,2166 @@
+{
+  "source": "Original integrated HTML JavaScript, evaluated using Node VM; not clinical recommendations",
+  "source_code_sha256": "d729f2b88f0929c8fc203361e42249b6397bc1d2ee7c4785307d8c3cc5a62a4b",
+  "cases": [
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "0",
+        "days": "1.5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "1",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "1",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "10",
+        "weight": "12.8",
+        "frequency": "0",
+        "days": "1.5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "4",
+        "display": "建議總需 4.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "3",
+        "days": "1.5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "14",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "55.4",
+        "display": "建議總需 55.4 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.01",
+        "weight": "12.8",
+        "frequency": "1",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "總量少於 0.1 顆，請手動確認開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "0.1",
+        "weight": "50",
+        "frequency": "0",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "11.9",
+        "display": "建議總需 11.9 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg/顆",
+        "dose": "100",
+        "weight": "0.3",
+        "frequency": "1",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "2",
+        "weight": "50",
+        "frequency": "0",
+        "days": "14",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "100",
+        "weight": "50",
+        "frequency": "2",
+        "days": "1",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "20",
+        "display": "建議總需 20.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "2",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "0",
+        "weight": "0.3",
+        "frequency": "3",
+        "days": "5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "2",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "2",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "總量少於 0.1 顆，請手動確認開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "0.5",
+        "days": "5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "0",
+        "weight": "0.3",
+        "frequency": "2",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "10",
+        "weight": "12.8",
+        "frequency": "0",
+        "days": "1",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "100",
+        "weight": "50",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "0.5g",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "5.1",
+        "display": "建議總需 5.1 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "1",
+        "days": "1",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0.01",
+        "weight": "50",
+        "frequency": "1",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "5",
+        "display": "建議總需 5.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0",
+        "weight": "0.3",
+        "frequency": "3",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "0",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "100",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "2",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "2",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "2",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0",
+        "weight": "0.3",
+        "frequency": "2",
+        "days": "1.5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "2",
+        "days": "30",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "1.8",
+        "display": "建議總需 1.8 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "358400",
+        "display": "建議總需 358400.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "100mcg/錠",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "1",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0.01",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "1",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0.01",
+        "weight": "50",
+        "frequency": "1",
+        "days": "1",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "0.1",
+        "display": "建議總需 0.1 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "100",
+        "weight": "0",
+        "frequency": "1",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "3840",
+        "display": "建議總需 3840.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0.01",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "0.1",
+        "display": "建議總需 0.1 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "3",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "768",
+        "display": "建議總需 768.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "10",
+        "weight": "50",
+        "frequency": "1",
+        "days": "14",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "1400",
+        "display": "建議總需 1400.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0.01",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0.1",
+        "weight": "50",
+        "frequency": "2",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "60",
+        "display": "建議總需 60.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "10",
+        "weight": "0.3",
+        "frequency": "2",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "36",
+        "display": "建議總需 36.0 顆"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0",
+        "weight": "12.8",
+        "frequency": "3",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "每顆含5mg",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "2",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "3",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "3",
+        "days": "1",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "0",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "1",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "0",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "2",
+        "days": "14",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "2",
+        "weight": "3.3",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "10mg/ml",
+        "dose": "0.01",
+        "weight": "50",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "0",
+        "weight": "12.8",
+        "frequency": "1",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "0",
+        "weight": "0.3",
+        "frequency": "0.5",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "2",
+        "weight": "0",
+        "frequency": "1",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "2",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "10",
+        "weight": "12.8",
+        "frequency": "0",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "2",
+        "weight": "0.3",
+        "frequency": "3",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "100",
+        "weight": "50",
+        "frequency": "0",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "1",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "100",
+        "weight": "0",
+        "frequency": "0",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "PRN 請手動確認實際開立數量"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "2",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "0.5",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "口服藥",
+        "strength": "250mg-500mg",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請確認每顆含量，例如 250mg/顆；無法自動換算"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "0.1",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "用量少於 0.001 ml，請手動核對可量取用量"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "2",
+        "weight": "12.8",
+        "frequency": "3",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "25.6",
+        "display": "建議單次用量 25.6 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "0.003",
+        "display": "建議單次用量 0.003 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "0.05",
+        "display": "建議單次用量 0.05 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "10",
+        "weight": "50",
+        "frequency": "0.5",
+        "days": "14",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "10",
+        "display": "建議單次用量 10 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "3",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "2",
+        "weight": "3.3",
+        "frequency": "0.5",
+        "days": "5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "10",
+        "weight": "50",
+        "frequency": "3",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "0.01",
+        "weight": "50",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "用量少於 0.001 ml，請手動核對可量取用量"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "0",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "0",
+        "weight": "0.3",
+        "frequency": "2",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "2000IU/0.3ml",
+        "dose": "2",
+        "weight": "0.3",
+        "frequency": "3",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "用量少於 0.001 ml，請手動核對可量取用量"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "100",
+        "weight": "0",
+        "frequency": "1",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "2",
+        "weight": "0.3",
+        "frequency": "0.5",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "0.6",
+        "display": "建議單次用量 0.6 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "3",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "1280",
+        "display": "建議單次用量 1280 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "100",
+        "weight": "50",
+        "frequency": "1",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "100",
+        "weight": "0",
+        "frequency": "3",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "3",
+        "days": "1.5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "2",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "2",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "6.6",
+        "display": "建議單次用量 6.6 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "10",
+        "weight": "50",
+        "frequency": "1",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "500",
+        "display": "建議單次用量 500 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "2",
+        "weight": "50",
+        "frequency": "0",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "100",
+        "display": "建議單次用量 100 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "10",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/ml",
+        "dose": "2",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "25.6",
+        "display": "建議單次用量 25.6 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "10",
+        "weight": "0",
+        "frequency": "2",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "3",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "0",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.1",
+        "weight": "12.8",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "0",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.1",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "14",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "1.28",
+        "display": "建議單次用量 1.28 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "14",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "33",
+        "display": "建議單次用量 33 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0",
+        "weight": "50",
+        "frequency": "2",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.01",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "用量少於 0.001 ml，請手動核對可量取用量"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "0.1",
+        "display": "建議單次用量 0.1 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "5g/10ml",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "2",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "0.01",
+        "weight": "0",
+        "frequency": "0.5",
+        "days": "14",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "1",
+        "days": "5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "0.01",
+        "display": "建議單次用量 0.01 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "100",
+        "weight": "12.8",
+        "frequency": "0",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "0.1",
+        "weight": "0.3",
+        "frequency": "0",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "13200",
+        "display": "建議單次用量 13200 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "2",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "0.5",
+        "days": "5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "0.003",
+        "display": "建議單次用量 0.003 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "0.1",
+        "weight": "0.3",
+        "frequency": "0",
+        "days": "5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "1.2",
+        "display": "建議單次用量 1.2 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "10",
+        "weight": "12.8",
+        "frequency": "3",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "5120",
+        "display": "建議單次用量 5120 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "0",
+        "weight": "12.8",
+        "frequency": "0",
+        "days": "1",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "100",
+        "weight": "50",
+        "frequency": "2",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "100",
+        "display": "建議單次用量 100 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "50mcg/2ml",
+        "dose": "10",
+        "weight": "0.3",
+        "frequency": "3",
+        "days": "5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0",
+        "weight": "0",
+        "frequency": "3",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "10",
+        "weight": "50",
+        "frequency": "3",
+        "days": "14",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.01",
+        "weight": "3.3",
+        "frequency": "3",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "10",
+        "weight": "0",
+        "frequency": "3",
+        "days": "1",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.1",
+        "weight": "50",
+        "frequency": "2",
+        "days": "30",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.1",
+        "weight": "12.8",
+        "frequency": "3",
+        "days": "1.5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "2",
+        "days": "1.5",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "2",
+        "weight": "0.3",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0",
+        "weight": "3.3",
+        "frequency": "0",
+        "days": "1.5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "0.33",
+        "display": "建議單次用量 0.33 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "wrong",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "1",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "0.33",
+        "display": "建議單次用量 0.33 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "1",
+        "days": "14",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "100",
+        "display": "建議單次用量 100 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "10",
+        "weight": "0.3",
+        "frequency": "0",
+        "days": "30",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "0.01",
+        "weight": "0.3",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "0.1",
+        "weight": "12.8",
+        "frequency": "2",
+        "days": "30",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "0.1",
+        "display": "建議單次用量 0.1 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "0",
+        "weight": "3.3",
+        "frequency": "2",
+        "days": "1",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "0.1",
+        "weight": "3.3",
+        "frequency": "0.5",
+        "days": "1.5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "0.1",
+        "display": "建議單次用量 0.1 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "10",
+        "weight": "3.3",
+        "frequency": "2",
+        "days": "1.5",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "10",
+        "display": "建議單次用量 10 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "2",
+        "weight": "12.8",
+        "frequency": "0.5",
+        "days": "30",
+        "unit": "ml/kg"
+      },
+      "expected": {
+        "quantity": "25.6",
+        "display": "建議單次用量 25.6 ml"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "2",
+        "weight": "0",
+        "frequency": "2",
+        "days": "14",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "0.1",
+        "weight": "0",
+        "frequency": "1",
+        "days": "1",
+        "unit": "ml"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "請填寫有效的體重、劑量、頻率及整數天數"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "100",
+        "weight": "3.3",
+        "frequency": "2",
+        "days": "1",
+        "unit": "IU/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    },
+    {
+      "input": {
+        "route": "皮下注射",
+        "strength": "10mg/0ml",
+        "dose": "2",
+        "weight": "3.3",
+        "frequency": "2",
+        "days": "5",
+        "unit": "mg/kg"
+      },
+      "expected": {
+        "quantity": "",
+        "display": "劑量單位與規格濃度不符，請核對例如 2000IU/0.3ml；不自動推測"
+      }
+    }
+  ]
+}
