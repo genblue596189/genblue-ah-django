@@ -28,7 +28,8 @@
    if(line.length<35)throw Error('檢驗列長度不足：'+line);
    const code=line.slice(0,11).trim();let value=line.slice(11,20).trim(),flag='';
    if(!/^[#A-Za-z0-9\/()-]+$/.test(code))throw Error('尚未支援的檢驗代碼欄位：'+code);
-   if(/^[hl] /i.test(value)){flag=value[0].toLowerCase();value=value.slice(2).trim();}
+   // Instruments emit both 'h >300' and 'h>300'; retain comparison and direction.
+   if(/^[hl]\s*(?=[<>≤≥+\-.\d])/i.test(value)){flag=value[0].toLowerCase();value=value.slice(1).trim();}
    // U is an observed instrument marker, not a synonym for high or low.
    // All analytes share this grammar; preserve the complete marked result.
    const numericPattern=/^[<>≤≥]?\s*[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/;
