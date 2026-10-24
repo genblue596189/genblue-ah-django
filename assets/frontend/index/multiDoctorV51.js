@@ -96,7 +96,14 @@ async function startDoctorConsultationV51(args,appointmentId=null){
 }
 startConsultationById=function(...args){return startDoctorConsultationV51(args,null);};
 const doctorOriginalEnsureVitalsV51=ensureMedicalWeightForAction;
-ensureMedicalWeightForAction=async function(){return await verifyDoctorVisitV51()&&await doctorOriginalEnsureVitalsV51()&&await verifyDoctorVisitV51();};
+ensureMedicalWeightForAction=async function(options){
+ const visit=doctorVisitV51,scope=doctorScopeV51();
+ if(!await verifyDoctorVisitV51()||!await doctorOriginalEnsureVitalsV51())return false;
+ // These callers immediately save through Django, which verifies the live claim
+ // again before inserting. Other callers retain the second remote check.
+ if(options?.verifiedByMedicalSave===true)return visit===doctorVisitV51&&scope===doctorScopeV51()&&visit?.petId===currentPetId;
+ return await verifyDoctorVisitV51();
+};
 const doctorOriginalRenderV51=renderAppointmentTable;
 renderAppointmentTable=function(rows){doctorOriginalRenderV51(filterDoctorWaitingV51(rows));};
 // Initialize the filter beside the waiting list, without changing registration fields.

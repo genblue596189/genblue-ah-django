@@ -4857,7 +4857,7 @@ function openMedicalDetailModal(record){
             if (medicalSaveBusy) return;
             medicalSaveBusy = true;
             try {
-            if(!await ensureMedicalWeightForAction())return;
+            if(!await ensureMedicalWeightForAction({verifiedByMedicalSave:true}))return;
             const chiefComplaint = medicalChiefComplaintWithTemperature();
             if (chiefComplaint === null) return;
             if(!currentPetId) { alert('尚未指定看診寵物！'); return; }
