@@ -106,7 +106,7 @@ def booking(request): return page('booking.html')
 @require_GET
 def imaging(request): return page('imaging-share.html')
 @require_GET
-def health(request): return JsonResponse({'service':'genblue-django', 'edition':'performance-20261024'})
+def health(request): return JsonResponse({'service':'genblue-django', 'edition':'checkout-speed-20261024'})
 def bearer_token(request):
     parts = request.headers.get('Authorization', '').split()
     if len(parts) != 2 or parts[0].lower() != 'bearer' or len(parts[1]) > 16384:
