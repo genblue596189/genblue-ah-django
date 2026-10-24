@@ -29,7 +29,7 @@
   },
   "index/block-01.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "9b8f3ac57d3d68d1566573e4d7d656037eccd698a003a116b045cfef208f2684"
+    "sha256": "ac508d4dc599a53e49281e4e779f71ba1dee65f106a10e1bbd4787023498f3b3"
   },
   "index/block-02.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -225,7 +225,7 @@
   },
   "index/multiDoctorV51.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "1e5fea1f1616179b5f3366418da94229b42b12bc3ccd4730aff3fe09dfb69be6"
+    "sha256": "d5bfd2c8e58051d0fcd31ff09119a6061d2a8a50f9a94c058613dbbe12fa8bf1"
   },
   "index/paidHistoryV907.js": {
     "content_type": "text/javascript; charset=utf-8",
