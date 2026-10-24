@@ -14,7 +14,7 @@ class Reply(io.BytesIO):
 class GatewayTests(SimpleTestCase):
     def send(self,path,method='GET',body=b'',reply=None,headers=None):
         h={'HTTP_AUTHORIZATION':'Bearer user-token'};h.update(headers or {})
-        with patch('clinic.gateway.verified_context',return_value={'user':{'id':'u'},'profile':{'tenant_id':'clinic-A'}}) as verify,patch('clinic.gateway.send',return_value=reply or Reply()) as send:
+        with patch('clinic.gateway.read_context',return_value={'user':{'id':'u'},'profile':{'tenant_id':'clinic-A'}}) as verify,patch('clinic.gateway.verified_context', side_effect=verify),patch('clinic.gateway.send',return_value=reply or Reply()) as send:
             response=self.client.generic(method,'/api/supabase/'+path,body,content_type=h.pop('CONTENT_TYPE','application/json'),**h)
             return response,send,verify
 
@@ -98,7 +98,7 @@ class GatewayTests(SimpleTestCase):
         self.assertEqual(response.status_code,401);send.assert_not_called()
 
     def test_profile_trial_or_auth_rejection_never_reaches_data_api(self):
-        with patch('clinic.gateway.verified_context',side_effect=GatewayError(403)),patch('clinic.gateway.send') as send:
+        with patch('clinic.gateway.read_context',side_effect=GatewayError(403)),patch('clinic.gateway.send') as send:
             response=self.client.get('/api/supabase/rest/v1/pets',HTTP_AUTHORIZATION='Bearer expired')
         self.assertEqual(response.status_code,403);send.assert_not_called()
 

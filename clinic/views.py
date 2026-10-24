@@ -1,6 +1,9 @@
 import json
 import base64, copy, hashlib, threading, time
 from collections import OrderedDict
+from concurrent.futures import ThreadPoolExecutor, wait
+from functools import lru_cache
+import re
 from datetime import datetime, timezone
 from urllib.request import Request
 from .transport import urlopen
@@ -10,6 +13,9 @@ from django.conf import settings
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_GET
 from django.views.decorators.cache import never_cache
+
+# Bounded shared workers reuse HTTPS connections across requests.
+_verification_pool = ThreadPoolExecutor(max_workers=8, thread_name_prefix="clinic-verify")
 
 class GatewayError(Exception):
     def __init__(self, status, message=None, code=None):
@@ -77,8 +83,20 @@ def upstream(path, token, method="GET", payload=None, pos_errors=False, record_e
         raise GatewayError(401 if exc.code == 401 else 403 if exc.code == 403 else 409 if exc.code == 409 else 502) from None
     except (URLError, TimeoutError, ValueError, OSError): raise GatewayError(502) from None
 
+@lru_cache(maxsize=8)
+def _page_text(base_dir, name, modified):
+    text = (base_dir / 'web' / name).read_text(encoding='utf-8')
+    from .frontend_assets import manifest
+    entries = manifest(str(base_dir / 'assets' / 'frontend'))
+    def version(match):
+        name = match.group(1)
+        entry = entries.get(name)
+        return '/assets/frontend/' + name + ('?v=' + entry['sha256'] if entry else '') + '"'
+    return re.sub(r'/assets/frontend/([^"?]+)"', version, text)
+
 def page(name):
-    response=HttpResponse((settings.BASE_DIR / 'web' / name).read_text(encoding='utf-8'), content_type='text/html; charset=utf-8')
+    path = settings.BASE_DIR / 'web' / name
+    response=HttpResponse(_page_text(settings.BASE_DIR, name, path.stat().st_mtime_ns), content_type='text/html; charset=utf-8')
     response['Cache-Control']='no-cache'
     return response
 @require_GET
@@ -88,7 +106,7 @@ def booking(request): return page('booking.html')
 @require_GET
 def imaging(request): return page('imaging-share.html')
 @require_GET
-def health(request): return JsonResponse({'service':'genblue-django', 'edition':'final-20261022'})
+def health(request): return JsonResponse({'service':'genblue-django', 'edition':'performance-20261024'})
 def bearer_token(request):
     parts = request.headers.get('Authorization', '').split()
     if len(parts) != 2 or parts[0].lower() != 'bearer' or len(parts[1]) > 16384:
@@ -102,10 +120,15 @@ def verified_context(token):
         raise GatewayError(401)
     fields = 'tenant_id,display_name,role,can_checkout,permission_clinical,permission_appointment,permission_operational,permission_checkout'
     query = urlencode({'select': fields, 'user_id':'eq.' + str(user['id']), 'limit':'2'})
-    profiles = upstream('/rest/v1/user_profiles?' + query, token)
+    # Both reads depend on the authenticated user, but not on each other.
+    profile_job = _verification_pool.submit(upstream, '/rest/v1/user_profiles?' + query, token)
+    trial_job = _verification_pool.submit(upstream, '/rest/v1/rpc/my_trial_expires_at', token)
+    # Drain both jobs before returning, including rejection/error paths.
+    wait((profile_job, trial_job))
+    profiles = profile_job.result()
     if not isinstance(profiles, list) or len(profiles) != 1 or not profiles[0].get('tenant_id'):
         raise GatewayError(403)
-    trial = upstream('/rest/v1/rpc/my_trial_expires_at', token)
+    trial = trial_job.result()
     if trial is not None:
         if not isinstance(trial, str): raise GatewayError(502)
         try:

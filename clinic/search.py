@@ -4,7 +4,7 @@ from urllib.parse import urlencode
 from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_GET
-from .views import bearer_token, verified_context, upstream, GatewayError, error_response
+from .views import bearer_token, read_context as verified_context, upstream, GatewayError, error_response
 
 PAGE_SIZE = 1000
 FIELDS = '*,owners(id,name,phone,mobile,owner_code,system_code)'

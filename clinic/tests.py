@@ -22,10 +22,10 @@ class SessionTests(SimpleTestCase):
         with patch('clinic.views.upstream',side_effect=[{'id':'u'},[{'tenant_id':'A'}],'2020-01-01T00:00:00Z']):
             self.assertEqual(self.client.get('/api/session/',HTTP_AUTHORIZATION='Bearer t').status_code,403)
 
-    def test_missing_profile_blocks_before_trial(self):
-        with patch('clinic.views.upstream',side_effect=[{'id':'u'},[]]) as call:
+    def test_missing_profile_blocks_session(self):
+        with patch('clinic.views.upstream',side_effect=[{'id':'u'},[],None]) as call:
             self.assertEqual(self.client.get('/api/session/',HTTP_AUTHORIZATION='Bearer t').status_code,403)
-            self.assertEqual(call.call_count,2)
+            self.assertEqual(call.call_count,3)
 
     def test_upstream_failure_is_closed(self):
         from clinic.views import GatewayError
