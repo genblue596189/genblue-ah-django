@@ -11,7 +11,7 @@ from django.views.decorators.http import require_POST
 from .views import bearer_token,verified_context,upstream,GatewayError,error_response
 from .medical import uuid_value,invalid_json_constant
 
-ACTIONS={'stage','direct','pay'}
+ACTIONS={'stage','direct','pay','family_pending'}
 FUNCTIONS={'checkout_with_inventory','checkout_clinic_doctor_v57','checkout_clinic_medicine_groups_v64','checkout_family_v74'}
 METHODS={'現金','信用卡','轉帳','行動支付'}
 
@@ -32,6 +32,7 @@ def parameters(request,action,tenant):
     try:
         data=json.loads(request.body,parse_constant=invalid_json_constant)
         expected={'id','draft'} if action=='stage' else ({'id','payload','method','shift_id','tendered'} if action=='direct' else {'id','pending_id','version','method','shift_id','tendered'})
+        if action=='family_pending': expected={'id','entries','method','shift_id','tendered'}
         if not isinstance(data,dict) or set(data)!=expected: raise ValueError()
         uuid_value(data['id'])
         if action=='stage':
@@ -40,7 +41,15 @@ def parameters(request,action,tenant):
         else:
             uuid_value(data['shift_id'])
             if not isinstance(data['method'],str) or data['method'] not in METHODS: raise ValueError()
-            if action=='pay':
+            if action=='family_pending':
+                entries=data['entries']
+                if not isinstance(entries,list) or not 1<=len(entries)<=20: raise ValueError()
+                for entry in entries:
+                    if not isinstance(entry,dict) or set(entry)!={'id','pending_id','version'}: raise ValueError()
+                    uuid_value(entry['id']);uuid_value(entry['pending_id'])
+                    if type(entry['version']) is not int or entry['version']<1: raise ValueError()
+                if len({e['id'] for e in entries})!=len(entries) or len({e['pending_id'] for e in entries})!=len(entries): raise ValueError()
+            elif action=='pay':
                 uuid_value(data['pending_id'])
                 if type(data['version']) is not int or data['version']<1: raise ValueError()
             else:
@@ -60,7 +69,11 @@ def parameters(request,action,tenant):
 def validate_result(result,action,data,tenant):
     try:
         if isinstance(result,dict) and 'tenant_id' in result and result['tenant_id']!=tenant: raise ValueError()
-        if action=='stage':
+        if action=='family_pending':
+            if not isinstance(result,dict) or result.get('request_id')!=data['id'] or not isinstance(result.get('invoices'),list): raise ValueError()
+            if {e['pending_id'] for e in result['invoices']}!={e['pending_id'] for e in data['entries']} or len(result['invoices'])!=len(data['entries']): raise ValueError()
+            for entry in result['invoices']: uuid_value(entry['invoice_id'])
+        elif action=='stage':
             if not isinstance(result,dict) or result.get('id')!=data['id']: raise ValueError()
             uuid_value(result['id'])
         elif isinstance(result,str):
@@ -88,9 +101,9 @@ def checkout_action(request,action):
         tenant=context['profile']['tenant_id']
         data=parameters(request,action,tenant)
         # Stage eligibility/claim ownership is checked by existing POS SQL.
-        if action in ('direct','pay') and not can_bill(context['profile']):
+        if action in ('direct','pay','family_pending') and not can_bill(context['profile']):
             raise GatewayError(403,'此帳號沒有收款權限，尚未送出收款。','GB_REQUEST_REJECTED')
-        result=upstream('/rest/v1/rpc/pos_v77',token,method='POST',payload={'p_action':action,'p_data':data},pos_errors=True)
+        result=upstream('/rest/v1/rpc/'+('pos_family_pending_v20261025' if action=='family_pending' else 'pos_v77'),token,method='POST',payload=({'p_data':data} if action=='family_pending' else {'p_action':action,'p_data':data}),pos_errors=True)
         validate_result(result,action,data,tenant)
         return JsonResponse({'data':result,'tenant_id':tenant,'user_id':context['user']['id']})
     except GatewayError as exc:return error_response(exc)

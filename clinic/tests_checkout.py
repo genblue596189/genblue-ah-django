@@ -139,3 +139,29 @@ class CheckoutErrorTransportTests(SimpleTestCase):
                 upstream('/rest/v1/rpc/pos_v77','token',method='POST',payload={},pos_errors=True)
         self.assertEqual(caught.exception.status,502)
         self.assertIsNone(caught.exception.code)
+
+class FamilyPendingGatewayTests(CheckoutGatewayTests):
+    def family_request(self):
+        return {'id':self.id,'entries':[{'id':str(uuid4()),'pending_id':self.pending,'version':3}], 'method':'現金','shift_id':self.shift,'tendered':300}
+
+    def test_atomic_family_rpc(self):
+        data=self.family_request(); result={'request_id':self.id,'invoices':[{'pending_id':self.pending,'invoice_id':self.invoice}]}
+        response,call=self.perform('family_pending',data,result)
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(call.call_args.args[0],'/rest/v1/rpc/pos_family_pending_v20261025')
+        self.assertEqual(call.call_args.kwargs['payload'],{'p_data':data})
+
+    def test_duplicate_pending_rejected_before_rpc(self):
+        data=self.family_request();data['entries']*=2
+        response,call=self.perform('family_pending',data)
+        self.assertEqual(response.status_code,400);call.assert_not_called()
+
+    def test_partial_response_is_uncertain(self):
+        data=self.family_request();response,_=self.perform('family_pending',data,{'request_id':self.id,'invoices':[]})
+        self.assertEqual(response.status_code,502)
+        self.assertNotEqual(response.json().get('code'),'GB_REQUEST_REJECTED')
+
+    def test_doctor_without_checkout_cannot_pay_family(self):
+        data=self.family_request()
+        response,call=self.perform('family_pending',data,context={'user':{'id':'u'},'profile':{'tenant_id':'clinic-A','role':'doctor','permission_checkout':False}})
+        self.assertEqual(response.status_code,403);call.assert_not_called()
