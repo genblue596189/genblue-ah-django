@@ -33,7 +33,7 @@
   },
   "index/block-02.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "2653f22f39541beb50a0d0af9782b5ff038dbc1a4ed642d40c465d1084afb94d"
+    "sha256": "0e8bddd06a62e183244a819cfa980e8aea73834fa4d2b6a35f0501d5f6a56958"
   },
   "index/block-03.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -400,7 +400,7 @@
     "sha256": "f6dee08c8915d7a9a6e96d35a683266c509abce554124c50e624dc079661f3b5"
   },
   "index/deskCheckout20261025.js": {
-    "sha256": "69da6b7bd16fc3476663f720f8600fb30c308c861b8144863660952959c0c9a8",
+    "sha256": "ca56e59fde610b83a3f27e39cb1ddd8dee090a457075b1df3ff3d8e2387f49b5",
     "content_type": "text/javascript; charset=utf-8"
   }
 }
