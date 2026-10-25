@@ -29,7 +29,11 @@ function setJournalScheduleMode(future){journalScheduleFutureMode=!!future;rende
 function renderJournalSchedule(){
     const rows=document.getElementById('journalScheduleRows');if(!rows)return;
     const today=journalLocalDateKey(new Date()),all=Array.isArray(activeAppointmentsList)?activeAppointmentsList:[];
-    document.getElementById('journalWaitingCount').textContent=all.filter(p=>(p.status||'候診中')==='候診中').length;
+    // Pending-payment visits remain active in the database, but are no longer waiting.
+    const pendingIds=new Set((typeof posStateV77!=='undefined'?posStateV77?.pending||[]:[]).map(q=>q.appointment_id||q.draft?.billingAppointmentId).filter(Boolean));
+    const familyDrafts=typeof familyStateNowV74==='function'?familyStateNowV74()?.entries||[]:[];
+    for(const entry of familyDrafts)pendingIds.add(entry.billingAppointmentId);
+    document.getElementById('journalWaitingCount').textContent=all.filter(p=>(p.status||'候診中')==='候診中'&&!pendingIds.has(p.appointment_id)).length;
     const scheduled=all.filter(p=>p.status==='已預約'&&p.appointment_time&&journalLocalDateKey(p.appointment_time));
     document.getElementById('journalTodayCount').textContent=scheduled.filter(p=>journalLocalDateKey(p.appointment_time)===today).length;
     document.getElementById('journalScheduleToday').setAttribute('aria-pressed',String(!journalScheduleFutureMode));
