@@ -225,7 +225,7 @@
   },
   "index/multiDoctorV51.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "d5bfd2c8e58051d0fcd31ff09119a6061d2a8a50f9a94c058613dbbe12fa8bf1"
+    "sha256": "04e59ef956d6b1d41e9cde1d3e77034d2bdad8285372dc0b8783856e7e223201"
   },
   "index/paidHistoryV907.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -397,7 +397,7 @@
   },
   "index/waitingDoctorV54.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "f6dee08c8915d7a9a6e96d35a683266c509abce554124c50e624dc079661f3b5"
+    "sha256": "5ed7cf97203e488b103e2bcc30b10d3a4b139707069eeb2ad40bc928e1bbd438"
   },
   "index/deskCheckout20261025.js": {
     "sha256": "ca56e59fde610b83a3f27e39cb1ddd8dee090a457075b1df3ff3d8e2387f49b5",
