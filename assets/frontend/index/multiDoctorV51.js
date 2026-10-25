@@ -71,6 +71,9 @@ async function releaseDoctorVisitV51(petId,appointmentId){
 const doctorOriginalStartV51=startConsultationById;
 async function startDoctorConsultationV51(args,appointmentId=null){
  if(doctorOpeningV51)return;
+ if(typeof waitingDoctorV54!=='undefined'&&waitingDoctorV54&&waitingDoctorV54.scope===doctorScopeV51()&&document.getElementById('waitingDoctorModalV54')?.style.display==='flex'){
+  alert('請先完成指定醫師，或按「關閉／稍後再指定」後再開始看診。');return;
+ }
  const scope=doctorScopeV51(),petId=args[0];if(!scope)return;
  doctorOpeningV51=true;
  try{
