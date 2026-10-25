@@ -1125,19 +1125,25 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
         }
 
-        async function voidInvoice(invoiceId) {
+        async function voidInvoice(invoiceId, options = {}) {
+            const scope=posScopeNowV77();
             const reason = prompt('請填寫作廢原因（原帳單會保留，已扣的庫存會回補）：');
-            if (reason === null) return;
-            if (reason.trim().length < 2) { alert('請填寫至少兩字的作廢原因'); return; }
-            if (!confirm('確定作廢這筆交易並回補庫存？\n請確認原單的藥品／商品已退回，或尚未實際交付。未退回時請取消，不可回補庫存。')) return;
-            let error;
+            if (reason === null) return null;
+            if (reason.trim().length < 2) { alert('請填寫至少兩字的作廢原因'); return null; }
+            if (!confirm('確定作廢這筆交易並回補庫存？\n請確認原單的藥品／商品已退回，或尚未實際交付。未退回時請取消，不可回補庫存。')) return null;
             try {
                 await posRpcV77('void_safe_v854',{invoice_id:invoiceId,reason:reason.trim(),stock_return_confirmed:true});
-            } catch (err) { error = err; }
-            if (error) { alert('作廢失敗，帳單與庫存均未變更：' + error.message); return; }
+            } catch (error) {
+                if(scope===posScopeNowV77())alert('尚未確認作廢完成：'+error.message+'。請重新查詢原帳單狀態後再操作。');
+                return null;
+            }
+            if(scope!==posScopeNowV77())return null;
+            const result={invoiceId,reason:reason.trim()};
+            if(options.refresh===false)return result;
             alert('帳單已作廢，已扣的庫存已回補。退款請依原付款方式另行處理。');
-            await Promise.all([loadItems(), loadMedicines(), loadSearchCenterData()]);
-            fetchFinancialReport();
+            const refreshed=await Promise.allSettled([loadItems(),loadMedicines(),loadSearchCenterData(),fetchFinancialReport()]);
+            if(scope===posScopeNowV77()&&refreshed.some(r=>r.status==='rejected'))alert('作廢已完成，部分畫面未更新，請更新資料；勿重新作廢或重複退款。');
+            return result;
         }
 
         function filterSearchSales() {

@@ -416,10 +416,11 @@ async function posInvoiceReviewV847(reset=false){
  const lower=new Date(start+'T00:00:00+08:00'),upper=new Date(new Date(end+'T00:00:00+08:00').getTime()+86400000);
  const {data,error}=await _supabase.from('invoices').select('id,created_at,checkout_type,total_amount,voided_at,void_reason').eq('tenant_id',CURRENT_TENANT_ID).gte('created_at',lower.toISOString()).lt('created_at',upper.toISOString()).order('created_at',{ascending:false}).order('id',{ascending:false}).range(posInvoiceOffsetV847,posInvoiceOffsetV847+50);
  if(error)throw Error(error.message);if(scope!==posScopeNowV77()||request!==posInvoiceRequestV847)return;
- const rows=(data||[]).slice(0,50),statuses=rows.length?await posRpcV77('finance_status',{invoice_ids:rows.map(r=>r.id)}):{statuses:[]};
+ const rows=(data||[]).slice(0,50);
+ const [statuses,links]=rows.length?await Promise.all([posRpcV77('finance_status',{invoice_ids:rows.map(r=>r.id)}),posRpcV77('reissue_links_v854',{invoice_ids:rows.map(r=>r.id)})]):[{statuses:[]},{tenant_id:String(CURRENT_TENANT_ID),rows:[]}];
  if(scope!==posScopeNowV77()||request!==posInvoiceRequestV847)return;
  if(statuses.statuses.length!==rows.length)throw Error('帳單核對狀態不完整');
- const links=rows.length?await posRpcV77('reissue_links_v854',{invoice_ids:rows.map(r=>r.id)}):{tenant_id:String(CURRENT_TENANT_ID),rows:[]};if(scope!==posScopeNowV77()||request!==posInvoiceRequestV847)return;if(links.tenant_id!==String(CURRENT_TENANT_ID))throw Error('新舊單院所回覆不符');
+ if(links.tenant_id!==String(CURRENT_TENANT_ID))throw Error('新舊單院所回覆不符');
  const map=new Map(statuses.statuses.map(r=>[r.invoice_id,r])),box=document.getElementById('posInvoiceRowsV847');box.replaceChildren();
  box.append(posNodeV77('p','第 '+(posInvoiceOffsetV847+1)+'–'+(posInvoiceOffsetV847+rows.length)+' 筆；作廢保留原單並回補庫存，實際退款仍需另外記錄。'));
  for(const inv of rows){
@@ -430,7 +431,19 @@ async function posInvoiceReviewV847(reset=false){
   row.ontoggle=()=>{if(row.open)return posActionV77(()=>posInvoiceDetailV852({...inv,verificationV845:map.get(inv.id)},detail,scope,request));};
   const actions=posNodeV77('div');actions.className='pos-invoice-actions-v852';
   if(inv.voided_at){actions.append(posNodeV77('p','作廢原因：'+(inv.void_reason||'—')),posButtonV77('重新開立（帶入草稿）',()=>posReissuePrepareV854(inv.id)));}
-  if(!inv.voided_at)actions.append(posButtonV77('作廢原帳單',async()=>{await voidInvoice(inv.id);await posRefreshV77({fresh:true,required:true});await posInvoiceReviewV847();}));
+  if(!inv.voided_at)actions.append(posButtonV77('作廢原帳單',async()=>{
+   const result=await voidInvoice(inv.id,{refresh:false});
+   if(!result||scope!==posScopeNowV77())return;
+   // Server has confirmed the void. Update this card before any refresh requests.
+   inv.voided_at=new Date().toISOString();inv.void_reason=result.reason;
+   const heading=row.querySelector('summary');
+   if(heading)heading.textContent=heading.textContent.replace(/已確認入帳|已收款待核對|舊帳單未連結|待收款|待核對/,'已作廢');
+   row.open=false;
+   actions.replaceChildren(posNodeV77('p','作廢原因：'+result.reason),posButtonV77('重新開立（帶入草稿）',()=>posReissuePrepareV854(inv.id)),copy);
+   document.getElementById('posMessageV77').textContent='帳單已作廢並回補庫存。退款需另行處理；正在更新資料…';
+   const updates=await Promise.allSettled([posRefreshV77({fresh:true,required:true}),posInvoiceReviewV847(),loadItems(),loadMedicines()]);
+   if(scope===posScopeNowV77())document.getElementById('posMessageV77').textContent=updates.some(r=>r.status==='rejected')?'作廢已完成，部分畫面更新失敗，請更新資料；勿重複作廢或退款。':'帳單已作廢，資料已更新。實際退款請依原付款方式另行記錄。';
+  }));
   for(const link of links.rows.filter(l=>String(l.original_invoice_id)===String(inv.id)||String(l.new_invoice_id)===String(inv.id))){const message=String(link.new_invoice_id)===String(inv.id)?'由原單 '+link.original_invoice_id+' 重新開立':'重開狀態：'+({draft:'草稿，尚未收款',paid:'已完成新單',cancelled:'草稿已取消'}[link.state]||link.state)+(link.new_invoice_id?'｜新單 '+link.new_invoice_id:'');row.append(posNodeV77('p',message+'｜原因：'+link.reason));}
 
   const copy=posButtonV77('填入退款帳單號',()=>{document.getElementById('posMovementReferenceV77').value=inv.id;document.getElementById('posMovementKindV77').value='refund';document.getElementById('posMovementAmountV77').value=String(inv.total_amount);document.getElementById('posMovementCardV77').scrollIntoView?.({behavior:'smooth',block:'start'});alert('已填入原帳單號與原金額，尚未退款或寫入紀錄。請確認實際退款方式、金額與原因後再記錄。');});copy.disabled=!posStateV77?.shift;actions.append(copy);row.append(actions);box.append(row);
