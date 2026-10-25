@@ -1,7 +1,7 @@
 {
-  "edition": "final-20261022",
-  "canonical_package": "genblue-AH.zip",
-  "python_tests": 153,
+  "edition": "line-booking-20261025",
+  "canonical_package": "genblue-AH-django-line-booking-20261025.zip",
+  "python_tests": 190,
   "ui_simulations": 9,
   "javascript_syntax_checks": 78,
   "frontend_http_assets_checked": 100,
@@ -13,7 +13,7 @@
   "sql_rebuild_byte_identical": true,
   "live_patient_data_tested": false,
   "cloud_deployed": false,
-  "edge_functions_modified": false,
+  "edge_functions_modified": true,
   "production_database_modified": false,
   "files": [
     {
@@ -30,7 +30,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "34654ce6c868aaf2bb6c0e30fb4ddaa2087b4750c62df8aa06cc937f5c5578a8"
+      "sha256": "6aad659be1cee3968cd376a9f635ca47e54ccd913224f44ec2857e822752ed1e"
     },
     {
       "path": "SOURCE_AUDIT.json",
@@ -38,7 +38,7 @@
     },
     {
       "path": "assets/frontend/booking/block-01.js",
-      "sha256": "daa3e76dbd45d064ae86f2561e96d7be5c8f0506b3de0383257ed9f2011cf445"
+      "sha256": "bbb7c0f055be3bb04489a47d6e3fa9fce367c4614009d176a67a1b93a7554486"
     },
     {
       "path": "assets/frontend/booking/style-01.css",
@@ -66,11 +66,11 @@
     },
     {
       "path": "assets/frontend/index/block-01.js",
-      "sha256": "9b8f3ac57d3d68d1566573e4d7d656037eccd698a003a116b045cfef208f2684"
+      "sha256": "ab746df790cc4458ad97205eb7de1d4bf8dacc83b831044740dfd150c1ad71d4"
     },
     {
       "path": "assets/frontend/index/block-02.js",
-      "sha256": "2653f22f39541beb50a0d0af9782b5ff038dbc1a4ed642d40c465d1084afb94d"
+      "sha256": "0e8bddd06a62e183244a819cfa980e8aea73834fa4d2b6a35f0501d5f6a56958"
     },
     {
       "path": "assets/frontend/index/block-03.js",
@@ -106,7 +106,7 @@
     },
     {
       "path": "assets/frontend/index/block-47.js",
-      "sha256": "6f6c8ca57fbba6ad629c1139e702764db3de54cdf9990a063d7946dcac6b506d"
+      "sha256": "00b6fb2b4890783972c57aa0242cd6cdb7e626e60ac2f473cb6678fc410c2192"
     },
     {
       "path": "assets/frontend/index/block-66.js",
@@ -262,7 +262,7 @@
     },
     {
       "path": "assets/frontend/index/multiDoctorV51.js",
-      "sha256": "1e5fea1f1616179b5f3366418da94229b42b12bc3ccd4730aff3fe09dfb69be6"
+      "sha256": "04e59ef956d6b1d41e9cde1d3e77034d2bdad8285372dc0b8783856e7e223201"
     },
     {
       "path": "assets/frontend/index/paidHistoryV907.js",
@@ -322,7 +322,7 @@
     },
     {
       "path": "assets/frontend/index/skylaSolutionParserV33.js",
-      "sha256": "5babfd0a0e03f7e232ddc7edaad490512ee83e7995a1e3d6628a36927ed4fe24"
+      "sha256": "f2eb6321e4b9b1c48923a83a4572d53d87a0337c2ae1cede9a61820ce9b99c74"
     },
     {
       "path": "assets/frontend/index/staffClinicianV52.js",
@@ -334,7 +334,7 @@
     },
     {
       "path": "assets/frontend/index/style-01.css",
-      "sha256": "9b0b6c19f9f20797e7d4729af8179e03abcf52960def505db5c5cb8274c38d94"
+      "sha256": "aa25c7a9abdf827f6799ac50689c52ef298467fc50c39be8c71cac445a01fa53"
     },
     {
       "path": "assets/frontend/index/style-02.css",
@@ -434,11 +434,11 @@
     },
     {
       "path": "assets/frontend/index/waitingDoctorV54.js",
-      "sha256": "f6dee08c8915d7a9a6e96d35a683266c509abce554124c50e624dc079661f3b5"
+      "sha256": "5ed7cf97203e488b103e2bcc30b10d3a4b139707069eeb2ad40bc928e1bbd438"
     },
     {
       "path": "assets/frontend/manifest.json",
-      "sha256": "395429dd512318f535948f4fb4fd730a01f50ec07da9945bfb732583ce413c56"
+      "sha256": "1547ce64eafea6169ce5cc2aeac0a22b0f998c9cac43a5b82c4eb7e45a01645a"
     },
     {
       "path": "assets/integrated-gateway.js",
@@ -454,7 +454,7 @@
     },
     {
       "path": "clinic/checkout.py",
-      "sha256": "e2dc875c19794a35e1ea59bd17eaad082023797e25197f35e8b9449cf7b9ff9e"
+      "sha256": "7b163b6a6ef0083d80c6fa8367e6cd62f0e401519d8ce0c69d68ef23baba8818"
     },
     {
       "path": "clinic/doctors.py",
@@ -462,11 +462,11 @@
     },
     {
       "path": "clinic/frontend_assets.py",
-      "sha256": "e766ca74a6f31b8c6516e06bacf84d05c042fb5b9a41363e1d9f7a6a276c7fad"
+      "sha256": "a9348e2ae8804c1be4fb6ca2ea30aad6ac7dc845c893a9046fae5cc4016b7732"
     },
     {
       "path": "clinic/gateway.py",
-      "sha256": "13b8cb50986a412fa703a3686815f9c9344543ea4798fd4b9940b44f53135e61"
+      "sha256": "a44005b0c20001cac8eab3930bd2e1f7a656c4f3199975e21b5aa7d4d4ea5cd6"
     },
     {
       "path": "clinic/medical.py",
@@ -474,7 +474,7 @@
     },
     {
       "path": "clinic/prescription.py",
-      "sha256": "d094d5933ae4424abe0512300704e5686ea5341fec45d2d0fdb27ae1a5deb6af"
+      "sha256": "c3df763e6077e1f48955e32c4aab4cffda7adbaa3450e385baa1a3cd1db25553"
     },
     {
       "path": "clinic/prescription_math.py",
@@ -494,15 +494,15 @@
     },
     {
       "path": "clinic/search.py",
-      "sha256": "78a40f73487ae40614417e2777d6cf2f03a67fc7d9e4a87718df8b0039885bb8"
+      "sha256": "f3b08ba7c4cf83e0ad01dbe7c8cd71a2138d23da6fb48198e5aa80c1f1b25316"
     },
     {
       "path": "clinic/tests.py",
-      "sha256": "2d86dbc84c20de8273340b010bca8b410ca41e82fb1404541ef8ef3d3b0c7b96"
+      "sha256": "1fab13fdaaf5d5c4b40a0a04f3aa8657d0151be7582eac1c752454d99f11d828"
     },
     {
       "path": "clinic/tests_checkout.py",
-      "sha256": "b49bbcb75f1c1757aca9d09640e1ecb6e8f6b4a2bbabaff406c8ad73a6c153aa"
+      "sha256": "06240a63e05cf871af8a7cf16648f00683cd904c3aeba015733395fb65bda1d1"
     },
     {
       "path": "clinic/tests_frontend_assets.py",
@@ -510,7 +510,7 @@
     },
     {
       "path": "clinic/tests_gateway.py",
-      "sha256": "350018ee066234f0f6465e04602d77377d1bc93ad254a2ad65192b778e8295a5"
+      "sha256": "86df45a5438ff9a4ae7af27c86d8ebaafc68c02a6b83e13486f5b0f720ddce83"
     },
     {
       "path": "clinic/tests_medical.py",
@@ -542,7 +542,7 @@
     },
     {
       "path": "clinic/views.py",
-      "sha256": "ba3fcc2d4da576d913470f3cafeded84fd95ba68a17b44b51083717e5869b5d2"
+      "sha256": "33075fcacaa3c6426077f7c24fa2944b25429efa4d9ce0bc98854eb4e6cf11e7"
     },
     {
       "path": "clinic/visit_status.py",
@@ -558,11 +558,11 @@
     },
     {
       "path": "config/settings.py",
-      "sha256": "f0a4a6386dfcf9e96c31a806b86ffe557927bfa0be7199db5905a05bb77035bc"
+      "sha256": "424db8eb94e2470742989e1ba9b652b3ed7e4fa3d615f0ebd874a86127896851"
     },
     {
       "path": "config/urls.py",
-      "sha256": "122959988751cb423a8544481452bc40942f38d3d047fe179cfb41f182a08848"
+      "sha256": "537ced7365db34855767715194a4edfb617a81a0122c2a5503dfbe9da6e38aa5"
     },
     {
       "path": "config/wsgi.py",
@@ -766,7 +766,7 @@
     },
     {
       "path": "web/booking.html",
-      "sha256": "5a1a5e8bb94c933532b3de669a58e4cf8d14f9221e268f27d95479374b3b582e"
+      "sha256": "d0ee01fe801d73d8ca6c223a05daead83798c5ba434b6d5c307b2764675ad1a4"
     },
     {
       "path": "web/imaging-share.html",
@@ -774,7 +774,10 @@
     },
     {
       "path": "web/index.html",
-      "sha256": "d4e6caf6e34a3b9ead0dde7c24774d7248415779457b9a91f1a37562542aa09c"
+      "sha256": "4bd3760e4f575e35c3e1e5e61f7dc47cb8620fa84b8252fc6fe1d89ed0fb6fc7"
     }
-  ]
+  ],
+  "line_push_live_tested": false,
+  "line_sql_local_postgresql_tested": true,
+  "line_edge_mock_tested": true
 }

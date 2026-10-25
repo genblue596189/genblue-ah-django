@@ -1,0 +1,2 @@
+[functions.online-booking]
+verify_jwt = false

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "compile": "tsc --target ES2022 --lib ES2022,DOM --module commonjs --outDir compiled runtime.d.ts ../../supabase/functions/online-booking/index.ts",
+    "test:edge": "node edge-test.cjs compiled/index.js",
+    "test:sql": "node sql-test.cjs ../../database/existing/03_line_booking_20261025.sql"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.11",
+    "typescript": "5.9.3"
+  }
+}
