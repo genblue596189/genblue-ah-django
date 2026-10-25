@@ -11,7 +11,11 @@ from clinic.prescription import prescription_calculate
 from clinic.frontend_assets import frontend_asset
 from clinic.records import create_record
 
+from clinic.line_booking import review_page,review_action
+
 urlpatterns = [
+    path("booking-review.html", review_page),
+    path("api/booking-review/<str:action>/", review_action),
     path('', views.home),
     path('index.html', views.home),
     path('booking.html', views.booking),
