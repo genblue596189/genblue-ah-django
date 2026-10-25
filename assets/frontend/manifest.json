@@ -28,8 +28,8 @@
     "sha256": "57220dbe25092368586516d132d746e7f523e95157dfff150f0c104292bbc46d"
   },
   "index/block-01.js": {
-    "content_type": "text/javascript; charset=utf-8",
-    "sha256": "ac508d4dc599a53e49281e4e779f71ba1dee65f106a10e1bbd4787023498f3b3"
+    "sha256": "088fadc1f1b55be8af3dc2a9817d9fd439fc83aadb34f97a3e04d55b50cb7683",
+    "content_type": "text/javascript; charset=utf-8"
   },
   "index/block-02.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -398,5 +398,9 @@
   "index/waitingDoctorV54.js": {
     "content_type": "text/javascript; charset=utf-8",
     "sha256": "f6dee08c8915d7a9a6e96d35a683266c509abce554124c50e624dc079661f3b5"
+  },
+  "index/deskCheckout20261025.js": {
+    "sha256": "69da6b7bd16fc3476663f720f8600fb30c308c861b8144863660952959c0c9a8",
+    "content_type": "text/javascript; charset=utf-8"
   }
 }
