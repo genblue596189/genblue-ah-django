@@ -1,7 +1,7 @@
 {
   "booking/block-01.js": {
-    "content_type": "text/javascript; charset=utf-8",
-    "sha256": "daa3e76dbd45d064ae86f2561e96d7be5c8f0506b3de0383257ed9f2011cf445"
+    "sha256": "bbb7c0f055be3bb04489a47d6e3fa9fce367c4614009d176a67a1b93a7554486",
+    "content_type": "text/javascript; charset=utf-8"
   },
   "booking/style-01.css": {
     "content_type": "text/css; charset=utf-8",
@@ -402,5 +402,13 @@
   "index/deskCheckout20261025.js": {
     "sha256": "ca56e59fde610b83a3f27e39cb1ddd8dee090a457075b1df3ff3d8e2387f49b5",
     "content_type": "text/javascript; charset=utf-8"
+  },
+  "booking-review/main.js": {
+    "sha256": "b9236a84d3882a9e28d8fb83ea4187d1a2b86b673102235033598ef85e787de8",
+    "content_type": "text/javascript; charset=utf-8"
+  },
+  "booking-review/style.css": {
+    "sha256": "de5e8ebab0e4d92e18552f4881942c83080e67c361d4e60cb71cc58409a33fb0",
+    "content_type": "text/css; charset=utf-8"
   }
 }
