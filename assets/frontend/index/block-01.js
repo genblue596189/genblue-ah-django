@@ -4902,7 +4902,7 @@ function openMedicalDetailModal(record){
             activeAppointmentsList = activeAppointmentsList.filter(p => p.id !== currentPetId);
             renderAppointmentTable(activeAppointmentsList);
 
-            alert('醫療紀錄已儲存！即將為您跳轉至收費與付款頁面，所有看診欄位已自動清空。');
+            alert('病歷已儲存。請核對本隻費用，再按「確認本隻費用並送至待付款」。合併或分開付款由櫃台勾選。');
             clearMedicalFormInputs();
             switchTab('invoices');
             } finally { medicalSaveBusy = false; }
