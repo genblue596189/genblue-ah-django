@@ -12,6 +12,21 @@ class Reply(io.BytesIO):
 
 @override_settings(SUPABASE_URL='https://example.supabase.co',SUPABASE_PUBLISHABLE_KEY='fixed-public-key',GENBLUE_UPSTREAM_TIMEOUT=120)
 class GatewayTests(SimpleTestCase):
+    @override_settings(ALLOWED_HOSTS=['genblue-ah.onrender.com'])
+    def test_booking_get_without_origin_forwards_validated_site_origin(self):
+        with patch('clinic.gateway.send',return_value=Reply(b'{"liff_id":"configured"}')) as send:
+            response=self.client.get('/api/supabase/functions/v1/online-booking?clinic=genblue-ah',secure=True,HTTP_HOST='genblue-ah.onrender.com')
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(send.call_args.args[0].get_header('Origin'),'https://genblue-ah.onrender.com')
+
+    def test_booking_explicit_origin_is_never_replaced(self):
+        _,send,_=self.send('functions/v1/online-booking',headers={'HTTP_ORIGIN':'https://untrusted.example'})
+        self.assertEqual(send.call_args.args[0].get_header('Origin'),'https://untrusted.example')
+
+    def test_other_public_get_does_not_gain_origin(self):
+        _,send,_=self.send('functions/v1/imaging-share-v76')
+        self.assertIsNone(send.call_args.args[0].get_header('Origin'))
+
     def send(self,path,method='GET',body=b'',reply=None,headers=None):
         h={'HTTP_AUTHORIZATION':'Bearer user-token'};h.update(headers or {})
         with patch('clinic.gateway.read_context',return_value={'user':{'id':'u'},'profile':{'tenant_id':'clinic-A'}}) as verify,patch('clinic.gateway.verified_context', side_effect=verify),patch('clinic.gateway.send',return_value=reply or Reply()) as send:
