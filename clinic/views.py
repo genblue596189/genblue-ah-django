@@ -115,16 +115,36 @@ def bearer_token(request):
 
 def verified_context(token):
     invalidate_context(token)
-    user = upstream('/auth/v1/user', token)
-    if not isinstance(user, dict) or not user.get('id'):
-        raise GatewayError(401)
     fields = 'tenant_id,display_name,role,can_checkout,permission_clinical,permission_appointment,permission_operational,permission_checkout'
-    query = urlencode({'select': fields, 'user_id':'eq.' + str(user['id']), 'limit':'2'})
-    # Both reads depend on the authenticated user, but not on each other.
-    profile_job = _verification_pool.submit(upstream, '/rest/v1/user_profiles?' + query, token)
-    trial_job = _verification_pool.submit(upstream, '/rest/v1/rpc/my_trial_expires_at', token)
-    # Drain both jobs before returning, including rejection/error paths.
-    wait((profile_job, trial_job))
+    # The unverified subject is only a query hint. Never authorize using it:
+    # authenticate remotely and compare identities before consuming the profile.
+    hint = None
+    try:
+        part = token.split('.')[1]
+        claims = json.loads(base64.urlsafe_b64decode(part + '=' * (-len(part) % 4)))
+        candidate = claims.get('sub') if isinstance(claims, dict) else None
+        from uuid import UUID
+        if isinstance(candidate, str) and str(UUID(candidate)) == candidate:
+            hint = candidate
+    except (ValueError, TypeError, IndexError):
+        pass
+    if hint:
+        query = urlencode({'select': fields, 'user_id':'eq.' + hint, 'limit':'2'})
+        auth_job = _verification_pool.submit(upstream, '/auth/v1/user', token)
+        profile_job = _verification_pool.submit(upstream, '/rest/v1/user_profiles?' + query, token)
+        trial_job = _verification_pool.submit(upstream, '/rest/v1/rpc/my_trial_expires_at', token)
+        wait((auth_job, profile_job, trial_job))
+        user = auth_job.result()
+        if not isinstance(user, dict) or user.get('id') != hint:
+            raise GatewayError(401)
+    else:
+        user = upstream('/auth/v1/user', token)
+        if not isinstance(user, dict) or not user.get('id'):
+            raise GatewayError(401)
+        query = urlencode({'select': fields, 'user_id':'eq.' + str(user['id']), 'limit':'2'})
+        profile_job = _verification_pool.submit(upstream, '/rest/v1/user_profiles?' + query, token)
+        trial_job = _verification_pool.submit(upstream, '/rest/v1/rpc/my_trial_expires_at', token)
+        wait((profile_job, trial_job))
     profiles = profile_job.result()
     if not isinstance(profiles, list) or len(profiles) != 1 or not profiles[0].get('tenant_id'):
         raise GatewayError(403)

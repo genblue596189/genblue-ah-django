@@ -54,3 +54,47 @@ class AssetCacheTests(SimpleTestCase):
         entries=json.loads((settings.BASE_DIR/'assets/frontend/manifest.json').read_text())
         text=self.client.get('/').content.decode()
         self.assertIn('/assets/frontend/index/block-01.js?v='+entries['index/block-01.js']['sha256'],text)
+
+
+@override_settings(SUPABASE_URL='https://example.supabase.co', SUPABASE_PUBLISHABLE_KEY='public')
+class LiveVerificationHintTests(SimpleTestCase):
+    user_id = '11111111-1111-4111-8111-111111111111'
+
+    def token(self):
+        import base64
+        payload=base64.urlsafe_b64encode(json.dumps({'sub':self.user_id}).encode()).decode().rstrip('=')
+        return 'header.'+payload+'.signature'
+
+    def test_all_three_live_checks_overlap_and_use_same_bearer(self):
+        barrier=threading.Barrier(3)
+        def remote(path, token):
+            self.assertEqual(token,self.token())
+            barrier.wait(timeout=3)
+            if path=='/auth/v1/user':return {'id':self.user_id}
+            if path.startswith('/rest/v1/user_profiles?'):
+                self.assertIn(self.user_id,path)
+                return [{'tenant_id':'clinic'}]
+            return None
+        with patch.object(views,'upstream',side_effect=remote):
+            self.assertEqual(views.verified_context(self.token())['profile']['tenant_id'],'clinic')
+
+    def test_forged_subject_cannot_authorize_profile(self):
+        def remote(path, token):
+            if path=='/auth/v1/user':return {'id':'different-user'}
+            if path.startswith('/rest/v1/user_profiles?'):return [{'tenant_id':'other-clinic'}]
+            return None
+        with patch.object(views,'upstream',side_effect=remote):
+            with self.assertRaises(views.GatewayError) as caught:views.verified_context(self.token())
+        self.assertEqual(caught.exception.status,401)
+
+    def test_auth_failure_and_trial_expiry_still_reject(self):
+        for failure in ('auth','trial'):
+            def remote(path, token):
+                if path=='/auth/v1/user':
+                    if failure=='auth':raise views.GatewayError(401)
+                    return {'id':self.user_id}
+                if path.startswith('/rest/v1/user_profiles?'):return [{'tenant_id':'clinic'}]
+                return '2000-01-01T00:00:00Z'
+            with patch.object(views,'upstream',side_effect=remote):
+                with self.assertRaises(views.GatewayError) as caught:views.verified_context(self.token())
+            self.assertEqual(caught.exception.status,401 if failure=='auth' else 403)
