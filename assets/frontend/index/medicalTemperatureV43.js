@@ -1,3 +1,5 @@
+// Reuse only successful measurements from this exact consultation. Failed writes stay retryable.
+const medicalTemperatureSaved20261026=new Map();
 const medicalTemperatureRequests=new Map();
 let medicalTemperatureRevision=0;
 function setMedicalTemperatureStatus(text,error=false){const el=document.getElementById('medicalTemperatureSaveStatus');if(el){el.textContent=text;el.style.color=error?'#b91c1c':'#64748b';}}
@@ -16,10 +18,14 @@ async function persistMedicalTemperature(){
  if(temperature===null){setMedicalTemperatureStatus('未量體溫；保留上次量測。');return true;}
  const pending=medicalTemperatureRequests.get(scope);
  if(pending?.temperature===temperature)return pending.promise;
+ const visit=typeof doctorVisitV51==='undefined'?null:doctorVisitV51;
+ const confirmed=medicalTemperatureSaved20261026.get(scope);
+ if(!pending&&visit&&confirmed?.visit===visit&&confirmed.value===temperature)return true;
  const previous=pending?.promise;
  const promise=(async()=>{
   if(previous)try{await previous;}catch(e){}
   if(medicalWeightScope()!==scope)return false;
+  medicalTemperatureSaved20261026.delete(scope);
   setMedicalTemperatureStatus('體溫儲存中…');
   const {data,error}=await _supabase.rpc('save_pet_temperature',{p_pet_id:petId,p_temperature:temperature}).single();
   if(error||!data||data.id!==petId||Number(data.latest_temperature)!==temperature||!data.temperature_measured_at)throw error||new Error('未確認體溫已寫入，請核對 SQL 與帳號權限。');
@@ -27,6 +33,7 @@ async function persistMedicalTemperature(){
   for(const p of allPetsListForDropdown)if(p.id===petId){p.latest_temperature=temperature;p.temperature_measured_at=data.temperature_measured_at;}
   for(const owner of globalOwnersPetsData)for(const p of owner.pets||[])if(p.id===petId){p.latest_temperature=temperature;p.temperature_measured_at=data.temperature_measured_at;}
   if(readMedicalTemperatureForSave()===temperature){document.getElementById('medicalTemperatureInput').value=String(temperature);medicalStateCache.temperature=String(temperature);setMedicalTemperatureStatus('體溫已儲存：'+temperature+' °C');}
+  if(visit){medicalTemperatureSaved20261026.clear();medicalTemperatureSaved20261026.set(scope,{visit,value:temperature});}
   return true;
  })();
  medicalTemperatureRequests.set(scope,{temperature,promise});

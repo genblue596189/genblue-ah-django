@@ -1,3 +1,5 @@
+// Reuse only successful measurements from this exact consultation. Failed writes stay retryable.
+const medicalWeightSaved20261026=new Map();
 const medicalWeightRequests=new Map();
 function medicalWeightScope(){return `${CURRENT_TENANT_ID||''}|${CURRENT_USER?.id||''}|${currentPetId||''}`;}
 function setMedicalWeightStatus(text,error=false){
@@ -18,10 +20,14 @@ async function persistMedicalWeight(){
  if(weight===null){setMedicalWeightStatus('未量體重；保留資料庫原值。');return true;}
  const pending=medicalWeightRequests.get(scope);
  if(pending?.weight===weight)return pending.promise;
+ const visit=typeof doctorVisitV51==='undefined'?null:doctorVisitV51;
+ const confirmed=medicalWeightSaved20261026.get(scope);
+ if(!pending&&visit&&confirmed?.visit===visit&&confirmed.value===weight)return true;
  const previous=pending?.promise;
  const promise=(async()=>{
   if(previous)try{await previous;}catch(e){} // 同病患依量測順序写入，舊請求不覆蓋新值。
   if(medicalWeightScope()!==scope)return false;
+  medicalWeightSaved20261026.delete(scope);
   setMedicalWeightStatus('體重儲存中…');
   const {data,error}=await _supabase.from('pets').update({weight}).eq('tenant_id',tenant).eq('id',petId).select('id,weight').single();
   if(error||!data||data.id!==petId||Number(data.weight)!==weight)throw error||new Error('未確認體重已寫入，請檢查帳號權限。');
@@ -31,6 +37,7 @@ async function persistMedicalWeight(){
   for(const owner of globalOwnersPetsData)for(const p of owner.pets||[])if(p.id===petId)p.weight=weight;
   if(readMedicalWeightForSave()===weight){currentPetWeight=weight;medicalStateCache.weight=weight;setMedicalWeightStatus('體重已儲存：'+weight+' kg');}
   renderAppointmentTable(activeAppointmentsList);
+  if(visit){medicalWeightSaved20261026.clear();medicalWeightSaved20261026.set(scope,{visit,value:weight});}
   return true;
  })();
  medicalWeightRequests.set(scope,{weight,promise});
