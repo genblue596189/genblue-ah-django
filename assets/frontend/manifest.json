@@ -1,11 +1,11 @@
 {
   "booking/block-01.js": {
-    "sha256": "bbb7c0f055be3bb04489a47d6e3fa9fce367c4614009d176a67a1b93a7554486",
+    "sha256": "7c74dddd91ecd3e9fca5d857e35e30cbf3c6594f7d9d596319068bf173ef7582",
     "content_type": "text/javascript; charset=utf-8"
   },
   "booking/style-01.css": {
     "content_type": "text/css; charset=utf-8",
-    "sha256": "7c262bcbe4e4a9ec69fbbc289cd2f44ca4aa6714d695f7be38520d809b51d71b"
+    "sha256": "900f4304b6186a3b9c1f399585eb2cb4d2d22d7bb2334cf47ad572da97a20656"
   },
   "images/789849913983b15ee2975041.png": {
     "content_type": "image/png",
@@ -25,7 +25,7 @@
   },
   "index/billingPresetsV80.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "57220dbe25092368586516d132d746e7f523e95157dfff150f0c104292bbc46d"
+    "sha256": "a381578eed3b1bdebb34bf38fe8ebb03eaab4f44d0f1721f73922783de94ff1a"
   },
   "index/block-01.js": {
     "sha256": "ab746df790cc4458ad97205eb7de1d4bf8dacc83b831044740dfd150c1ad71d4",
@@ -400,7 +400,7 @@
     "sha256": "5ed7cf97203e488b103e2bcc30b10d3a4b139707069eeb2ad40bc928e1bbd438"
   },
   "index/deskCheckout20261025.js": {
-    "sha256": "ca56e59fde610b83a3f27e39cb1ddd8dee090a457075b1df3ff3d8e2387f49b5",
+    "sha256": "c5f33a48a382301e9b3ea6aee16b12eced867880423e54916cd494ec9faddb22",
     "content_type": "text/javascript; charset=utf-8"
   },
   "booking-review/main.js": {

@@ -22,7 +22,7 @@ function updateBookingHoursV9127(){
  $('booking-hours-status').textContent=state.message;
  $('booking-hours-status').hidden=state.open;
 }
-function turnstileReady(){lookupWidget=turnstile.render('#lookup-captcha',{sitekey:window.bookingSiteKey,action:'booking',callback:t=>{lookupToken=t;$('lookup-submit').disabled=lookupBusy;},'expired-callback':()=>{lookupToken='';$('lookup-submit').disabled=true;},'error-callback':()=>{lookupToken='';$('lookup-submit').disabled=true;}});widget=turnstile.render('#captcha',{sitekey:window.bookingSiteKey,action:'booking',callback:t=>{token=t;updateBookingHoursV9127();},'expired-callback':()=>{token='';$('submit').disabled=true;},'error-callback':()=>{token='';$('submit').disabled=true;$('message').textContent='驗證未完成，請重新整理後再試。';}});}
+function turnstileReady(){lookupWidget=turnstile.render('#lookup-captcha',{sitekey:window.bookingSiteKey,action:'booking',callback:t=>{lookupToken=t;$('lookup-submit').disabled=lookupBusy;},'expired-callback':()=>{lookupToken='';$('lookup-submit').disabled=true;},'error-callback':()=>{lookupToken='';$('lookup-submit').disabled=true;}});if(bookingLineV1.ready&&liff.isLoggedIn())renderMemberVerification();widget=turnstile.render('#captcha',{sitekey:window.bookingSiteKey,action:'booking',callback:t=>{token=t;updateBookingHoursV9127();},'expired-callback':()=>{token='';$('submit').disabled=true;},'error-callback':()=>{token='';$('submit').disabled=true;$('message').textContent='驗證未完成，請重新整理後再試。';}});}
 async function load(){try{const r=await fetch(API+'?clinic='+encodeURIComponent(clinic),{signal:AbortSignal.timeout(15000)});const d=await r.json();if(!r.ok)throw Error(d.error||'無法讀取時段');await initializeBookingLineV1(d);$('title').textContent=d.name+'｜線上預約';$('notice').textContent=d.notice;
  if(!d.slots.length){$('message').textContent='目前沒有可預約時段，您仍可查詢既有申請。';}
  availableSlots=d.slots;
@@ -38,7 +38,7 @@ $('form').onsubmit=async e=>{e.preventDefault();if(!bookingAcceptingNowV9127()){
  const draft={clinic,slot_id:$('slot').value,name:$('name').value.trim(),phone:$('phone').value.trim(),pet_name:$('pet').value.trim(),species:$('species').value,...(bookingLineV1.petId?{pet_id:bookingLineV1.petId}:{}),reason:$('reason').value.trim(),registered_hint:$('registered-hint').value.trim()};
  const fingerprint=JSON.stringify(draft);if(lastFingerprint!==fingerprint){requestID=crypto.randomUUID();lastFingerprint=fingerprint;}
  try{const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...draft,...(bookingLineV1.ready&&liff.isLoggedIn()?{id_token:liff.getIDToken()}:{}),request_id:requestID,token,consent:$('consent').checked,website:$('website').value}),signal:AbortSignal.timeout(20000)});const d=await r.json();if(!r.ok)throw Error(d.error||'送出失敗');
- $('form').hidden=true;$('message').textContent='';$('success').hidden=false;$('success').textContent=(d.status==='approved'?'醫院已確認此申請。':d.status==='rejected'?'此申請已由醫院取消，請聯絡醫院。':'已收到申請，尚待醫院確認。')+'\n申請編號：'+d.reference+'\n時段：'+$('slot').selectedOptions[0].textContent+(d.status==='pending'?'\n時段暫時保留，待醫院確認後才成立。':'')+'\n請記下申請編號，並使用下方查詢查看狀態；如需確認或變更，請聯絡醫院。';$('success').style.whiteSpace='pre-wrap';$('lookup-reference').value=d.reference;$('lookup-phone').value=draft.phone;
+ $('form').hidden=true;bookingLineV1.generation++;$('line-membership').hidden=true;$('message').textContent='';$('success').hidden=false;$('success').textContent=(d.status==='approved'?'醫院已確認此申請。':d.status==='rejected'?'此申請已由醫院取消，請聯絡醫院。':'已收到申請，尚待醫院確認。')+'\n申請編號：'+d.reference+'\n時段：'+$('slot').selectedOptions[0].textContent+(d.status==='pending'?'\n時段暫時保留，待醫院確認後才成立。':'')+'\n請記下申請編號，並使用下方查詢查看狀態；如需確認或變更，請聯絡醫院。';$('success').style.whiteSpace='pre-wrap';$('lookup-reference').value=d.reference;$('lookup-phone').value=draft.phone;
  }catch(e){
  const state=bookingHoursStateV9131(),duplicate=/已有本日預約|此寵物已有同時段申請/.test(e.message),hours=/申請受理時間|上午時段須/.test(e.message);
  const network=e.name==='TimeoutError'||e.name==='AbortError'||e instanceof TypeError||navigator.onLine===false;
@@ -50,7 +50,7 @@ $('lookup-form').onsubmit=async e=>{e.preventDefault();if(lookupBusy||!lookupTok
 setInterval(updateBookingHoursV9127,15000);document.addEventListener('visibilitychange',updateBookingHoursV9127);
 
 
-const bookingLineV1={ready:false,petId:null,pets:[],required:false};
+const bookingLineV1={ready:false,petId:null,pets:[],required:false,memberWidget:null,checking:false,checked:false,generation:0};
 async function initializeBookingLineV1(config){
  if(!config.liff_id)return;bookingLineV1.required=config.line_required===true;$('line-membership').hidden=false;
  try{
@@ -58,18 +58,47 @@ async function initializeBookingLineV1(config){
   if(!window.liff)await bounded(new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://static.line-scdn.net/liff/edge/2/sdk.js';s.onload=resolve;s.onerror=()=>reject(Error('LINE元件無法載入'));document.head.append(s);}));
   await bounded(liff.init({liffId:config.liff_id}));bookingLineV1.ready=true;
   if(!liff.isLoggedIn()){$('line-status').textContent='請使用LINE登入以便辨識會員及接收預約通知。';$('line-login').hidden=false;}
-  else{$('line-status').textContent='LINE已登入。首次會員資格由院方人工核對；已綁定者可按下方按鍵查詢寵物。';$('line-check').hidden=false;}
+  else{$('line-status').textContent='LINE 已登入，正在自動確認會員；您可以先填寫預約資料。';$('member-verification').hidden=false;}
  }catch(e){$('line-status').textContent=e.message+'，請稍後重新整理或聯絡醫院。';}
 }
 $('line-login').onclick=()=>{if(bookingLineV1.ready)liff.login({redirectUri:location.origin+'/booking.html?clinic='+encodeURIComponent(clinic)});};
-$('line-check').onclick=async()=>{
- if(busy||!bookingLineV1.ready||!liff.isLoggedIn())return;
- if(!token){$('line-status').textContent='請先完成預約表單下方的驗證，再按會員核對。';return;}
- busy=true;$('line-check').disabled=true;updateBookingHoursV9127();
- try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'identity',clinic,token,id_token:liff.getIDToken(),website:'',consent:true}),signal:AbortSignal.timeout(20000)});const d=await r.json();if(!r.ok)throw Error(d.error||'會員核對未完成');bookingLineV1.pets=d.pets||[];
- $('line-status').textContent=d.membership==='verified'?'已確認會員，請選擇旗下寵物。':'會員待確認：請填寫原登記飼主姓名或病歷號，由院方核對後確認。';
- $('member-pets-label').hidden=!bookingLineV1.pets.length;$('member-pets').replaceChildren(new Option('請選擇寵物',''));for(const p of bookingLineV1.pets)$('member-pets').append(new Option(p.name+'（'+p.species+'）',p.id));
- }catch(e){$('line-status').textContent=e.message;}finally{busy=false;token='';if(widget!==null)turnstile.reset(widget);$('line-check').disabled=false;updateBookingHoursV9127();}
+function clearMemberPets(){bookingLineV1.pets=[];bookingLineV1.petId=null;$('member-pets').replaceChildren();$('member-pets-label').hidden=true;}
+function memberVerificationError(message){
+ clearMemberPets();$('line-status').textContent=message+' 您仍可手動填寫預約，由院方核對會員。';$('member-retry').hidden=false;
+}
+function renderMemberVerification(){
+ if(bookingLineV1.memberWidget!==null)return;
+ bookingLineV1.memberWidget=turnstile.render('#member-captcha',{sitekey:window.bookingSiteKey,action:'booking',callback:checkBookingMember,
+  'expired-callback':()=>{if(!bookingLineV1.checked&&!bookingLineV1.checking)memberVerificationError('會員驗證已逾時。');},
+  'error-callback':()=>{if(!bookingLineV1.checked&&!bookingLineV1.checking)memberVerificationError('會員驗證未完成。');}});
+}
+async function checkBookingMember(memberToken){
+ if(bookingLineV1.checking||bookingLineV1.checked||!bookingLineV1.ready||!liff.isLoggedIn())return;
+ bookingLineV1.checking=true;const generation=bookingLineV1.generation;
+ $('member-retry').hidden=true;clearMemberPets();
+ try{
+  const idToken=liff.getIDToken();if(!idToken)throw Error('LINE 登入已失效，請關閉後重新進入。');
+  const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'identity',clinic,token:memberToken,id_token:idToken,website:'',consent:true}),signal:AbortSignal.timeout(20000)});
+  const d=await r.json();if(!r.ok)throw Error(d.error||'會員確認未完成。');
+  if(generation!==bookingLineV1.generation)return;
+  bookingLineV1.checked=true;$('member-verification').hidden=true;
+  bookingLineV1.pets=d.membership==='verified'&&Array.isArray(d.pets)?d.pets:[];
+  if(d.membership!=='verified'){$('line-status').textContent='LINE 已登入。首次使用請直接填寫下方預約資料，院方審核時會核對既有飼主與寵物，確認後才綁定。';}
+  else if(!bookingLineV1.pets.length){$('line-status').textContent='會員已確認，目前沒有可選寵物。請手動填寫下方資料，由院方核對。';}
+  else{
+   $('line-status').textContent='會員已確認，請選擇自家寵物後填寫預約。';
+   $('member-pets').replaceChildren(new Option('請選擇寵物',''));for(const p of bookingLineV1.pets)$('member-pets').append(new Option(p.name+'（'+p.species+'）',p.id));
+   $('member-pets-label').hidden=false;
+   // Do not overwrite pet details already entered while the lookup was pending.
+   if(bookingLineV1.pets.length===1&&!$('pet').value.trim()){$('member-pets').value=bookingLineV1.pets[0].id;$('member-pets').onchange();}
+  }
+ }catch(e){if(generation===bookingLineV1.generation)memberVerificationError(e.message);}
+ finally{bookingLineV1.checking=false;}
+}
+$('member-retry').onclick=()=>{
+ if(bookingLineV1.checking)return;bookingLineV1.generation++;bookingLineV1.checked=false;clearMemberPets();$('member-retry').hidden=true;
+ $('line-status').textContent='正在重新確認會員；您可以先填寫預約資料。';
+ if(bookingLineV1.memberWidget!==null)turnstile.reset(bookingLineV1.memberWidget);
 };
 $('member-pets').onchange=()=>{const pet=bookingLineV1.pets.find(p=>p.id===$('member-pets').value);bookingLineV1.petId=pet?.id||null;if(pet){$('pet').value=pet.name;$('species').value=['犬','貓'].includes(pet.species)?pet.species:'其他';}};
 for(const id of ['pet','species'])$(id).addEventListener('input',()=>{bookingLineV1.petId=null;$('member-pets').value='';});
