@@ -14,4 +14,12 @@ const search=all(elements.posQueueV77,'input').find(e=>e.type==='search');search
 search.value='陳';search.onkeydown({key:'Enter',preventDefault(){}});assert.equal(boxes().length,0,'single pet still has direct old entry');assert.equal(run('deskSelected20261025.size'),1,'search never silently clears selected bill');
 const cancel=all(elements.posQueueV77,'button').find(b=>b.textContent==='取消全部勾選');cancel.onclick();assert.equal(run('deskSelected20261025.size'),0);assert.equal(all(elements.posQueueV77,'select').length,0);
 storage['family-pending']=JSON.stringify({id:'same',method:'現金'});run('deskRender20261025()');assert.match(elements.posQueueV77.textContent,/核對上次勾選收款/);assert.equal(all(elements.posQueueV77,'input').length,0);
+// Clinical checkout must retain both old direct actions alongside queue transfer.
+const print=new El('button'),archive=new El('button');
+print.getAttribute=()=> 'processInvoiceCheckoutToArchive(true)';archive.getAttribute=()=> 'processInvoiceCheckoutToArchive(false)';
+print.hidden=true;archive.hidden=true;elements.invoiceCheckoutActionsV902.querySelectorAll=()=>[print,archive];
+ctx.clinicalInvoiceContext={appointmentId:'visit'};ctx.CURRENT_PROFILE={role:'admin'};run("switchTab('invoices')");
+assert.equal(print.hidden,false);assert.equal(archive.hidden,false);assert.equal(elements['bp80-settings-open'].hidden,false);
+ctx.CURRENT_PROFILE={role:'staff'};run("switchTab('invoices')");assert.equal(elements['bp80-settings-open'].hidden,true);
+assert.match(elements.posStageV77.textContent,/送至待付款/);
 console.log('PASS: no owner dropdown; single bill has original entry; multiple bills have direct checkboxes; combined/split totals; refresh/search retain selections; Enter search exposes whole owner group; uncertain recovery retained');

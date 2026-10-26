@@ -1,7 +1,7 @@
 {
-  "edition": "line-booking-20261025",
-  "canonical_package": "genblue-AH-django-line-booking-20261025.zip",
-  "python_tests": 190,
+  "edition": "line-membership-checkout-buttons-20261026",
+  "canonical_package": "genblue-AH-django-combined-20261026.zip",
+  "python_tests": 193,
   "ui_simulations": 9,
   "javascript_syntax_checks": 78,
   "frontend_http_assets_checked": 100,
@@ -38,11 +38,11 @@
     },
     {
       "path": "assets/frontend/booking/block-01.js",
-      "sha256": "bbb7c0f055be3bb04489a47d6e3fa9fce367c4614009d176a67a1b93a7554486"
+      "sha256": "7c74dddd91ecd3e9fca5d857e35e30cbf3c6594f7d9d596319068bf173ef7582"
     },
     {
       "path": "assets/frontend/booking/style-01.css",
-      "sha256": "7c262bcbe4e4a9ec69fbbc289cd2f44ca4aa6714d695f7be38520d809b51d71b"
+      "sha256": "900f4304b6186a3b9c1f399585eb2cb4d2d22d7bb2334cf47ad572da97a20656"
     },
     {
       "path": "assets/frontend/images/789849913983b15ee2975041.png",
@@ -62,7 +62,7 @@
     },
     {
       "path": "assets/frontend/index/billingPresetsV80.js",
-      "sha256": "57220dbe25092368586516d132d746e7f523e95157dfff150f0c104292bbc46d"
+      "sha256": "a381578eed3b1bdebb34bf38fe8ebb03eaab4f44d0f1721f73922783de94ff1a"
     },
     {
       "path": "assets/frontend/index/block-01.js",
@@ -438,7 +438,7 @@
     },
     {
       "path": "assets/frontend/manifest.json",
-      "sha256": "1547ce64eafea6169ce5cc2aeac0a22b0f998c9cac43a5b82c4eb7e45a01645a"
+      "sha256": "9fb193497ec003ee043ac4081a0fb8fac4ba25d7a9c2c77d1eeb011c238aa294"
     },
     {
       "path": "assets/integrated-gateway.js",
@@ -466,7 +466,7 @@
     },
     {
       "path": "clinic/gateway.py",
-      "sha256": "a44005b0c20001cac8eab3930bd2e1f7a656c4f3199975e21b5aa7d4d4ea5cd6"
+      "sha256": "c73c002649a667c08da53893307c3e3e6137c5cf5438b2f276e1e0bb6da13b65"
     },
     {
       "path": "clinic/medical.py",
@@ -510,7 +510,7 @@
     },
     {
       "path": "clinic/tests_gateway.py",
-      "sha256": "86df45a5438ff9a4ae7af27c86d8ebaafc68c02a6b83e13486f5b0f720ddce83"
+      "sha256": "824bbf51884ae24dd5785317c6d1ff85cb72e42ce1ecba8a5c11128df5537376"
     },
     {
       "path": "clinic/tests_medical.py",
@@ -766,7 +766,7 @@
     },
     {
       "path": "web/booking.html",
-      "sha256": "d0ee01fe801d73d8ca6c223a05daead83798c5ba434b6d5c307b2764675ad1a4"
+      "sha256": "0f47a42ac730b71938630fe54ef33d40d1b798f628a40887373c49be0867c781"
     },
     {
       "path": "web/imaging-share.html",
@@ -774,10 +774,12 @@
     },
     {
       "path": "web/index.html",
-      "sha256": "4bd3760e4f575e35c3e1e5e61f7dc47cb8620fa84b8252fc6fe1d89ed0fb6fc7"
+      "sha256": "2d2dc78615cd12ea5296ebdd300d55321077f1c815e045bcb60b57d0771123d5"
     }
   ],
   "line_push_live_tested": false,
   "line_sql_local_postgresql_tested": true,
-  "line_edge_mock_tested": true
+  "line_edge_mock_tested": true,
+  "booking_membership_ui_simulation_passed": true,
+  "checkout_buttons_restored": true
 }
