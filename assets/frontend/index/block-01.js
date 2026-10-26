@@ -1242,7 +1242,10 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
             return result.trim();
         }
 
+        let vaccineTypesFeeScope20261026="", vaccineTypesFeeRows20261026=[];
         async function loadVaccineTypes() {
+            const feeScope=CURRENT_TENANT_ID+"|"+CURRENT_USER?.id;
+            vaccineTypesFeeScope20261026="";vaccineTypesFeeRows20261026=[];
             const defaultVaccines = [
                 { name: "犬八合一", target: "犬", interval: 365 },
                 { name: "犬十合一", target: "犬", interval: 365 },
@@ -1255,13 +1258,19 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
             let { data, error } = await _supabase.from('vaccine_types').select('*').eq('tenant_id', CURRENT_TENANT_ID);
             
-            if (!data || data.length === 0) {
+            if(feeScope!==CURRENT_TENANT_ID+'|'+CURRENT_USER?.id)return;
+            if(error){alert('讀取疫苗種類失敗：'+error.message);return;}
+            if ((!data || data.length === 0)&&CURRENT_PROFILE?.role==='admin') {
                 for (let v of defaultVaccines) {
                     await _supabase.from('vaccine_types').insert([{ tenant_id: CURRENT_TENANT_ID, name: v.name, target: v.target, interval_days: v.interval }]);
                 }
                 const res = await _supabase.from('vaccine_types').select('*').eq('tenant_id', CURRENT_TENANT_ID);
+                if(res.error){alert('讀取疫苗種類失敗：'+res.error.message);return;}
                 data = res.data || [];
             }
+            if(feeScope!==CURRENT_TENANT_ID+'|'+CURRENT_USER?.id)return;
+            vaccineTypesFeeRows20261026=data||[];vaccineTypesFeeScope20261026=feeScope;
+            document.getElementById('vaccineFeeEditor20261026')?.replaceChildren();
 
             const vacTypeSelect = document.getElementById('vacTypeSelect');
             if(vacTypeSelect) vacTypeSelect.innerHTML = '<option value="">-- 請選擇疫苗 --</option>';
@@ -1271,35 +1280,38 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                     const opt = document.createElement('option');
                     opt.value = vt.name;
                     opt.dataset.intervalDays=String(vt.interval_days??'');
+                    opt.dataset.vaccineTypeId=vt.id;opt.dataset.defaultFee=vt.default_fee==null?'':String(vt.default_fee);
                     opt.textContent = `${vt.name} (${vt.target}用)`;
                     vacTypeSelect.appendChild(opt);
                 }
             });
+            if(typeof renderVaccineFeeSettings20261026==='function')renderVaccineFeeSettings20261026();
         }
 
+        let vaccineTypeSaveBusy20261026=false;
         async function saveNewVaccineType() {
+            if(CURRENT_PROFILE?.role!=='admin'){alert('只有管理者可設定疫苗項目與標準費用。');return;}
+            if(vaccineTypeSaveBusy20261026)return;
             const nameInput = document.getElementById('newVaccineTypeName');
             const targetSelect = document.getElementById('newVaccineTypeTarget');
             const intervalInput = document.getElementById('newVaccineInterval');
 
             const name = nameInput.value.trim();
             const target = targetSelect.value;
-            const interval_days = parseInt(intervalInput.value) || 365;
+            const interval_days = Number(intervalInput.value);
+            let default_fee;try{default_fee=vaccineFeeValue20261026(document.getElementById('newVaccineDefaultFee').value);if(default_fee===null)throw Error('請填標準費用，免費請填 0。');if(!Number.isInteger(interval_days)||interval_days<1||interval_days>3650)throw Error('施打間隔請填1至3650天。');}catch(e){alert(e.message);return;}
 
             if (!name) { alert('請輸入疫苗名稱！'); return; }
 
-            const { error } = await _supabase.from('vaccine_types').insert([{
-                tenant_id: CURRENT_TENANT_ID, name, target, interval_days
-            }]);
-
-            if (error) {
-                alert('新增疫苗種類失敗：' + error.message);
-            } else {
-                alert(`成功新增疫苗種類：「${name}」！`);
-                nameInput.value = '';
-                intervalInput.value = '365';
-                loadVaccineTypes();
-            }
+            const scope=CURRENT_TENANT_ID+'|'+CURRENT_USER?.id;vaccineTypeSaveBusy20261026=true;
+            try{
+                const {data,error}=await _supabase.from('vaccine_types').insert([{tenant_id:CURRENT_TENANT_ID,name,target,interval_days,default_fee}]).select('id').single();
+                if(scope!==CURRENT_TENANT_ID+'|'+CURRENT_USER?.id)return;
+                if(error||!data?.id)throw Error(error?.message||'伺服器未確認新增結果，請重新讀取核對，勿重複新增。');
+                alert(`成功新增疫苗種類：「${name}」！`);nameInput.value='';intervalInput.value='365';document.getElementById('newVaccineDefaultFee').value='';
+                await loadVaccineTypes();
+            }catch(e){alert('新增疫苗種類未確認：'+e.message);}
+            finally{vaccineTypeSaveBusy20261026=false;}
         }
 
         async function loadRapidTypes() {
@@ -1549,6 +1561,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
                 document.getElementById('vacNextDueDate').value='';
                 document.getElementById('vacNotes').value='';
                 document.getElementById('vacServiceFee').value='';
+                if(typeof updateVaccineFeeHint20261026==='function')updateVaccineFeeHint20261026();
                 await loadPetVaccines();
                 alert('疫苗紀錄已儲存，費用已加入此寵物待收費清單。');
                 if (returnToMedical) backToMedicalFromVaccine();
