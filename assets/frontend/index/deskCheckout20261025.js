@@ -91,5 +91,5 @@ posPayV77=async function(...args){if(deskSaved20261025())throw Error('請先核�
 document.getElementById('posStageV77').textContent='確認本隻費用並送至待付款';
 const actions=document.getElementById('invoiceCheckoutActionsV902');
 const deskSwitchOriginal20261025=switchTab;
-switchTab=function(...args){const r=deskSwitchOriginal20261025.apply(this,args);if(actions)for(const b of actions.querySelectorAll('button'))if((b.getAttribute('onclick')||'').includes('processInvoiceCheckoutToArchive'))b.hidden=!!clinicalInvoiceContext;return r;};
+switchTab=function(...args){const r=deskSwitchOriginal20261025.apply(this,args);if(actions)for(const b of actions.querySelectorAll('button'))if((b.getAttribute('onclick')||'').includes('processInvoiceCheckoutToArchive'))b.hidden=false;const presets=document.getElementById('bp80-settings-open');if(presets)presets.hidden=typeof CURRENT_PROFILE==='undefined'||CURRENT_PROFILE?.role!=='admin';return r;};
 renderFamilyV74();

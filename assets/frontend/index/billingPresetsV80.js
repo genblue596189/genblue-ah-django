@@ -28,6 +28,13 @@ async function billingPresetLoadV80(){
  finally{if(scope===billingPresetScopeV80()&&rev===state.revision){state.loading=false;billingPresetRenderV80();}}
 }
 function billingPresetOpenV80(){const panel=document.getElementById('bp80-panel');panel.open=true;if(billingPresetsV80.scope!==billingPresetScopeV80())billingPresetLoadV80();panel.scrollIntoView({block:'nearest'});}
+async function billingPresetSettingsOpenV802(){
+ if(CURRENT_PROFILE?.role!=='admin')return;
+ const panel=document.getElementById('bp80-panel');panel.open=true;
+ if(billingPresetsV80.scope!==billingPresetScopeV80())await billingPresetLoadV80();
+ if(CURRENT_PROFILE?.role!=='admin')return;
+ const settings=document.getElementById('bp80-settings');settings.hidden=false;settings.open=true;settings.scrollIntoView({block:'nearest'});
+}
 function billingPresetApplyV80(){
  const state=billingPresetsV80;if(!familyAllowedV74()||state.scope!==billingPresetScopeV80()||state.loading||state.saving||inventoryCheckoutBusy||familyStateNowV74()?.pending){billingPresetStatusV80('請先完成讀取或目前的結帳操作。',true);return;}
  const items=state.items.filter(x=>state.selected.has(x.id));if(!items.length){billingPresetStatusV80('請先勾選要加入的常用項目。',true);return;}
