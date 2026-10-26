@@ -97,6 +97,11 @@ def gateway(request,upstream_path):
                 invalidate_context(bearer)
                 verified_context(bearer)  # Writes always check current permissions.
         headers={key:value for key,value in request.headers.items() if key.lower() in REQUEST_HEADERS}
+        # Same-origin browser GETs omit Origin. The booking Edge Function still
+        # requires it after this server-side proxy hop. Use Django's validated
+        # host/scheme only when absent; preserve explicit origins for rejection.
+        if upstream_path=='functions/v1/online-booking' and request.method=='GET' and not request.headers.get('Origin'):
+            headers['Origin']=request.build_absolute_uri('/').rstrip('/')
         headers['apikey']=settings.SUPABASE_PUBLISHABLE_KEY
         if token:headers['Authorization']=token
         if kind=='auth' and token.lower().startswith('bearer '):
