@@ -1,6 +1,6 @@
 {
-  "edition": "line-membership-checkout-buttons-20261026",
-  "canonical_package": "genblue-AH-django-combined-20261026.zip",
+  "edition": "vaccine-standard-fees-20261026",
+  "canonical_package": "genblue-AH-django-vaccine-fees-20261026.zip",
   "python_tests": 193,
   "ui_simulations": 9,
   "javascript_syntax_checks": 78,
@@ -66,7 +66,7 @@
     },
     {
       "path": "assets/frontend/index/block-01.js",
-      "sha256": "ab746df790cc4458ad97205eb7de1d4bf8dacc83b831044740dfd150c1ad71d4"
+      "sha256": "cddf3ba01ba964a788d34ec1cbf7b2f0dd6e97884fb71f5d9bb6cc10e9a3e7fc"
     },
     {
       "path": "assets/frontend/index/block-02.js",
@@ -438,7 +438,7 @@
     },
     {
       "path": "assets/frontend/manifest.json",
-      "sha256": "9fb193497ec003ee043ac4081a0fb8fac4ba25d7a9c2c77d1eeb011c238aa294"
+      "sha256": "4110a34f4ba9d24ed5689419cf5ffbefb8f2b3d922cb3205d6d908be95afc572"
     },
     {
       "path": "assets/integrated-gateway.js",
@@ -774,12 +774,14 @@
     },
     {
       "path": "web/index.html",
-      "sha256": "2d2dc78615cd12ea5296ebdd300d55321077f1c815e045bcb60b57d0771123d5"
+      "sha256": "2eef92d5a3a2b7bdb5c924367b379c6330a2fffa43e5ae0db560d40704898ece"
     }
   ],
   "line_push_live_tested": false,
   "line_sql_local_postgresql_tested": true,
   "line_edge_mock_tested": true,
   "booking_membership_ui_simulation_passed": true,
-  "checkout_buttons_restored": true
+  "checkout_buttons_restored": true,
+  "vaccine_fee_ui_passed": true,
+  "vaccine_fee_sql_local_passed": true
 }

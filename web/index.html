@@ -674,7 +674,7 @@ sidebar{width:190px;min-width:190px;flex-basis:190px;background:var(--paper);bor
             <!-- 3. 疫苗施打與種類管理 -->
             <div id="vaccines" class="tab-content">
                 <div class="card">
-                    <h2>疫苗種類設定與新增</h2>
+                    <h2>疫苗種類設定與新增（管理者）</h2>
                     <div class="form-grid">
                         <div class="form-group span-2"><label>疫苗名稱</label><input type="text" id="newVaccineTypeName" placeholder="例如：犬八合一 / 貓三合一"></div>
                         <div class="form-group">
@@ -686,8 +686,9 @@ sidebar{width:190px;min-width:190px;flex-basis:190px;background:var(--paper);bor
                             </select>
                         </div>
                         <div class="form-group"><label>建議施打間隔 (天數)</label><input type="number" id="newVaccineInterval" value="365"></div>
+                        <div class="form-group"><label>標準疫苗費用 (NT$)</label><input type="number" id="newVaccineDefaultFee" min="0" max="99999999.99" step="0.01" placeholder="請填標準價；免費填 0"><small>全院共用。醫師可調整本次收費，不會修改此標準價。</small></div>
                     </div>
-                    <button onclick="saveNewVaccineType()">+ 新增疫苗種類</button>
+                    <button onclick="saveNewVaccineType()">+ 新增疫苗種類</button><details id="vaccineFeeSettings20261026" hidden style="margin-top:16px" ontoggle="if(this.open)renderVaccineFeeSettings20261026()"><summary>設定既有疫苗標準費用（管理者）</summary><p>每列按儲存後全院共用；舊施打與帳單金額不變。未設定的疫苗仍須手動輸入本次費用。</p><div id="vaccineFeeEditor20261026"></div><p id="vaccineFeeSettingsStatus20261026" role="status"></p></details>
                 </div>
 
 <details class="card" ontoggle="if(this.open) loadPetVaccines()"><summary>🔔 疫苗到期／逾期提醒（點擊展開）</summary><p>頁面內提醒，未自動發送 LINE、簡訊或電子郵件；以每隻寵物每種疫苗的最新施打紀錄判定。</p><select id="vaccineReminderDays" onchange="vaccineToolsRender()"><option value="7">未來7天</option><option value="30" selected>未來30天</option><option value="60">未來60天</option></select><select id="vaccineReminderMode" onchange="vaccineToolsRender()"><option value="all">即將到期＋逾期</option><option value="soon">即將到期</option><option value="overdue">逾期</option></select><button type="button" onclick="loadPetVaccines()">重新整理</button><div id="vaccineReminderResults">展開後載入。</div></details>
@@ -715,7 +716,7 @@ sidebar{width:190px;min-width:190px;flex-basis:190px;background:var(--paper);bor
                             <label>下次預計施打日期</label>
                             <input type="date" id="vacNextDueDate"><small id="vaccineDueHintV9114" role="status">選擇疫苗後依本次施打日期帶入，可手動修改。</small>
                         </div>
-                        <div class="form-group span-2"><label>本次疫苗費用 (NT$)</label><input type="number" id="vacServiceFee" min="0" step="0.01" placeholder="請填本次金額；免費填 0"></div>
+                        <div class="form-group span-2"><label>本次疫苗費用 (NT$)</label><input type="number" id="vacServiceFee" min="0" step="0.01" placeholder="選疫苗自動帶入，可調整本次金額；免費填 0"><small id="vaccineFeeHint20261026" role="status">選擇疫苗後帶入院內標準費用，可修改本次收費。</small></div>
                         <div class="form-group span-4">
                             <label>施打備註與批號</label>
                             <input type="text" id="vacNotes" placeholder="例如：施打順利，無不良反應，批號 #AB1234">
@@ -2176,6 +2177,7 @@ sidebar{width:190px;min-width:190px;flex-basis:190px;background:var(--paper);bor
 <script id="rabiesDefaultsV9112" src="/assets/frontend/index/rabiesDefaultsV9112.js"></script>
 
 <script id="vaccineDueV9114" src="/assets/frontend/index/vaccineDueV9114.js"></script>
+<script src="/assets/frontend/index/vaccineFees20261026.js"></script>
 
 <script id="vaccineCheckoutResetV9115" src="/assets/frontend/index/vaccineCheckoutResetV9115.js"></script>
 
