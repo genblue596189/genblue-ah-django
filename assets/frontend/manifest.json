@@ -28,7 +28,7 @@
     "sha256": "a381578eed3b1bdebb34bf38fe8ebb03eaab4f44d0f1721f73922783de94ff1a"
   },
   "index/block-01.js": {
-    "sha256": "ab746df790cc4458ad97205eb7de1d4bf8dacc83b831044740dfd150c1ad71d4",
+    "sha256": "cddf3ba01ba964a788d34ec1cbf7b2f0dd6e97884fb71f5d9bb6cc10e9a3e7fc",
     "content_type": "text/javascript; charset=utf-8"
   },
   "index/block-02.js": {
@@ -410,5 +410,9 @@
   "booking-review/style.css": {
     "sha256": "de5e8ebab0e4d92e18552f4881942c83080e67c361d4e60cb71cc58409a33fb0",
     "content_type": "text/css; charset=utf-8"
+  },
+  "index/vaccineFees20261026.js": {
+    "sha256": "487723cd5538848574898bdbf82d3c4b658afa2eaa4dc39541895c3fee58f8ae",
+    "content_type": "text/javascript; charset=utf-8"
   }
 }
