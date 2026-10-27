@@ -72,6 +72,8 @@ function renderPlanV94(){
   syncStatus.textContent=needsReview?'部分自訂用法無法辨識天數，請核對下方用法後再儲存。':'';
  };
  days.addEventListener('input',syncDays);days.addEventListener('change',syncDays);
+ // The course may already have been selected before this panel is built.
+ if(currentPetId)syncDays();
  const summary=document.createElement('p');const refresh=()=>summary.textContent=planTextV94({...g,frequency:frequency.value,days:days.value,preparation_v94:{form:form.value,mode:'total',total:per.value,notes:''}})||'請選本組配藥方式。';refresh();box.append(summary);
  const hint=document.createElement('p');hint.textContent='交付總量直接填寫，不再乘上頻次或天數。藥水是調製至該體積，不是另加相同量的糖水。本組頻次、天數可修改；修改療程後請核對醫囑及每種原藥數量，系統不會自動改動已加入的原藥顆數。';box.append(hint);
  for(const e of [form,per,frequency,days]){e.disabled=!medicalEditAllowedV53();e.addEventListener('input',()=>{commitPreparationV949();refresh();});e.onchange=()=>{if(!medicalEditAllowedV53())return;if(!Number.isInteger(Number(days.value))||Number(days.value)<=0){alert('本組天數請填正整數');return;}commitPreparationV949();if(!injectionEntryModeV70){document.getElementById('medFrequencyDetail').value=frequency.value;document.getElementById('medDays').value=days.value;runDetailedMathCalculation();}collectCurrentMedicalState();refresh();};}
