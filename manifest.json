@@ -1,19 +1,11 @@
 {
   "booking/block-01.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "7c74dddd91ecd3e9fca5d857e35e30cbf3c6594f7d9d596319068bf173ef7582"
+    "sha256": "daa3e76dbd45d064ae86f2561e96d7be5c8f0506b3de0383257ed9f2011cf445"
   },
   "booking/style-01.css": {
     "content_type": "text/css; charset=utf-8",
-    "sha256": "900f4304b6186a3b9c1f399585eb2cb4d2d22d7bb2334cf47ad572da97a20656"
-  },
-  "booking-review/main.js": {
-    "content_type": "text/javascript; charset=utf-8",
-    "sha256": "b9236a84d3882a9e28d8fb83ea4187d1a2b86b673102235033598ef85e787de8"
-  },
-  "booking-review/style.css": {
-    "content_type": "text/css; charset=utf-8",
-    "sha256": "de5e8ebab0e4d92e18552f4881942c83080e67c361d4e60cb71cc58409a33fb0"
+    "sha256": "7c262bcbe4e4a9ec69fbbc289cd2f44ca4aa6714d695f7be38520d809b51d71b"
   },
   "images/789849913983b15ee2975041.png": {
     "content_type": "image/png",
@@ -33,15 +25,15 @@
   },
   "index/billingPresetsV80.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "a381578eed3b1bdebb34bf38fe8ebb03eaab4f44d0f1721f73922783de94ff1a"
+    "sha256": "57220dbe25092368586516d132d746e7f523e95157dfff150f0c104292bbc46d"
   },
   "index/block-01.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "dee227ac2ceca3b1e138c0596fea0ecd15e016e770a48143e6391406b0e8f928"
+    "sha256": "9b8f3ac57d3d68d1566573e4d7d656037eccd698a003a116b045cfef208f2684"
   },
   "index/block-02.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "0e8bddd06a62e183244a819cfa980e8aea73834fa4d2b6a35f0501d5f6a56958"
+    "sha256": "2653f22f39541beb50a0d0af9782b5ff038dbc1a4ed642d40c465d1084afb94d"
   },
   "index/block-03.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -57,7 +49,7 @@
   },
   "index/block-23.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "f3b88ad593fb1a87ac4a4025f8c06b2e6348ce86eb7e3f4ef69fa2de6a893ffa"
+    "sha256": "16c14fe857801f9fa615b27c5f32ef765144388d627236c33f689b2d5914e2f2"
   },
   "index/block-28.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -77,7 +69,7 @@
   },
   "index/block-47.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "4aac9ccc8b0b99f271b414e963b85d32416b20f4d0050d21a9bca307d4ec4017"
+    "sha256": "6f6c8ca57fbba6ad629c1139e702764db3de54cdf9990a063d7946dcac6b506d"
   },
   "index/block-66.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -101,19 +93,15 @@
   },
   "index/block-75.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "034069a65be690d1c89a4de8e19165683e7d594399e59ca63aa980feade1efcc"
+    "sha256": "8a5bee35cb5904791c77d9553aec6a7cb9894cec7086a7b0795f37d4c21d0d27"
   },
   "index/block-76.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "f1e3b650ac0f9acb508c9acd4dd72efe22f982b274498158cc5e85345ec88e34"
+    "sha256": "5f508133314777975a99ee8000ed2bff9f3e3b034bc457a09b55aa5c631dc184"
   },
   "index/closedReviewV905.js": {
     "content_type": "text/javascript; charset=utf-8",
     "sha256": "9bdff8e500261e6af064fe81214669104a65401f9e7a5128e75f2e99c14eb8af"
-  },
-  "index/deskCheckout20261025.js": {
-    "content_type": "text/javascript; charset=utf-8",
-    "sha256": "c5f33a48a382301e9b3ea6aee16b12eced867880423e54916cd494ec9faddb22"
   },
   "index/dicomEmbeddedV791.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -133,7 +121,7 @@
   },
   "index/doctorStatsV57.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "567206e2fd5e5c28eceed4c436a6a070b28396eb8e8beb84358ceb2229a737d0"
+    "sha256": "c8aa0728580729b71208f722cdb2a38d1fa2f3be3c1fcadf1c8f18377fb53414"
   },
   "index/enterNavigationV9123.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -209,7 +197,7 @@
   },
   "index/medicalTemperatureV43.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "8f8b8a13c869ed89fe259c728dab28716ecf71389f8930b89c9c5fb73c71f568"
+    "sha256": "caeafe2540b462fe3dbfdb9e5333adfed201700166224bada36443905249a99a"
   },
   "index/medicalVitalsV9121.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -221,7 +209,7 @@
   },
   "index/medicalWeightV42.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "8f083cec2c13d012bd0047e73e1957fca8923d38ced7aae0d48a27abd262dd87"
+    "sha256": "ba1ebec3db4eb8c06be45b6e80f31127417905a6c96591b959fa47f0307d353a"
   },
   "index/medicationBillingV64.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -237,7 +225,7 @@
   },
   "index/multiDoctorV51.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "c5e5b414e8ab62148a3fb3c36f102870a432b252c83b06f202e135175f8c12f8"
+    "sha256": "1e5fea1f1616179b5f3366418da94229b42b12bc3ccd4730aff3fe09dfb69be6"
   },
   "index/paidHistoryV907.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -297,7 +285,7 @@
   },
   "index/skylaSolutionParserV33.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "f2eb6321e4b9b1c48923a83a4572d53d87a0337c2ae1cede9a61820ce9b99c74"
+    "sha256": "5babfd0a0e03f7e232ddc7edaad490512ee83e7995a1e3d6628a36927ed4fe24"
   },
   "index/staffClinicianV52.js": {
     "content_type": "text/javascript; charset=utf-8",
@@ -309,7 +297,7 @@
   },
   "index/style-01.css": {
     "content_type": "text/css; charset=utf-8",
-    "sha256": "aa25c7a9abdf827f6799ac50689c52ef298467fc50c39be8c71cac445a01fa53"
+    "sha256": "9b0b6c19f9f20797e7d4729af8179e03abcf52960def505db5c5cb8274c38d94"
   },
   "index/style-02.css": {
     "content_type": "text/css; charset=utf-8",
@@ -387,10 +375,6 @@
     "content_type": "text/javascript; charset=utf-8",
     "sha256": "09dfeeea7ec04214add9207329ad7c46f0632fc19d7966c1242bd09c752ae8be"
   },
-  "index/vaccineFees20261026.js": {
-    "content_type": "text/javascript; charset=utf-8",
-    "sha256": "487723cd5538848574898bdbf82d3c4b658afa2eaa4dc39541895c3fee58f8ae"
-  },
   "index/vaccineRabiesRemindersV39.js": {
     "content_type": "text/javascript; charset=utf-8",
     "sha256": "525105e4020fbd44b595ee473f9f18a408fc74241cdc6c58d0c334ff09e908b9"
@@ -413,6 +397,6 @@
   },
   "index/waitingDoctorV54.js": {
     "content_type": "text/javascript; charset=utf-8",
-    "sha256": "5ed7cf97203e488b103e2bcc30b10d3a4b139707069eeb2ad40bc928e1bbd438"
+    "sha256": "f6dee08c8915d7a9a6e96d35a683266c509abce554124c50e624dc079661f3b5"
   }
 }

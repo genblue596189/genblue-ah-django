@@ -25,11 +25,12 @@ def parameters(request, action):
     try:
         data=json.loads(request.body,parse_constant=invalid_json_constant)
         common={'pet_id','appointment_id','claim_id','request_id','chief'}
-        expected=common|({'mode','prescriptions'} if action=='save' else {'expected_version'})
+        expected=common|({'mode','prescriptions'} if action=='save' else {'mode','prescriptions','expected_version'} if action=='revise' else {'expected_version'})
         if not isinstance(data,dict) or set(data)!=expected: raise ValueError()
         for key in ('pet_id','appointment_id','claim_id','request_id'): uuid_value(data[key])
         if not isinstance(data['chief'],str) or len(data['chief'])>200000: raise ValueError()
-        if action=='save':
+        if action in ('save','revise'):
+            if action=='revise' and (type(data['expected_version']) is not int or data['expected_version']<1): raise ValueError()
             if data['mode'] not in ('waiting','checkout'): raise ValueError()
             if not isinstance(data['prescriptions'],list) or any(not isinstance(row,dict) for row in data['prescriptions']): raise ValueError()
             validate_prescriptions(data['prescriptions'])
@@ -69,6 +70,8 @@ def save_record(data, tenant, token):
     payload={'id':data['request_id'],'tenant_id':tenant,'pet_id':data['pet_id'],
              'status':'候診中' if data['mode']=='waiting' else '診間看診中',
              'chief_complaint':data['chief'],'prescription_details':data['prescriptions']}
+    if data['mode']=='checkout':
+        payload['vaccine_info']={'django_visit_v1':{'appointment_id':data['appointment_id'],'claim_id':data['claim_id']}}
     previous=saved_record(data,tenant,token)
     replayed=bool(previous)
     if previous is None:
@@ -85,7 +88,17 @@ def save_record(data, tenant, token):
             replayed=True
     if not matches(previous,payload):
         raise GatewayError(409,'這筆儲存編號已有不同內容；本次未覆寫，請保留輸入並核對病歷。')
-    return {'id':previous['id'],'pet_id':previous['pet_id'],'replayed':replayed}
+    return {'id':previous['id'],'pet_id':previous['pet_id'],'row_version':previous.get('row_version',1),'replayed':replayed}
+
+
+def revise_record(data, token):
+    result=upstream('/rest/v1/rpc/revise_consultation_draft_v1',token,method='POST',payload={
+        'p_record_id':data['request_id'],'p_pet_id':data['pet_id'],'p_appointment_id':data['appointment_id'],
+        'p_claim_id':data['claim_id'],'p_expected_version':data['expected_version'],'p_chief':data['chief'],
+        'p_prescriptions':data['prescriptions'],'p_mode':data['mode']})
+    if not isinstance(result,dict) or result.get('id')!=data['request_id'] or result.get('pet_id')!=data['pet_id'] or type(result.get('row_version')) is not int or result['row_version']<1:
+        raise GatewayError(502,'病歷更新結果尚未確認，請保留輸入並核對。')
+    return result
 
 
 def save_archive(data, token):
@@ -102,14 +115,14 @@ def save_archive(data, token):
 @never_cache
 @require_POST
 def medical_action(request, action):
-    if action not in ('save','archive'):
+    if action not in ('save','revise','archive'):
         return JsonResponse({'error':'不支援的病歷操作。'},status=404)
     try:
         token=bearer_token(request)
         context=verified_context(token)
         data=parameters(request,action)
         verify_visit(data,context,token)
-        result=save_record(data,context['profile']['tenant_id'],token) if action=='save' else save_archive(data,token)
+        result=save_record(data,context['profile']['tenant_id'],token) if action=='save' else revise_record(data,token) if action=='revise' else save_archive(data,token)
         return JsonResponse({'data':result,'tenant_id':context['profile']['tenant_id'],'user_id':context['user']['id']})
     except GatewayError as exc:
         return error_response(exc)

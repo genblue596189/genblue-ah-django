@@ -3649,7 +3649,7 @@ async function loadOwnersAndPetsIntegrated() {
             const posTableCount=CLINIC_BACKUP_POS_TABLES_V843.filter(name=>Object.prototype.hasOwnProperty.call(snapshot.tables||{},name)).length;
             if(posTableCount!==0&&posTableCount!==CLINIC_BACKUP_POS_TABLES_V843.length)throw new Error('待付款與交班備份資料表不完整。');
             const expectedTables=CLINIC_BACKUP_TABLES.filter(name=>!['breed_images','imaging_shares_v76','pharmacy_jobs_v9133',...CLINIC_BACKUP_POS_TABLES_V843].includes(name)||Object.prototype.hasOwnProperty.call(snapshot.tables||{},name));
-            if (!snapshot.tables || snapshot.table_count !== expectedTables.length+(snapshot.format_version>=2?3:0)+(snapshot.format_version===3?5:0) ||
+            if (!snapshot.tables || snapshot.table_count !== expectedTables.length+(snapshot.format_version>=2?3:0)+(snapshot.format_version===3?Object.keys(snapshot.booking_tables||{}).length:0) ||
                 Object.keys(snapshot.tables).sort().join('|') !== [...expectedTables].sort().join('|')) throw new Error('資料表範圍不完整或版本不同。');
             if(snapshot.format_version===3)validateStorageBackupV62(snapshot);else if (snapshot.attachments?.mode !== 'verified_none_v1' || snapshot.attachments.patient_file_references !== 0 || snapshot.attachments.non_html_storage_objects !== 0) throw new Error('此備份含尚未支援的附件範圍。');
             let total = 0;
@@ -4812,6 +4812,7 @@ function openMedicalDetailModal(record){
         }
 
         const medicalDjangoAttemptsV5=new Map();
+        let checkoutReturnDraftV1=null;
         async function medicalDjangoRequestV5(action,payload,base='/api/medical/'){
             const scope=doctorScopeV51(),tenant=CURRENT_TENANT_ID,userId=CURRENT_USER?.id;
             if(!scope)throw Error('請先登入。');
@@ -4820,7 +4821,7 @@ function openMedicalDetailModal(record){
             if(!session||session.user.id!==userId||scope!==doctorScopeV51())throw Error('登入身分已變更，請保留輸入並重新登入。');
             const response=await fetch(base+action+'/',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,'Content-Type':'application/json'},body:JSON.stringify(payload),cache:'no-store'});
             const result=await response.json();
-            if(!response.ok)throw Error(result.error||'病歷儲存未確認成功，請保留畫面。');
+            if(!response.ok){const failure=Error(result.error||'病歷儲存未確認成功，請保留畫面。');failure.status=response.status;throw failure;}
             if(scope!==doctorScopeV51()||result.tenant_id!==tenant||result.user_id!==userId||currentPetId!==payload.pet_id)throw Error('登入或病患已變更，請保留輸入並核對原病歷儲存結果。');
             return result;
         }
@@ -4837,9 +4838,17 @@ function openMedicalDetailModal(record){
             const key=JSON.stringify([scope,visit.petId,visit.claimId,mode]);
             const fingerprint=JSON.stringify([chief,prescriptions]);
             let attempt=medicalDjangoAttemptsV5.get(key);
+            if(attempt?.unconfirmed&&attempt.fingerprint!==fingerprint)throw Error('上次病歷儲存結果未確認。請先恢復原本內容並重試，以免產生重複病歷。');
             if(!attempt||attempt.fingerprint!==fingerprint){attempt={id:crypto.randomUUID(),fingerprint};medicalDjangoAttemptsV5.set(key,attempt);}
-            const result=await medicalDjangoRequestV5('save',{pet_id:visit.petId,appointment_id:visit.appointmentId,claim_id:visit.claimId,request_id:attempt.id,mode,chief,prescriptions});
-            if(result.data?.id!==attempt.id||result.data?.pet_id!==visit.petId)throw Error('未取得正確的病歷儲存確認，請保留畫面。');
+            const existing=visit.checkoutRecordV1;
+            const requestId=existing?.id||attempt.id;
+            attempt.unconfirmed=true;
+            let result;
+            try{result=await medicalDjangoRequestV5(existing?'revise':'save',{pet_id:visit.petId,appointment_id:visit.appointmentId,claim_id:visit.claimId,request_id:requestId,mode,chief,prescriptions,...(existing?{expected_version:existing.version}:{})});}
+            catch(error){if([400,401,403].includes(error.status))attempt.unconfirmed=false;throw error;}
+            if(result.data?.id!==requestId||result.data?.pet_id!==visit.petId||!Number.isSafeInteger(result.data?.row_version))throw Error('未取得正確的病歷儲存確認，請保留畫面。');
+            attempt.unconfirmed=false;
+            visit.checkoutRecordV1={id:requestId,version:result.data.row_version};
             return result.data;
         }
 
@@ -4935,6 +4944,21 @@ function openMedicalDetailModal(record){
             } finally { medicalSaveBusy = false; }
         }
 
+        function checkoutInvoiceSnapshotV1(){return JSON.stringify({owner:document.getElementById('invoiceOwnerSelect').value,discount:document.getElementById('invoiceDiscount').value,rows:[...document.querySelectorAll('#invoiceItemsList .list-row')].map(r=>[...r.querySelectorAll('input,select')].map(x=>x.value))});}
+        async function returnMedicalFromCheckoutV1(){
+            const d=checkoutReturnDraftV1;
+            if(!d||d.scope!==doctorScopeV51()||doctorVisitV51!==d.visit||clinicalInvoiceContext?.appointmentId!==d.visit.appointmentId){alert('本次看診資料已改變，請保留收費畫面並核對。');return;}
+            if(checkoutInvoiceSnapshotV1()!==d.invoiceSnapshot&&!confirm('收費明細已有修改。返回病歷後重新產生收費明細時，這些修改需要重新輸入。確定返回？'))return;
+            if(sessionStorage.getItem(posKeyV77('direct'))||sessionStorage.getItem(posKeyV77('stage:'+d.visit.appointmentId))||familyHasAppointmentV74(d.visit.appointmentId)){alert('此帳單有尚未確認的收款或已送待收；請先核對，勿返回修改。');return;}
+            try{const {data,error}=await clinicDjangoRpcV4('verify_clinic_visit_v51',{p_pet_id:d.petId,p_claim_id:d.visit.claimId});if(error)throw error;if(data!==true)throw Error('看診權已變更');const state=await posRefreshV77({fresh:true,required:true});if([...state.pending||[],...state.pharmacy_holds_v9133||[]].some(q=>q.appointment_id===d.visit.appointmentId))throw Error('本次已送待付款，請先核對');}catch(e){alert('未能返回修改：'+e.message);return;}
+            if(d.scope!==doctorScopeV51()||doctorVisitV51!==d.visit)return;
+            clinicalInvoiceContext=null;clinicalMedicationGroupsV64=null;document.getElementById('invoiceItemsList').replaceChildren();document.getElementById('invoiceOwnerSelect').value='';document.getElementById('invoiceDiscount').value='0';familyInvoiceTouchedV74=false;calculateInvoiceTotal();
+            currentPetId=d.petId;currentPetName=d.petName;currentPetMicrochip=d.microchip;currentPetWeight=d.weight;currentOwnerId=d.ownerId;currentPetBirthday=d.birthday;currentPetGender=d.gender;currentPetSpecies=d.species;currentPetBreed=d.breed;currentAppointmentId=d.visit.appointmentId;
+            medicalWeightConfirmedV9121=structuredClone(d.weightConfirmation);medicalVitalsDraftV9132=structuredClone(d.vitalsDraft);medicalStateCache=structuredClone(d.state);restoreMedicalState();
+            checkoutReturnDraftV1=null;document.getElementById('returnMedicalFromCheckoutV1').hidden=true;
+            switchTab('medical');
+        }
+
         async function saveMedicalRecordAndDirectCheckout() {
             if (medicalSaveBusy) return;
             medicalSaveBusy = true;
@@ -4947,6 +4971,8 @@ function openMedicalDetailModal(record){
             const prescriptions = collectPrescriptionDetailsV75();
 
             let medicationGroups;try{medicationGroups=prepareMedicationGroupsV64(prescriptions);}catch(e){alert(e.message);return;}
+            collectCurrentMedicalState();
+            const returnSnapshot={scope:doctorScopeV51(),visit:doctorVisitV51,petId:currentPetId,petName:currentPetName,microchip:currentPetMicrochip,weight:currentPetWeight,ownerId:currentOwnerId,birthday:currentPetBirthday,gender:currentPetGender,species:currentPetSpecies,breed:currentPetBreed,state:structuredClone(medicalStateCache),weightConfirmation:structuredClone(medicalWeightConfirmedV9121),vitalsDraft:structuredClone(medicalVitalsDraftV9132)};
             let recordError;
             try {
                 await saveMedicalViaDjangoV5('checkout',chiefComplaint,prescriptions);
@@ -4984,6 +5010,9 @@ function openMedicalDetailModal(record){
             activeAppointmentsList = activeAppointmentsList.filter(p => p.id !== currentPetId);
             renderAppointmentTable(activeAppointmentsList);
 
+            checkoutReturnDraftV1=returnSnapshot;
+            returnSnapshot.invoiceSnapshot=checkoutInvoiceSnapshotV1();
+            document.getElementById('returnMedicalFromCheckoutV1').hidden=false;
             alert('病歷已儲存。請核對本隻費用，再按「確認本隻費用並送至待付款」。合併或分開付款由櫃台勾選。');
             clearMedicalFormInputs();
             switchTab('invoices');
