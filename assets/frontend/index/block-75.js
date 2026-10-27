@@ -12,7 +12,43 @@ function periodReceiptBlockedV20261027(d){
  if(!warnings.length)warnings.push('收退款尚未符合列印條件，請先核對帳單。');
  return '目前無法列印已收款彙總收據：'+warnings.join(' ')+' 請展開下方「待核對」帳單查看原因；需要完整清單可按「列印期間明細」。';
 }
+// Summarize by the original visible charge name; keep deductions separate rather
+// than inventing how a discount, partial payment or refund splits across items.
+function periodReceiptTotalsV20261027(d){
+ const cents=(value,label)=>{
+  if(value===null||value===undefined||value===''||!Number.isFinite(Number(value)))throw Error(label+'資料不完整，請先核對期間明細。');
+  const n=Number(value),amount=Math.round(n*100);
+  if(!Number.isSafeInteger(amount)||Math.abs(n*100-amount)>0.00001)throw Error(label+'金額格式不正確，請先核對。');
+  return amount;
+ };
+ const add=(a,b)=>{const value=a+b;if(!Number.isSafeInteger(value))throw Error('期間金額過大，請縮短查詢期間。');return value;};
+ const groups=new Map();let discounts=0,unpaid=0,refunds=0,paid=0,manual=0;
+ const rows=d.invoices.filter(i=>!i.test_excluded&&!i.voided_at&&!i.issue&&Number(i.paid)>0);
+ for(const i of rows){
+  const sub=cents(i.subtotal,'帳單小計'),discount=cents(i.discount??0,'帳單折扣'),total=cents(i.total,'帳單金額'),received=cents(i.paid,'已收款'),refunded=cents(i.refunded??0,'退款');
+  if(sub<0||discount<0||discount>sub||total!==sub-discount||received<0||received>total||refunded<0||refunded>received)throw Error('帳單金額、折扣或退款不一致，請先核對期間明細。');
+  let subtotal=0;
+  for(const line of i.items||[]){
+   const name=String(line.name??'').trim();if(!name)throw Error('帳單存在未命名項目，請先核對期間明細。');
+   const amount=cents(line.subtotal,'項目小計');if(amount<0)throw Error('帳單包含負數項目，請先核對期間明細。');
+   subtotal=add(subtotal,amount);groups.set(name,add(groups.get(name)||0,amount));
+  }
+  if(subtotal!==sub)throw Error('帳單項目加總與帳單小計不符，請先核對期間明細。');
+  discounts=add(discounts,discount);unpaid=add(unpaid,total-received);refunds=add(refunds,refunded);paid=add(paid,received);if(i.manual_verified)manual++;
+ }
+ const gross=[...groups.values()].reduce(add,0),net=add(paid,-refunds);
+ if(gross-discounts-unpaid-refunds!==net||paid!==cents(d.summary.paid,'彙總已收款')||refunds!==cents(d.summary.refunded,'彙總退款')||net!==cents(d.summary.net,'彙總實付淨額'))throw Error('彙總金額與原帳單不一致，請重新查詢並核對。');
+ return {groups:[...groups.entries()].map(([name,value])=>({name,amount:value/100})),gross:gross/100,discounts:discounts/100,unpaid:unpaid/100,refunds:refunds/100,paid:paid/100,net:net/100,manual};
+}
+function periodReceiptDocumentV20261027(d){
+ if(!d.summary.receipt_allowed)throw Error('收退款仍需核對或尚無已收款，不能列印已收款彙總收據');
+ const totals=periodReceiptTotalsV20261027(d),e=periodEscapeV932,m=n=>e(periodMoneyV932(n)),date=v=>e(periodDateV932(v));
+ const rows=totals.groups.map(x=>'<tr><td>'+e(x.name)+'</td><td>'+m(x.amount)+'</td></tr>').join('');
+ const adjustment=(name,value)=>value?'<tr><td>'+e(name)+'</td><td>− '+m(value)+'</td></tr>':'';
+ return '<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><title>期間費用彙總收據</title><style>@page{size:A4;margin:14mm}body{font-family:"Microsoft JhengHei",sans-serif;color:#18251b;font-size:13px;line-height:1.5}h1{font-size:21px;margin:5px 0}h2{font-size:16px;margin:0}p{margin:5px 0}table{width:100%;border-collapse:collapse;margin-top:14px}th,td{padding:7px;border-bottom:1px solid #ddd}th:first-child,td:first-child{text-align:left}th:last-child,td:last-child{text-align:right}thead{display:table-header-group}tr{break-inside:avoid}.total{font-weight:bold;font-size:17px;background:#eef5eb}.note{font-size:11px;color:#485449;margin-top:10px}footer{border-top:1px solid #bbb;margin-top:15px;padding-top:6px;font-size:10px;color:#485449}</style></head><body><h2>'+e(d.clinic?.name||'動物醫院')+'</h2><p>'+e(d.clinic?.phone||'')+' '+e(d.clinic?.address||'')+'</p><h1>期間費用彙總收據</h1><p>飼主：'+e(d.owner.name)+'｜寵物：'+e(d.pet.name)+'｜病歷號：'+e(d.owner.system_code||d.owner.owner_code||'—')+'</p><p>期間：'+e(d.from)+'～'+e(d.to)+'；'+(d.basis==='visit'?'依就診日，無掛號則依開單日':'依帳單建立日')+'</p><table><thead><tr><th>費用項目（原價）</th><th>金額</th></tr></thead><tbody>'+rows+'<tr><td>項目小計</td><td>'+m(totals.gross)+'</td></tr>'+adjustment('折扣總計',totals.discounts)+adjustment('已列帳單尚未付清',totals.unpaid)+adjustment('退款總計',totals.refunds)+'<tr class="total"><td>期間實際支付總額</td><td>'+m(totals.net)+'</td></tr></tbody></table><p class="note">僅彙整已收款帳單；項目金額按原帳單名稱合計。折扣、尚未付清及退款分開列示，不推定各項分攤。</p>'+(totals.manual?'<p class="note">其中包含管理者核對歷史已收款；核對明細請參閱期間費用明細。</p>':'')+'<footer>統計至 '+date(d.as_of)+'（台灣時間）；以此寵物及目前飼主名下的已收款帳單為範圍。未新增交易；請勿與原收據重複計算。</footer></body></html>';
+}
 function periodDocumentV932(d,receipt=false){
+ if(receipt)return periodReceiptDocumentV20261027(d);
  const e=periodEscapeV932,m=n=>e(periodMoneyV932(n)),date=v=>e(periodDateV932(v)),s=d.summary;
  if(receipt&&!s.receipt_allowed)throw Error('收退款仍需核對或尚無已收款，不能列印已收款彙總收據');
  const title=receipt?'已收款彙總收據（原單彙整）':'期間費用明細';
