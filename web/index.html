@@ -2036,13 +2036,13 @@ sidebar{width:190px;min-width:190px;flex-basis:190px;background:var(--paper);bor
     </div>
 
     <div id="quickNewPetModal" class="modal" style="display:none; position:fixed; inset:0; background:#0008; z-index:10050; align-items:center; justify-content:center;">
-<form id="quickNewPetForm" class="card" style="width:min(600px,94vw);max-height:90vh;overflow:auto;" onsubmit="event.preventDefault();saveQuickNewPet()">
+<form id="quickNewPetForm" class="card" style="width:min(600px,94vw);max-height:90vh;overflow:auto;" onsubmit="event.preventDefault();saveQuickNewPet(event.submitter?.value || 'save')">
 <h3>替既有飼主新增寵物</h3><p id="quickPetOwnerLabel"></p>
 <div class="form-grid"><label>寵物名字<input id="quickPetName" required="" maxlength="100"></label><label>種類<select id="quickPetSpecies"><option>犬</option><option>貓</option><option>兔</option><option>鼠</option><option>豬</option><option value="其他">其他</option></select></label>
 <label>品種<input id="quickPetBreed"></label><label>性別／結紮<select id="quickPetGender"><option value="">-- 請選擇 --</option><option>公 (未結紮)</option><option>母 (未結紮)</option><option>公 (已結紮)</option><option>母 (已結紮)</option><option>未知</option></select></label>
 <label>出生日期（選填）<input id="quickPetBirthday" type="date"></label><label>體重 kg（選填）<input id="quickPetWeight" type="number" min="0" step="0.01"></label><label>晶片號碼（選填）<input id="quickPetChip" maxlength="50"></label></div>
-<p id="quickPetMessage" role="status"></p><button id="quickPetSave" type="submit">儲存新增寵物</button><button type="button" onclick="closeQuickNewPet()">取消／關閉</button>
-<p style="color:#64748b;">只新增至這位飼主名下；不自動掛號或切換目前看診寵物。</p></form></div>
+<p id="quickPetMessage" role="status" aria-live="polite"></p><button id="quickPetSave" type="submit" value="save">儲存新增寵物</button><button id="quickPetWaiting" type="submit" value="waiting" style="background:#1d4ed8;color:white;">儲存並加入候診</button><button id="quickPetConsult" type="submit" value="consult" style="background:#b45309;color:white;">儲存並至看診</button><button type="button" onclick="closeQuickNewPet()">取消／關閉</button>
+<p style="color:#64748b;">可選擇只建檔、加入候診，或由具接診權限的醫師直接看診。原看診尚未完成時，系統會保護原有輸入。</p></form></div>
 <script src="/assets/frontend/index/block-01.js"></script>
 
 
