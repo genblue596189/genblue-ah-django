@@ -10,6 +10,7 @@ from clinic.gateway import gateway, gateway_script
 from clinic.prescription import prescription_calculate
 from clinic.frontend_assets import frontend_asset
 from clinic.records import create_record
+from clinic.period_reconciliation import reconcile
 
 from clinic.line_booking import review_page,review_action
 
@@ -23,6 +24,7 @@ urlpatterns = [
     path('assets/integrated-gateway.js', gateway_script),
     path('assets/frontend/<path:asset_path>', frontend_asset),
     path('api/records/<str:entity>/', create_record),
+    path('api/period-reconciliation/', reconcile),
     path('api/prescription/calculate/', prescription_calculate),
     path('api/checkout/<str:action>/', checkout_action),
     path('api/medical-visit/<str:action>/', visit_status_action),

@@ -52,6 +52,16 @@ def upstream(path, token, method="GET", payload=None, pos_errors=False, record_e
             '接診權已變更，請保留輸入並重新核對',
             '看診權已變更，請保留輸入並重新確認',
             '歸檔病歷已被修改，請保留輸入並核對，不會覆蓋他人的資料',
+            '只有管理者可以核對與撤銷',
+            '相同核對編號不可更改內容',
+            '核對狀態已變更，請重新查詢',
+            '沒有可撤銷的核對',
+            '已有核對紀錄，請先撤銷',
+            '帳單狀態已變更或不適用此核對，請重新查詢',
+            '帳單內容已變更，請重新查詢',
+            '請核對實收金額和付款方式',
+            '此帳單不在目前查詢範圍，請重新查詢',
+            '請填寫2至500字的核對原因',
         }
         if record_errors or path.startswith('/rest/v1/rpc/') or path.startswith('/rest/v1/medical_records'):
             try:
