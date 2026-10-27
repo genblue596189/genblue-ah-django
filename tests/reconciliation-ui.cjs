@@ -1,0 +1,21 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('assets/frontend/index/block-75.js','utf8');
+function setup(role='admin'){
+ const e={},writes=[];class Node {constructor(tag='div'){this.tag=tag;this.style={};this.dataset={};this.children=[];this.value='';this.textContent='';this.disabled=false;this.classList={contains:()=>true};}
+ set innerHTML(v){for(const m of v.matchAll(/id="([^"]+)"/g))e[m[1]]=new Node();} append(...v){this.children.push(...v);} after(){} prepend(){} replaceChildren(){this.children=[];} setAttribute(){} focus(){} scrollIntoView(){} remove(){} querySelectorAll(){return [];}}
+ const doc={getElementById:id=>e[id]||(e[id]=new Node()),createElement:tag=>new Node(tag),body:{append(){}}};
+ const invoice={id:'i1',total:1600,paid:0,refunded:0,net:null,due:null,issue:'舊帳單標示已付，但缺少對應金流紀錄',invoice_hash:'hash1',event_at:'2026-10-01T00:00:00Z',created_at:'2026-10-01T00:00:00Z',items:[],payments:[],refunds:[]};
+ const report={tenant_id:'A',revision:'r1',from:'2026-09-27',to:'2026-10-27',as_of:'2026-10-27',clinic:{},owner:{name:'王'},pet:{name:'小白'},pending:[],invoices:[invoice],summary:{receipt_allowed:false,issue_count:1,unknown:1600,billed:1600,paid:0,net:0,due:0,refunded:0,invoice_count:1,pending_count:0,voided_count:0}};
+ const ctx={document:doc,Intl,Date,Set,Map,Number,console,CURRENT_TENANT_ID:'A',CURRENT_USER:{id:'u'},CURRENT_PROFILE:{role},posScopeNowV77:()=> 'A|u',switchTab(){},loadCurrentUserProfile:async()=>{},logoutSupabase(){},setTimeout(){},crypto:{randomUUID:()=> 'stable-id'},confirm:()=>true,_supabase:{auth:{getSession:async()=>({data:{session:{user:{id:'u'},access_token:'test'}}})},rpc:async()=>({data:{tenant_id:'A',matches:[{id:'p',name:'小白',species:'犬',owner_id:'o',owner_name:'王'}]},error:null})},fail:false};
+ ctx.fetch=async(url,opt)=>{const data=JSON.parse(opt.body);if(data.action!=='report'){writes.push(data);if(ctx.fail)throw Error('連線中斷');report.invoices[0]={...invoice,issue:'',manual_verified:true,paid:1600,net:1600,due:0,reconciliation:{status:'paid',audit_id:'12',reason:data.data.reason,actor:'u',at:'2026-10-27',method:'現金'}};report.summary={...report.summary,issue_count:0,unknown:0,paid:1600,net:1600,receipt_allowed:true};report.revision='r2';}return {ok:true,json:async()=>({user_id:'u',data:structuredClone(report)})};};
+ vm.createContext(ctx);vm.runInContext(source,ctx);return {ctx,e,writes};
+}
+async function load({e}){e.periodSearchV932.value='小白';await e.periodSearchButtonV932.onclick();e.periodMatchesV932.children[0].onclick();e.periodFromV932.value='2026-09-27';e.periodToV932.value='2026-10-27';e.periodBasisV932.value='issued';await e.periodLoadV932.onclick();}
+function form(e){const detail=e.periodResultV932.children.find(n=>n.tag==='details');const wrap=detail.children.find(n=>n.tag==='div');return wrap?.children||[];}
+(async()=>{
+ const x=setup();await load(x);let [select,amount,method,reason,save]=form(x.e);select.value='confirm_paid';amount.value='1600';method.value='現金';reason.value='對照舊收據';x.ctx.fail=true;await save.onclick();assert.equal(x.writes.length,1);assert.equal(x.writes[0].action,'confirm_paid');assert.equal(x.writes[0].data.invoice_hash,'hash1');assert.equal(x.writes[0].data.amount,'1600');
+ reason.value='另一個原因';await save.onclick();assert.equal(x.writes.length,1);assert.match(x.e.periodMessageV932.textContent,/保留原內容/);reason.value='對照舊收據';x.ctx.fail=false;await save.onclick();assert.equal(x.writes.length,2);assert.equal(x.writes[0].data.request_id,x.writes[1].data.request_id);assert.match(x.e.periodMessageV932.textContent,/核對已儲存/);
+ const html=x.ctx.periodDocumentV932({clinic:{},owner:{},pet:{},from:'a',to:'b',summary:{receipt_allowed:true,paid:1600,refunded:0,net:1600},invoices:[{...x.writes[0],voided_at:null,issue:'',paid:1600,manual_verified:true,reconciliation:{method:'現金',reason:'對照舊收據'},items:[],payments:[],refunds:[]}],pending:[]},true);assert.match(html,/管理者核對歷史已收款/);
+ const staff=setup('staff');await load(staff);assert.equal(form(staff.e).some(n=>n.tag==='button'),false);
+ console.log('Manager UI: verified-payment form, stable uncertain retry, printed provenance and staff restriction passed.');
+})().catch(e=>{console.error(e);process.exit(1)});
