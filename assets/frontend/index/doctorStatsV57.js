@@ -48,9 +48,10 @@ async function loadDoctorStatsV57(offset=0){
 }
 async function finishDoctorInvoiceV57(appointmentId){
  if(!appointmentId)return;
+ const scope=doctorScopeV51();
  if(currentAppointmentId===appointmentId)currentAppointmentId=null;
  activeAppointmentsList=activeAppointmentsList.filter(p=>p.appointment_id!==appointmentId);renderAppointmentTable(activeAppointmentsList);
- try{await loadAppointmentHistory('all');}catch(e){alert('帳單與完診已儲存；預約歷史畫面更新失敗，請按更新資料。');}
+ void loadAppointmentHistory('all').catch(()=>{if(doctorScopeV51()===scope)alert('帳單與完診已儲存；預約歷史畫面更新失敗，請按更新資料。');});
 }
 const inventoryCommitOriginalV57=commitInventoryCheckout;
 commitInventoryCheckout=async function(details){

@@ -89,7 +89,7 @@ async function posDirectV77(name,args){
  const key='direct';const prior=JSON.parse(sessionStorage.getItem(posKeyV77(key))||'null');
  if(prior&&JSON.stringify(prior.payload)!==JSON.stringify({name,args}))throw Error('上一筆收款結果未確認，請先按「核對上次收款」，勿改用新帳單收費');
  let frozen=prior;if(!frozen){let tendered;try{tendered=posTenderV77(method,total);}catch(e){e.code='GB_LOCAL_PREPARE';throw e;}frozen=posFrozenV77(key,{payload:{name,args},method,shift_id:activeShift.id,tendered});}
- let result;try{result=await posRpcV77('direct',frozen);}catch(e){if(posRejectedV77(e))sessionStorage.removeItem(posKeyV77(key));throw e;}sessionStorage.removeItem(posKeyV77(key));await posRefreshV77();return result;
+ let result;try{result=await posRpcV77('direct',frozen);}catch(e){if(posRejectedV77(e))sessionStorage.removeItem(posKeyV77(key));throw e;}sessionStorage.removeItem(posKeyV77(key));void posRefreshV77({fresh:true}).catch(()=>{});return result;
 }
 async function posFamilyRpcV77(args){try{return {data:await posDirectV77('checkout_family_v74',args),error:null};}catch(e){return {data:null,error:{message:e.message,code:e.code}};}}
 async function posRecoverV77(){
@@ -234,14 +234,25 @@ switchTab=function(tab,...args){
  return posSwitchOriginalV77.call(this,tab,...args);
 };
 // All existing direct checkout routes now pass the shift ledger transaction.
+let inventoryRefreshAfterCheckoutV1=null;
+function refreshInventoryAfterCheckoutV1(scope){
+ const uiScope=clinicRefreshScopeV50();
+ return Promise.allSettled([loadItems({preserveDrafts:true,scope:uiScope}),loadMedicines({preserveDrafts:true,scope:uiScope})]).then(results=>{
+  const ok=results.every(r=>r.status==='fulfilled')&&scope===posScopeNowV77();
+  if(!ok&&scope===posScopeNowV77())alert('結帳已成功，但商品或藥品清單更新失敗。請先更新資料；不需重新結帳。');
+  return ok;
+ });
+}
 commitInventoryCheckout=async function(args){
  if(inventoryCheckoutBusy)return null;inventoryCheckoutBusy=true;const scope=posScopeNowV77();
  try{
+  if(inventoryRefreshAfterCheckoutV1){let refreshed=await inventoryRefreshAfterCheckoutV1;if(!refreshed&&scope===posScopeNowV77()){inventoryRefreshAfterCheckoutV1=refreshInventoryAfterCheckoutV1(scope);refreshed=await inventoryRefreshAfterCheckoutV1;}if(!refreshed)throw Error('庫存清單更新失敗，請更新商品與藥品資料後再收款');if(scope!==posScopeNowV77())return null;}
   const name=args.p_category==='門診'?(args.p_medication_groups?'checkout_clinic_medicine_groups_v64':'checkout_clinic_doctor_v57'):'checkout_with_inventory';
   let request=JSON.parse(sessionStorage.getItem(posKeyV77('direct'))||'null');
   const actual={...args};if(args.p_category==='門診')actual.p_request_id=request?.payload?.args?.p_request_id||crypto.randomUUID();
   const result=await posDirectV77(name,actual);if(scope!==posScopeNowV77())return null;
-  await Promise.allSettled([loadItems(),loadMedicines()]);return typeof result==='string'?result:result.invoice_id;
+  inventoryRefreshAfterCheckoutV1=refreshInventoryAfterCheckoutV1(scope);
+  return typeof result==='string'?result:result.invoice_id;
  }catch(e){alert('收款尚未確認：'+e.message+'。若已交付現金，請核對上次收款，勿重新建帳。');return null;}finally{inventoryCheckoutBusy=false;}
 };
 const posRenderAppointmentsOriginalV77=renderAppointmentTable;

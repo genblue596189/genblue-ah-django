@@ -28,6 +28,13 @@ function planTextV94(g){const p=g.preparation_v94,total=planTotalV94(p,g.frequen
 const metaOriginalV94=dispensingMetaV75;dispensingMetaV75=function(value){const g=metaOriginalV94(value),p=value?.preparation_v94;if(p&&typeof p==='object')g.preparation_v94={form:String(p.form||'未指定').slice(0,20),per:String(p.per||'').slice(0,20),mode:p.mode==='total'||Object.prototype.hasOwnProperty.call(p,'total')?'total':'per',...(Object.prototype.hasOwnProperty.call(p,'total')?{total:String(p.total??'').slice(0,20)}:{}),notes:String(p.notes||'').slice(0,500)};return g;};
 const labelOriginalV94=dispensingGroupLabelV75;dispensingGroupLabelV75=function(g){const t=planTextV94(g);return labelOriginalV94(g)+(t?'｜'+t:'');};
 function instructionPhraseV943(frequency,days,food){const f=Number(frequency),d=Number(days);if(!['飯後服用','飯前服用','隨餐服用','不限飯前飯後'].includes(food))throw Error('請選服用時機');if(!Number.isInteger(d)||d<=0)throw Error('請先填寫正整數天數');if(f===0)return '需要時使用，共'+d+'天，'+food;if(f===0.5)return '隔日一次，共'+d+'天，'+food;if(!Number.isFinite(f)||f<=0)throw Error('請先選有效的用藥頻次');return '每日'+f+'次，連續'+d+'天，'+food;}
+// Update only an unambiguous duration phrase; retain all other medical instructions.
+function replaceInstructionDaysV1(text,days){
+ const value=String(text||''),n=Number(days);if(!Number.isInteger(n)||n<=0)return {text:value,matched:false};
+ const pattern=/(連續|共)(\s*)[0-9]+(\s*)天/g, found=[...value.matchAll(pattern)];
+ if(found.length!==1)return {text:value,matched:false};
+ return {text:value.replace(pattern,(_,label,space1,space2)=>label+space1+n+space2+'天'),matched:true};
+}
 const unifiedNoteV942=document.getElementById('medPrescribeNote');
 const unifiedNoteOriginalGroupV942=unifiedNoteV942.closest('.form-group');
 function persistUnifiedNoteV942(){if(!medicalEditAllowedV53())return;const state=dispensingNowV75(),g=state.groups.get(state.active);if(!g)return;g.instruction=unifiedNoteV942.value;if(g.preparation_v94)g.preparation_v94.notes='';for(const row of dispensingRowsV75())if(dispensingRowMetaV75(row).id===g.id)row.querySelector('.prescribe-note').value=g.instruction;updateDispensingRowsMetaV75(g);collectCurrentMedicalState();}
@@ -53,6 +60,18 @@ function renderPlanV94(){
  const preview=document.createElement('span');preview.textContent='依本組頻次、天數帶入；帶入後可自行修改。';
  apply.onclick=()=>{if(!medicalEditAllowedV53())return;try{const phrase=instructionPhraseV943(frequency.value,days.value,food.value);const old=unifiedNoteV942.value.trim();const match=old.match(/^(?:(?:一天|每日|每天)[^，,；;]*[，,]\s*(?:連續|共)?[^，,；;]*天[，,]\s*(?:飯後服用|飯前服用|隨餐服用|不限飯前飯後)|(?:需要時使用|隔日一次)[^；;]*)([；;][\s\S]*)?$/);if(old&&!match&&!confirm('目前已有自訂醫囑，是否以選定的用法句取代？請先確認需保留的調製與保存交代。'))return;unifiedNoteV942.value=phrase+(match?.[1]||'');persistUnifiedNoteV942();unifiedNoteV942.focus();}catch(e){alert(e.message);}};
  shortcuts.append(food,apply,preview);box.insertBefore(shortcuts,unifiedNoteV942.parentElement);
+ const syncStatus=document.createElement('p');syncStatus.setAttribute('role','status');syncStatus.style.cssText='color:#b45309;font-size:.85rem';box.append(syncStatus);
+ const syncDays=()=>{
+  if(!medicalEditAllowedV53()||!Number.isInteger(Number(days.value))||Number(days.value)<=0)return;
+  if(box.dataset.scopeV949!==dispensingScopeV75()||box.dataset.groupV949!==dispensingNowV75().active)return;
+  const active=dispensingNowV75().groups.get(dispensingNowV75().active);if(!active)return;
+  const shared=replaceInstructionDaysV1(unifiedNoteV942.value,days.value);let needsReview=!shared.matched;
+  if(shared.matched){unifiedNoteV942.value=shared.text;active.instruction=shared.text;}
+  for(const row of dispensingRowsV75())if(dispensingRowMetaV75(row).id===active.id){const input=row.querySelector('.prescribe-note');if(!input)continue;const result=replaceInstructionDaysV1(input.value,days.value);if(result.matched)input.value=result.text;else needsReview=true;}
+  updateDispensingRowsMetaV75(active);
+  syncStatus.textContent=needsReview?'部分自訂用法無法辨識天數，請核對下方用法後再儲存。':'';
+ };
+ days.addEventListener('input',syncDays);days.addEventListener('change',syncDays);
  const summary=document.createElement('p');const refresh=()=>summary.textContent=planTextV94({...g,frequency:frequency.value,days:days.value,preparation_v94:{form:form.value,mode:'total',total:per.value,notes:''}})||'請選本組配藥方式。';refresh();box.append(summary);
  const hint=document.createElement('p');hint.textContent='交付總量直接填寫，不再乘上頻次或天數。藥水是調製至該體積，不是另加相同量的糖水。本組頻次、天數可修改；修改療程後請核對醫囑及每種原藥數量，系統不會自動改動已加入的原藥顆數。';box.append(hint);
  for(const e of [form,per,frequency,days]){e.disabled=!medicalEditAllowedV53();e.addEventListener('input',()=>{commitPreparationV949();refresh();});e.onchange=()=>{if(!medicalEditAllowedV53())return;if(!Number.isInteger(Number(days.value))||Number(days.value)<=0){alert('本組天數請填正整數');return;}commitPreparationV949();if(!injectionEntryModeV70){document.getElementById('medFrequencyDetail').value=frequency.value;document.getElementById('medDays').value=days.value;runDetailedMathCalculation();}collectCurrentMedicalState();refresh();};}

@@ -66,7 +66,10 @@ async function verifyDoctorVisitV51(){
 async function releaseDoctorVisitV51(petId,appointmentId){
  if(CURRENT_PROFILE?.role!=='admin')return;
  if(!confirm('確定解除這筆看診占用並返回候診？請先確認原醫師已停止操作。原醫師尚未儲存的內容不會自動移交。'))return;
- const scope=doctorScopeV51();try{const {error}=await clinicDjangoRpcV4('release_clinic_visit_v51',{p_pet_id:petId,p_appointment_id:appointmentId});if(error)throw error;if(scope!==doctorScopeV51())return;await loadClinicDoctorsV51();await loadAppointments();alert('已解除占用，回到候診。');}catch(error){alert('解除未完成：'+error.message);}
+ const scope=doctorScopeV51();try{const {error}=await clinicDjangoRpcV4('release_clinic_visit_v51',{p_pet_id:petId,p_appointment_id:appointmentId});if(error)throw error;if(scope!==doctorScopeV51())return;
+ clinicClaimsV51.delete(petId);const row=activeAppointmentsList.find(p=>p.appointment_id===appointmentId);if(row)row.status='候診中';renderAppointmentTable(activeAppointmentsList);
+ void Promise.all([loadClinicDoctorsV51(),loadAppointments()]).catch(()=>{if(scope===doctorScopeV51())alert('已解除占用，但候診名單更新失敗，請按更新名單。');});
+ alert('已解除占用，回到候診。');}catch(error){alert('解除未完成：'+error.message);}
 }
 const doctorOriginalStartV51=startConsultationById;
 async function startDoctorConsultationV51(args,appointmentId=null){
