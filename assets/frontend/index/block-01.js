@@ -3020,22 +3020,85 @@ async function loadOwnersAndPetsIntegrated() {
             }catch(e){alert('讀取飼主失敗：'+e.message);}
         }
         function closeQuickNewPet(){if(quickPetSaving)return;document.getElementById('quickNewPetModal').style.display='none';quickPetContext=null;}
-        async function saveQuickNewPet(){
-            if(quickPetSaving||!quickPetContext)return;
-            const ctx=quickPetContext;if(ctx.tenant!==CURRENT_TENANT_ID){closeQuickNewPet();return;}
+        async function quickPetCheckIn20261027(ctx,pet,scope){
+            if(!waitingDoctorAllowedV54())throw Error('此帳號沒有掛號權限；寵物已建檔，可由有權限的人員加入候診。');
+            if(ctx.appointment)return ctx.appointment;
+            const valid=()=>scope===ownerScopeV908()&&ctx===quickPetContext;
+            const {data:{session},error}=await _supabase.auth.getSession();
+            if(error||!session?.access_token||session.user?.id!==CURRENT_USER?.id||!valid())throw Error('登入已變更，請回原院所核對建檔與候診結果。');
+            // Keep the same ID and payload after an uncertain response to avoid duplicate check-in.
+            ctx.registration=ctx.registration||{pet_id:pet.id,request_id:crypto.randomUUID(),purpose:'看診',session:document.getElementById('appointmentSession')?.value||'上午診'};
+            const send=async()=>{
+                if(!valid())throw Error('登入已變更，請回原院所核對結果。');
+                const response=await fetch('/api/registration/',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,'Content-Type':'application/json'},body:JSON.stringify(ctx.registration),cache:'no-store'});
+                const result=await response.json();
+                if(!valid())throw Error('登入已變更，請回原院所核對結果。');
+                return {response,result};
+            };
+            let {response,result}=await send();
+            if(response.status===409&&result.code==='early_check_in'){
+                const a=result.appointment;
+                if(!a?.id||!a.scheduled_at)throw Error('未取得原預約資料，請至候診核對。');
+                if(!confirm('此寵物尚未到原預約時間，確定提前報到嗎？'))throw Error('已取消提前報到；寵物建檔保留。');
+                ctx.registration.confirm_early={id:a.id,scheduled_at:a.scheduled_at};
+                ({response,result}=await send());
+            }
+            if(!response.ok)throw Error(result.error||'掛號結果未確認，請保留畫面重試或至候診核對。');
+            const a=result.appointment;
+            if(result.user_id!==CURRENT_USER?.id||a?.tenant_id!==ctx.tenant||a?.pet_id!==pet.id||!a?.id||!['候診中','診間看診中'].includes(a.status))throw Error('未取得正確的候診確認，請至候診核對。');
+            ctx.appointment=a;
+            appointmentsLoadRequest++;
+            const row=waitingPetFromAppointment(pet,a);
+            activeAppointmentsList=activeAppointmentsList.filter(p=>p.id!==pet.id||(p.appointment_id&&p.appointment_id!==a.id));
+            activeAppointmentsList.push(row);renderAppointmentTable(activeAppointmentsList);
+            return a;
+        }
+        async function saveQuickNewPet(action='save'){
+            if(quickPetSaving||!quickPetContext||!['save','waiting','consult'].includes(action))return;
+            const ctx=quickPetContext,scope=ownerScopeV908();
+            if(ctx.tenant!==CURRENT_TENANT_ID||!scope){closeQuickNewPet();return;}
             const value=id=>document.getElementById(id).value.trim(),name=value('quickPetName'),gender=value('quickPetGender');
             if(!name||!gender){alert('請填寫寵物名字並選擇性別。');return;}
             const weight=value('quickPetWeight');if(weight&&(!Number.isFinite(Number(weight))||Number(weight)<0)){alert('體重不得小於零。');return;}
+            if(action!=='save'&&!waitingDoctorAllowedV54()){alert('此帳號沒有掛號權限；可選擇只儲存，由有權限的人員安排候診。');return;}
+            if(action==='consult'&&!(CURRENT_PROFILE?.role==='admin'||(CURRENT_PROFILE?.permission_clinical??CURRENT_PROFILE?.role==='doctor'))){alert('此帳號沒有看診權限，請選擇「儲存並加入候診」，由醫師接診。');return;}
             const pet={id:ctx.id,tenant_id:ctx.tenant,owner_id:ctx.owner.id,name,species:value('quickPetSpecies'),breed:value('quickPetBreed')||null,gender,birthday:value('quickPetBirthday')||null,weight:weight?roundPetWeight(weight):null,microchip:value('quickPetChip')||null};
-            quickPetSaving=true;document.getElementById('quickPetSave').disabled=true;
+            const fingerprint=JSON.stringify(pet);
+            if(ctx.fingerprint&&ctx.fingerprint!==fingerprint){document.getElementById('quickPetMessage').textContent='原建檔結果已送出或待確認，請恢復原欄位再核對，避免重複新增。';return;}
+            ctx.fingerprint=fingerprint;
+            quickPetSaving=true;for(const id of ['quickPetSave','quickPetWaiting','quickPetConsult'])document.getElementById(id).disabled=true;
+            const message=document.getElementById('quickPetMessage');message.textContent='正在儲存，請稍候…';
             try{
-                const savedPet=await ownerConfirmedInsertV908('pets',pet,ownerScopeV908());
-                if(ctx.tenant!==CURRENT_TENANT_ID)return;
-                document.getElementById('quickPetMessage').textContent='已新增 '+name+'；原看診寵物保持不變。';
+                if(!ctx.savedPet)ctx.savedPet=await ownerConfirmedInsertV908('pets',pet,scope);
+                if(scope!==ownerScopeV908()||ctx!==quickPetContext)return;
+                if(ctx.savedPet.id!==pet.id||ctx.savedPet.owner_id!==ctx.owner.id||ctx.savedPet.tenant_id!==ctx.tenant)throw Error('寵物與飼主資料不符，請先核對。');
+                const entry=ownerCacheUpsertV908(ctx.owner,ctx.savedPet);
+                if(action==='save'){
+                    document.getElementById('quickNewPetModal').style.display='none';quickPetContext=null;
+                    alert('已替「'+ctx.owner.name+'」新增「'+name+'」。');return;
+                }
+                message.textContent='寵物已建檔，正在加入候診…';
+                const appointment=await quickPetCheckIn20261027(ctx,entry,scope);
+                if(scope!==ownerScopeV908()||ctx!==quickPetContext)return;
+                if(action==='waiting'){
+                    document.getElementById('quickNewPetModal').style.display='none';quickPetContext=null;
+                    switchTab('appointments');
+                    if(appointment.status==='候診中')await openWaitingDoctorV54(appointment.id);
+                    return;
+                }
+                message.textContent='寵物已建檔並加入候診，正在確認接診權…';
+                await startDoctorConsultationV51([entry.id,entry.microchip||'',entry.name,entry.owner_id,entry.weight,entry.owner_name,entry.birthday,entry.gender,entry.species,entry.breed],appointment.id);
+                if(scope!==ownerScopeV908()||ctx!==quickPetContext)return;
+                if(currentPetId!==entry.id||doctorVisitV51?.petId!==entry.id||doctorVisitV51?.appointmentId!==appointment.id||!document.getElementById('medical').classList.contains('active')){
+                    message.textContent='寵物已建檔並加入候診，尚未進入看診；可按「儲存並加入候診」查看，或確認原看診已完成後再接診。';return;
+                }
                 document.getElementById('quickNewPetModal').style.display='none';quickPetContext=null;
-                ownerCacheUpsertV908(ctx.owner,savedPet);alert('已替「'+ctx.owner.name+'」新增「'+name+'」。可搜尋新寵物後掛號，原看診內容保留。');
-            }catch(e){document.getElementById('quickPetMessage').textContent='新增失敗或結果待確認：'+e.message+'。請先查詢是否已新增，再重試。';}
-            finally{quickPetSaving=false;document.getElementById('quickPetSave').disabled=false;}
+            }catch(e){
+                if(scope===ownerScopeV908()&&ctx===quickPetContext){
+                    if(!ctx.savedPet&&e.code==='GB_RECORD_REJECTED')ctx.fingerprint=null;
+                    message.textContent=(ctx.savedPet?'寵物已建檔。':'新增失敗或結果待確認。')+' '+e.message+' 請保留原欄位重試或核對候診。';
+                }
+            }finally{quickPetSaving=false;for(const id of ['quickPetSave','quickPetWaiting','quickPetConsult'])document.getElementById(id).disabled=false;}
         }
         let medicalProductReturnContext=null,medicalProductOpening=false;
         async function goToProductsFromMedical(){
