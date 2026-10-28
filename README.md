@@ -1,3 +1,22 @@
+# genblue AH Django 整合版｜2026-10-28
+
+最新驗證：使用者核准本機安裝 Django 5.2.18 後，系統檢查與217項後端測試全數通過；詳見 DJANGO_VALIDATION-20261028.md。
+
+本版已改以與 Render 畫面 Live 提交一致的 `genblue-ah-django-main.zip`（34ae501b3ae7cca421905313f196761ba0fb28af）為基準。部署前找到的病歷／前端／manifest 衝突已合併，正式返回修改功能完整保留；詳見 DEPLOYMENT_COMPARISON-20261028.md。
+本次是病歷唯讀查核等待整理、待付款／配藥交接的 Django 邊界整合與圖庫載入整理；不是全部前端業務規則都已移入 Python。
+
+- 最新健康檢查版本：`/api/health/` → `django-workflow-20261028-r3`。
+- 本次不需要 Supabase SQL、Secrets、Storage、Edge Function 或環境變數變更。
+- 沒有部署正式站，也沒有連接或修改正式資料庫。
+- 實際範圍、保留項目、檢查結果與部署前版本核對請先看 `INTEGRATION-20261028.md`。
+- 本包與昨日原始包不同；部署前依 `CHANGESET-20261028.json` 比對合併，不能直接覆蓋後來已修改的檔案。
+- 本機無外部連線檢查：`python tools/verify_integration.py`。
+- `BUILD_INFO.json` 記錄本次整合；`BASELINE_BUILD_INFO.json` 只保留舊版建置紀錄，舊測試數字不是本次執行結果。
+
+以下為先前版本歷史說明，其中版本標記與「直接覆蓋」指示不適用於本次整合；以以上說明及最新整合文件為準。
+
+---
+
 # 2026-10-24 處方儲存轉結帳修正
 
 針對「儲存並前往結帳」減少一次重複的接診確認請求。

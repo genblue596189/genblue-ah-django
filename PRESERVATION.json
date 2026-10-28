@@ -1,0 +1,260 @@
+{
+  "baseline": "genblue-ah-django-main.zip",
+  "protected_files": [
+    {
+      "path": "web/index.html",
+      "sha256": "f2b56e9ccf304746181f1339f2b2b86ab7358089548f2f39eb0a875a19db3ca9"
+    },
+    {
+      "path": "clinic/visit_status.py",
+      "sha256": "0a2574cb7a3131d46fbfeb15eef6a7883a27d5f790e7d0287a8beac566f3df67"
+    },
+    {
+      "path": "clinic/prescription.py",
+      "sha256": "c3df763e6077e1f48955e32c4aab4cffda7adbaa3450e385baa1a3cd1db25553"
+    },
+    {
+      "path": "clinic/prescription_math.py",
+      "sha256": "52bdd659a423f22c1a318978a100972db031084d91619df71446009223b5bd83"
+    },
+    {
+      "path": "clinic/prescription_validation.py",
+      "sha256": "46725fcbd52e174463ced35fa908bebdfc04fc324cd880f0eade9169f773eb79"
+    },
+    {
+      "path": "assets/frontend/index/medicalReturnV918.js",
+      "sha256": "579934d03f33279f5a90791f2c5a13a2998a36ae20b72b88eaec8d63ba79785a"
+    },
+    {
+      "path": "assets/frontend/index/medicalReturnWithoutSaveV75_4.js",
+      "sha256": "d6b72202be1a3d1076d658d315c0ad95bf841602f90189281400f47e93632dfe"
+    },
+    {
+      "path": "assets/frontend/index/dispensingGroupsV75.js",
+      "sha256": "0f2adecddb56353a4a883fe5ee9ee489b4620dec7d0bd22b41f25b94595a55b6"
+    },
+    {
+      "path": "assets/frontend/index/familyFeaturesV74.js",
+      "sha256": "288ce7423d0c32ff07b02c1bf5fed2d32c7013df0683688868d62271e3e29ef9"
+    },
+    {
+      "path": "assets/frontend/index/block-73.js",
+      "sha256": "266802cbadeb79023a135c06795c91770d0650b465f39d735a88904874a7ee63"
+    },
+    {
+      "path": "database/FUNCTIONS.csv",
+      "sha256": "ab728ac492808aebb6b3fa625bea956bfa35cd072a4a2fa330a40697d4ddf9ba"
+    },
+    {
+      "path": "database/SHA256SUMS.txt",
+      "sha256": "f7567075d527b72a50e47f8367b34a8c60b1b541d0bf02f54a0e0c1547511b30"
+    },
+    {
+      "path": "database/BUILD-RESULT.json",
+      "sha256": "a2ad2ccbdab157277a516681eadd3b31910f27bdf3e493b6b152e28f69404008"
+    },
+    {
+      "path": "database/README.md",
+      "sha256": "68a1b35ccaa2569e11451e614991a2dad5c89e070df91914a56f88823cef5b0a"
+    },
+    {
+      "path": "database/00_install_empty.sql",
+      "sha256": "50bb1b793b4a5a443da7aa8734f9b9db64aa50d6dbf027ab38d1571d198b8871"
+    },
+    {
+      "path": "database/VALIDATION.json",
+      "sha256": "4a28078aae170f3f1c6572ee67c4c8845a20fa9c8d00aad00ebf6561d4770273"
+    },
+    {
+      "path": "database/OBJECTS.csv",
+      "sha256": "9c72980de2c1ae42c1f7ca6993c2a2f2f82498a7269d7c721531890870f1a6e6"
+    },
+    {
+      "path": "database/CHANGES.md",
+      "sha256": "c82b5d29cf353b8d9f9e602d80e8b93d85b593f97b4e509cc239767eee893d7a"
+    },
+    {
+      "path": "database/VALIDATION.md",
+      "sha256": "7ad4d812a9ca4b97e9e488d4183de685c8f58ec5f6695ffec8cf4daf9e1de6b9"
+    },
+    {
+      "path": "database/SOURCE-MANIFEST.json",
+      "sha256": "4868b1d0675ea3ada76d832550cdaae1b4893de1d61fd180a68b29ab9987de9d"
+    },
+    {
+      "path": "database/tools/build_install.py",
+      "sha256": "440a310e0bd0dea3948622f32993348fcf655e8c7b997b60054c9d9bf959b7dc"
+    },
+    {
+      "path": "database/tools/validate_sql.py",
+      "sha256": "2c40499702742bbb50c3744cad11af8b61ec0e68360bad27bf5def8ec659e253"
+    },
+    {
+      "path": "database/existing/02_family_pending_checkout_20261025.sql",
+      "sha256": "de3953494683038d00eb1a7851d67f916692a8ff69f1d5bf0d1815ac0265be96"
+    },
+    {
+      "path": "database/existing/01_optional_doctor_role.sql",
+      "sha256": "17a848aff49d9b1e129bb9bca289ae9bef503c78b9941a44b22e165435012ef7"
+    },
+    {
+      "path": "database/existing/03_line_booking_20261025.sql",
+      "sha256": "5fd16d5d77f38c9d99e7e1b0b52fe87f6c5e926aec31e483bc15ea9bfc2bb394"
+    },
+    {
+      "path": "database/existing/06_period_reconciliation_20261027.sql",
+      "sha256": "bc087a80360418c4be9d9848e16c800a40c7f31bda1fe525a897418cd095a4a5"
+    },
+    {
+      "path": "database/existing/05_vaccine_standard_fee_20261026.sql",
+      "sha256": "edbd0c2934b392a6ddbb0bc491d5e0bba0d08ada85b72d98e3fd156ed043e14a"
+    },
+    {
+      "path": "database/existing/00_read_only_catalog_audit.sql",
+      "sha256": "648ac7b442fffcb615a3bc9ff8e7b72e83bcc48c790d2d4a764229309cd1e039"
+    },
+    {
+      "path": "database/existing/04_line_notification_schedule.sql",
+      "sha256": "1f44f15904012fc035d3342896523ebb8458c9838dfc241201eab824f895ad0c"
+    },
+    {
+      "path": "database/modules/07_explicit_grants.sql",
+      "sha256": "79a66cc95f0b3b1bddabd349454b1ed178d23ead1f2aebc47b20befbc39e542b"
+    },
+    {
+      "path": "database/modules/02_functions_rowtype_prerequisite.sql",
+      "sha256": "07ad6553bbc6ed22a47c63352896d9c411b515f407ec7dd8f167bf5bc8e26614"
+    },
+    {
+      "path": "database/modules/06_rls_policies.sql",
+      "sha256": "ed1365390d5097b3cea499c817999d7ed62877d1b44edae8339e55ac2d9134b5"
+    },
+    {
+      "path": "database/modules/03_tables_views.sql",
+      "sha256": "255f35a9e5b4c36a642768483cc098f0a30482ee762d16d43d229cdd20057838"
+    },
+    {
+      "path": "database/modules/05_triggers_foreign_keys.sql",
+      "sha256": "77911c6b06efb2f802e850a7aae7de72e4ca721f6e777d8d6c36db8c1ca3dd10"
+    },
+    {
+      "path": "database/modules/09_storage.sql",
+      "sha256": "f29ff92857dd1529a7645a5a3ef6adc8e74f5edd1728be6f686e1885a2454897"
+    },
+    {
+      "path": "database/modules/00_preflight.sql",
+      "sha256": "40b977ceb22514e05d23d5f354e94a35a7675c90dd531e0b32dd25fbd91f7e83"
+    },
+    {
+      "path": "database/modules/04_constraints_indexes.sql",
+      "sha256": "b452bbf39da2984cd06629e2ac9a421939332be7056eaa6b2fc62c9bd02dab6c"
+    },
+    {
+      "path": "database/modules/01_session_schemas.sql",
+      "sha256": "d37bac6d73847a904ba0a5d2bda4957f74d83105819c6fc7661adf898662d11b"
+    },
+    {
+      "path": "database/modules/08_default_privileges.sql",
+      "sha256": "bbe4b4eb0953aa543125a8a888961a3c569f03ce8245a1475014d4d488c54a59"
+    },
+    {
+      "path": "database/modules/10_commit.sql",
+      "sha256": "e83e8c1f4ad612a5bd92067c29bdb9b1597fd541ebed41026079aabd6a4a5bf3"
+    },
+    {
+      "path": "database/source/storage_policies.json",
+      "sha256": "88c74d4fa95f07fd58edd11c85d40393228ed1756e2bb5e68439671901e8a5a1"
+    },
+    {
+      "path": "database/source/00_original_snapshot.sql",
+      "sha256": "6ec351b8d6dc98b7934e895602d7370814b8002f0019f94e01f560f00e40a1ea"
+    },
+    {
+      "path": "database/source/extensions.json",
+      "sha256": "a77e7bc0d85bae8e28af762b4d64fb75741f5f389ca9eba365fdbcf2e2914a93"
+    },
+    {
+      "path": "database/source/storage_buckets.json",
+      "sha256": "27704872ca0db783b336c139176e4e2ac4bde5613358eec7c9ed17043fd19555"
+    },
+    {
+      "path": "supabase/config.toml",
+      "sha256": "c1fe8b00e100d5e6e6443df42dd9dfb5bb3d9190d0f50d00a180aab43e649def"
+    },
+    {
+      "path": "supabase/functions/online-booking/index.ts",
+      "sha256": "c2e924cab0e09b123dfe95dfe7c51b9d6a603fce9e01b696d8907286cca7d88d"
+    }
+  ],
+  "pharmacy_ui_and_return_handlers_unchanged": true,
+  "protected_transforms": [
+    {
+      "path": "assets/frontend/index/block-01.js",
+      "baseline_sha256": "dee227ac2ceca3b1e138c0596fea0ecd15e016e770a48143e6391406b0e8f928",
+      "updated_sha256": "f3b6c1a528cf4e4962b6841e023c336323ed0db431eee4966113193fdf6789ed",
+      "constant": "JOURNAL_BRITISH_CAT",
+      "replacement_url": "/assets/frontend/images/9e266a96b76ba4f0ad28eb72ff97fcbdc873346b8c0977baaf6dd9eeacbc5bda.png?v=9e266a96b76ba4f0ad28eb72ff97fcbdc873346b8c0977baaf6dd9eeacbc5bda",
+      "original_data_uri_sha256": "be8ad3287f80f5c511cc88ee0bd40aad0744d7ac61ec2f3b8d6b4c73d7a4e5b3",
+      "image_path": "assets/frontend/images/9e266a96b76ba4f0ad28eb72ff97fcbdc873346b8c0977baaf6dd9eeacbc5bda.png",
+      "mime": "image/png",
+      "only_constant_url_replaced": true
+    }
+  ],
+  "medical_read_overlap": {
+    "path": "clinic/medical.py",
+    "change": "Overlap authenticated saved-record read with fresh claim verification; no write before both checks succeed",
+    "unchanged_function_bodies": [
+      "parameters",
+      "uuid_value",
+      "invalid_json_constant",
+      "rows",
+      "saved_record",
+      "matches",
+      "save_archive"
+    ],
+    "baseline_package": "genblue-ah-django-main.zip"
+  },
+  "protected_functions": [
+    {
+      "path": "clinic/medical.py",
+      "function": "parameters",
+      "ast_sha256": "6fb435958c5bfd5c871af7b22c24bbfc15884376c44b4d63ea0ec507e23fb225"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "uuid_value",
+      "ast_sha256": "5f1c3e03ed36e92b0bfc12c315788c2308cc7d6f130f9a6e5e324278a2a08c9c"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "invalid_json_constant",
+      "ast_sha256": "6fadf7bd61f93e36fc9a887466f41dcbc0ef141dbed8a847b1d2835db08519fa"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "rows",
+      "ast_sha256": "fa05c325ab7c2fdbbafc3edaae94747c0b42ab3b7d2e583d4787ff5d0795635b"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "saved_record",
+      "ast_sha256": "027ed1c83807e80759dafcb5033b7fff348212b23e94d2eb5661b5253b3035ec"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "matches",
+      "ast_sha256": "006db5532236d00147e19d5f7f4886a96af5067534f6be90059ac4f95bdd885e"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "save_archive",
+      "ast_sha256": "1e8fc4de3b89afcc31840d243ab730010573a07fb0286654444eda4831eb583a"
+    },
+    {
+      "path": "clinic/medical.py",
+      "function": "revise_record",
+      "ast_sha256": "cd1ba33c6972390ef457450176017c6ea06aa34be75e649448bc0f7c7a57f92f"
+    }
+  ],
+  "baseline_commit": "34ae501b3ae7cca421905313f196761ba0fb28af"
+}
