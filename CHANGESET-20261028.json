@@ -1,0 +1,2373 @@
+{
+  "edition": "django-workflow-20261028-r3",
+  "baseline_package": "genblue-ah-django-main.zip",
+  "baseline_commit": "34ae501b3ae7cca421905313f196761ba0fb28af",
+  "sql_required": false,
+  "deployed": false,
+  "files": [
+    {
+      "path": "ASSET_EXTRACTION.json",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ace89ce4fbb045d41e243644d8b41a14c1a520e4fece1b669778917a56b04685"
+    },
+    {
+      "path": "BASELINE_BUILD_INFO.json",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d81037346e24a00680a3aeda7e833a7cb2e5a77b53ea3f4694db5509be63b2d4"
+    },
+    {
+      "path": "BUILD_INFO.json",
+      "kind": "modified",
+      "baseline_sha256": "d81037346e24a00680a3aeda7e833a7cb2e5a77b53ea3f4694db5509be63b2d4",
+      "updated_sha256": "e56312f0622be2f7406d6255b008b0ed54f4f9c04828c351b58c8a20a1f2433c"
+    },
+    {
+      "path": "DEPLOYMENT_COMPARISON-20261028.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "fb4da3e3acd67faff47fc92d758e39776b65a53736994547e56ebf2c14379672"
+    },
+    {
+      "path": "DJANGO_VALIDATION-20261028.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ad621502e05fdcfd4e5cd59f686a407e47eaafb916e7a00195ef53e853e74b48"
+    },
+    {
+      "path": "FOUR_GOALS_STATUS.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "921125978e842fbc42b8a72cb0b58dc125c9f11d8ee5bf5458cd40bb92c1c291"
+    },
+    {
+      "path": "INTEGRATION-20261028.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a3074764d07ed86808bade2a2cafd6d66debb2ee5248cd3dbdd608b2b36cb3e0"
+    },
+    {
+      "path": "PRESERVATION.json",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c1718605657db59667b1b14d56c3ab3c7f919041b60296bff2a71a9914d02809"
+    },
+    {
+      "path": "README.md",
+      "kind": "modified",
+      "baseline_sha256": "6aad659be1cee3968cd376a9f635ca47e54ccd913224f44ec2857e822752ed1e",
+      "updated_sha256": "cf457ac78a195eacd4a1a50a0c0e890c1f5fcf9115f6fa0c4ad79b85abadd063"
+    },
+    {
+      "path": "UPDATE-20261027-summary-receipt.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2f39a2aaa07d6d46d89018c0998ca547205a01f1e3f9a7e09766b5b592ab278a"
+    },
+    {
+      "path": "VERSION_RECONCILIATION-20261028.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "770994895785587e95ba10498ebf32e084682ada48f20941cbd821291b400664"
+    },
+    {
+      "path": "WORKFLOW_MAP.json",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ac5299bc775f3a3a008c23348f886a86547dcb8a67e8319a1c9f106d63778eea"
+    },
+    {
+      "path": "WORKFLOW_MAP.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ebf7a3570d5245e0b681524359d843e7643f259ec8bad24446eb19bc72b90a2f"
+    },
+    {
+      "path": "assets/frontend/images/9e266a96b76ba4f0ad28eb72ff97fcbdc873346b8c0977baaf6dd9eeacbc5bda.png",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9e266a96b76ba4f0ad28eb72ff97fcbdc873346b8c0977baaf6dd9eeacbc5bda"
+    },
+    {
+      "path": "assets/frontend/images/breeds/013539c37fcdfdeaa5779d856673438f0dfe7b1c511daa610db29b02a8ed1841.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "013539c37fcdfdeaa5779d856673438f0dfe7b1c511daa610db29b02a8ed1841"
+    },
+    {
+      "path": "assets/frontend/images/breeds/016530d7ac64576cc567fe6b567b15cff1c442972b285af4b0d489c9d4249180.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "016530d7ac64576cc567fe6b567b15cff1c442972b285af4b0d489c9d4249180"
+    },
+    {
+      "path": "assets/frontend/images/breeds/01ce5f5bcadc78298211c5b873ef3962d83a17427f9a66b591a2199180c1afc7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "01ce5f5bcadc78298211c5b873ef3962d83a17427f9a66b591a2199180c1afc7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/01e5c2096cb5cc6aa8a100f43521128f55f6a1f83221bde31fb07840a35ff12a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "01e5c2096cb5cc6aa8a100f43521128f55f6a1f83221bde31fb07840a35ff12a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/0539c97c376480abf0b527186352f522566dbfe78059c62aede8090545ff105c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "0539c97c376480abf0b527186352f522566dbfe78059c62aede8090545ff105c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/05791855a1bf3f24d01fd1196ffd132beb6dc49c4f8b7df7e2230b9f13e2df42.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "05791855a1bf3f24d01fd1196ffd132beb6dc49c4f8b7df7e2230b9f13e2df42"
+    },
+    {
+      "path": "assets/frontend/images/breeds/07b33f57bcc7c0d5ae48c27883c4529a6a9b9d1d6bae0c2cbce00efad0a0514b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "07b33f57bcc7c0d5ae48c27883c4529a6a9b9d1d6bae0c2cbce00efad0a0514b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/089941a4fc525004416ab26d63a29b4978c27e1d8d5f8565ce2dc245e2ab237e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "089941a4fc525004416ab26d63a29b4978c27e1d8d5f8565ce2dc245e2ab237e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/08d25a5315629e1b320d87ab45a33b56f16e27f0076d447ed9690884dad77604.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "08d25a5315629e1b320d87ab45a33b56f16e27f0076d447ed9690884dad77604"
+    },
+    {
+      "path": "assets/frontend/images/breeds/08fa33d7ccadfccedb00c47c7d46f9605023c699cf617e6472bb7d81c25881e0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "08fa33d7ccadfccedb00c47c7d46f9605023c699cf617e6472bb7d81c25881e0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/096e5008d65847987b5ba4e854aee45dd5f56180a070550ed401a32aaca58a91.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "096e5008d65847987b5ba4e854aee45dd5f56180a070550ed401a32aaca58a91"
+    },
+    {
+      "path": "assets/frontend/images/breeds/097ef65d22ed5fe0bddcac10b24347c79ef004ab1bde8e8f2e1f35d2cff76322.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "097ef65d22ed5fe0bddcac10b24347c79ef004ab1bde8e8f2e1f35d2cff76322"
+    },
+    {
+      "path": "assets/frontend/images/breeds/0a6814116aba9a1a00bb3e6529da3b4923019fb01abf322d7fe01719831c3fd3.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "0a6814116aba9a1a00bb3e6529da3b4923019fb01abf322d7fe01719831c3fd3"
+    },
+    {
+      "path": "assets/frontend/images/breeds/0a9f76f57731c0572107a227294fc465c10ace41abe168b2d1071107cc49cc5c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "0a9f76f57731c0572107a227294fc465c10ace41abe168b2d1071107cc49cc5c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/0bd05b3816edb24c785dce3e119f526da5c613aecdfabd1d4a87c3d98d51b442.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "0bd05b3816edb24c785dce3e119f526da5c613aecdfabd1d4a87c3d98d51b442"
+    },
+    {
+      "path": "assets/frontend/images/breeds/0c46b992e367f654719765c9be204d78431cfafdf3d7a783a972702022eec19a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "0c46b992e367f654719765c9be204d78431cfafdf3d7a783a972702022eec19a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/10a7ee5e512f12183f61a40bcb6696859c547f6040f5f82abc74782c00c3a946.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "10a7ee5e512f12183f61a40bcb6696859c547f6040f5f82abc74782c00c3a946"
+    },
+    {
+      "path": "assets/frontend/images/breeds/114ad691e675a83000935e005d89578c92c9c12fccda635868a28ec79680dcca.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "114ad691e675a83000935e005d89578c92c9c12fccda635868a28ec79680dcca"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1209ab198b1110896e91daba0c7cd9d70bdb1506617f2a8b8113f58fa4ab79ff.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1209ab198b1110896e91daba0c7cd9d70bdb1506617f2a8b8113f58fa4ab79ff"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1263608b57fa590e9b374196b36bcd4f6fad4ab785209d101665129f5da72276.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1263608b57fa590e9b374196b36bcd4f6fad4ab785209d101665129f5da72276"
+    },
+    {
+      "path": "assets/frontend/images/breeds/128394a403fd8f98d937c4637eb24a4a2bfa9a645af67922d7dc5d11141d541e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "128394a403fd8f98d937c4637eb24a4a2bfa9a645af67922d7dc5d11141d541e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/12c6533aca4ab5ccf4f4f66e84112a7d61a758454d4a7157e6dddc94aa7d962c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "12c6533aca4ab5ccf4f4f66e84112a7d61a758454d4a7157e6dddc94aa7d962c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/133f5c3586ec54296216072f8d8428f73b907bdaeda5c7c4e314b1e9f58eae9e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "133f5c3586ec54296216072f8d8428f73b907bdaeda5c7c4e314b1e9f58eae9e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/139a20abd36af4b34cfc9cca8916ac41fea52e06afd5d50177be54e42365397d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "139a20abd36af4b34cfc9cca8916ac41fea52e06afd5d50177be54e42365397d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/13ec293c6929a07cc516544efb74907b57f106b546fa67cc79f06cd641dbc83e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "13ec293c6929a07cc516544efb74907b57f106b546fa67cc79f06cd641dbc83e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1500f467849fd88e12eab777febf17e91f16d598e021a5949d3ae4a8efb754e1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1500f467849fd88e12eab777febf17e91f16d598e021a5949d3ae4a8efb754e1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1522418ee288101993afeb25b99aa967996c9710fbe9c5155193a69f18235846.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1522418ee288101993afeb25b99aa967996c9710fbe9c5155193a69f18235846"
+    },
+    {
+      "path": "assets/frontend/images/breeds/153fb66018c4d6f88b5923b59b37d5a7349179da6a9d8db19dd79647fc30bff0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "153fb66018c4d6f88b5923b59b37d5a7349179da6a9d8db19dd79647fc30bff0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/15999369ac3678c8b978c06d0c476d426cbc34204d99ef8811c64e21af1bd482.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "15999369ac3678c8b978c06d0c476d426cbc34204d99ef8811c64e21af1bd482"
+    },
+    {
+      "path": "assets/frontend/images/breeds/15f56e742d614a19b8dbdbf0aff5f954c7a08bebe615a9e1029afe797e00f0d4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "15f56e742d614a19b8dbdbf0aff5f954c7a08bebe615a9e1029afe797e00f0d4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/15fc2ae366fb2df164ac582f9d8500ad8e084111b22173c17731371cdf796c47.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "15fc2ae366fb2df164ac582f9d8500ad8e084111b22173c17731371cdf796c47"
+    },
+    {
+      "path": "assets/frontend/images/breeds/16178a5781e9ad46a9d9ef3efe511022f5d232545dcae8610b1b145b9fbde0c1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "16178a5781e9ad46a9d9ef3efe511022f5d232545dcae8610b1b145b9fbde0c1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/169b17b1abc096eaa5b4ca709fb170838f70956c8dec40aa7b619b3947d57e39.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "169b17b1abc096eaa5b4ca709fb170838f70956c8dec40aa7b619b3947d57e39"
+    },
+    {
+      "path": "assets/frontend/images/breeds/172b0532b93d817de827e960ff161782f119ad4307e1a825f6f17292c1ea906f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "172b0532b93d817de827e960ff161782f119ad4307e1a825f6f17292c1ea906f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/176b94789a3e96ccf4be5f407889a3755d0157cbe3cad60f0bdf34c1bb1a8f0e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "176b94789a3e96ccf4be5f407889a3755d0157cbe3cad60f0bdf34c1bb1a8f0e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1776ef86de653581e2599582757ddfa89a8d8a880f3dc96a52be5cce10d3d779.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1776ef86de653581e2599582757ddfa89a8d8a880f3dc96a52be5cce10d3d779"
+    },
+    {
+      "path": "assets/frontend/images/breeds/17e7b3b5402525c9460db1c376d0607f06d7c2c72a56706d4c43da598375b9ef.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "17e7b3b5402525c9460db1c376d0607f06d7c2c72a56706d4c43da598375b9ef"
+    },
+    {
+      "path": "assets/frontend/images/breeds/184641eddf624b5616911c6f8a5776337fd56c0285cf99a6fe3275fe7212a046.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "184641eddf624b5616911c6f8a5776337fd56c0285cf99a6fe3275fe7212a046"
+    },
+    {
+      "path": "assets/frontend/images/breeds/18a45fb8b66bc509dedd05c836d4c2c4a4546850b7a7e6eb7dac7bbf99856351.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "18a45fb8b66bc509dedd05c836d4c2c4a4546850b7a7e6eb7dac7bbf99856351"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1be6fc6b91530fdbcb5ab19e53e95201bedb6c65b0dde6215b381a4d80cd7220.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1be6fc6b91530fdbcb5ab19e53e95201bedb6c65b0dde6215b381a4d80cd7220"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1c40ea8b57de1cdc852468acf93945f2e4a23e31b96bb38152681f229fa72a4f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1c40ea8b57de1cdc852468acf93945f2e4a23e31b96bb38152681f229fa72a4f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1c6c71cb381a74bcdeb69a1191226d88147523fbad5b28a09e9bc296bd480c10.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1c6c71cb381a74bcdeb69a1191226d88147523fbad5b28a09e9bc296bd480c10"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1cac6ca917b11a769c7d45ae0ae8eab76d875972801a611ad42492675cd644f7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1cac6ca917b11a769c7d45ae0ae8eab76d875972801a611ad42492675cd644f7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1d6822cb600a877a2f760bc8bc84b2793a006c8aaf28573a46bd3d5719291263.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1d6822cb600a877a2f760bc8bc84b2793a006c8aaf28573a46bd3d5719291263"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1d7e7b239ab20ae91bf620ae2b93d00abfdbc6c8d2719d5a61113ab0dff86bf4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1d7e7b239ab20ae91bf620ae2b93d00abfdbc6c8d2719d5a61113ab0dff86bf4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1e54ec85fddfad4a0b3d777a147c1625171e2f71c249b734307fd18a7a445663.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1e54ec85fddfad4a0b3d777a147c1625171e2f71c249b734307fd18a7a445663"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1e649abc43d05d1b5a592a895c0b49bc070280273fd8d937c5234136c17e5370.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1e649abc43d05d1b5a592a895c0b49bc070280273fd8d937c5234136c17e5370"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1f26c60e068b9e027c9c65b42d14dcb678b0b8a0a4e4c7accbe6f6406624250d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1f26c60e068b9e027c9c65b42d14dcb678b0b8a0a4e4c7accbe6f6406624250d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/1fd956f944103052ee88122d73e5dbc96c8de929114b78f617944feae5fba27a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "1fd956f944103052ee88122d73e5dbc96c8de929114b78f617944feae5fba27a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/216139a9d922fcf51308a97526e6992f5a2a8f93dc310c61c8cf68422ba41044.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "216139a9d922fcf51308a97526e6992f5a2a8f93dc310c61c8cf68422ba41044"
+    },
+    {
+      "path": "assets/frontend/images/breeds/21b3a012f0b0fc0c81d2580aa5fd0baa0d2efbda54e1d5ebd47266496fd3940e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "21b3a012f0b0fc0c81d2580aa5fd0baa0d2efbda54e1d5ebd47266496fd3940e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2262229994dfa6d9ce5113ae72c5b5790a46804bb521bec8df901a826265f843.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2262229994dfa6d9ce5113ae72c5b5790a46804bb521bec8df901a826265f843"
+    },
+    {
+      "path": "assets/frontend/images/breeds/23ab834fbafccd881b6cf3b7d66338895760b46a9864868bd0713e337d20c8a7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "23ab834fbafccd881b6cf3b7d66338895760b46a9864868bd0713e337d20c8a7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/23f5bdfb73270fb128e69f6c494bd23ac328dbdf6aaaa3f1fb1f8578a75f613b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "23f5bdfb73270fb128e69f6c494bd23ac328dbdf6aaaa3f1fb1f8578a75f613b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/24a3dfd276768cef117998e49f7b3c3711bce0198eb8824bd3ab4c64f49c6534.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "24a3dfd276768cef117998e49f7b3c3711bce0198eb8824bd3ab4c64f49c6534"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2509dd13b7910f68130517dae23a6ff650e80278d5473233212dcd6712ccf07d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2509dd13b7910f68130517dae23a6ff650e80278d5473233212dcd6712ccf07d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2600be273df17376206f376ba3b4c9363885496d18a2ad1053985d72e57e7f5b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2600be273df17376206f376ba3b4c9363885496d18a2ad1053985d72e57e7f5b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/27f16d8e43166252cce31a0997f71f00824f0f8e3e3ffbb08bec7fae7acb7076.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "27f16d8e43166252cce31a0997f71f00824f0f8e3e3ffbb08bec7fae7acb7076"
+    },
+    {
+      "path": "assets/frontend/images/breeds/291f0ab138c23f5c214f257b02b010418a85e163fd0dd90ba4e973beb9b6871f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "291f0ab138c23f5c214f257b02b010418a85e163fd0dd90ba4e973beb9b6871f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2a39d340a95b18044261bb33e58786dfd05aa6d0bcbda366bf6d26ba7658d1a3.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2a39d340a95b18044261bb33e58786dfd05aa6d0bcbda366bf6d26ba7658d1a3"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2a49853f6c0c99c9ebdfd204eb750a04aeb7ed3d6583101462f9298ce6d2da18.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2a49853f6c0c99c9ebdfd204eb750a04aeb7ed3d6583101462f9298ce6d2da18"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2afa99a3d391d7361d580aa2c9b7725e41cf4547b29a49e4bed69fa06a55d5ce.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2afa99a3d391d7361d580aa2c9b7725e41cf4547b29a49e4bed69fa06a55d5ce"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2b4e4f3a41c7de0bfa19456657afa06c0e8c82f7964102a7969eb9c86dcfeb49.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2b4e4f3a41c7de0bfa19456657afa06c0e8c82f7964102a7969eb9c86dcfeb49"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2c4c99a0b729c2cf7fdd5deb0725d2b2c17146d1d34c913bba79ec12c91136dd.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2c4c99a0b729c2cf7fdd5deb0725d2b2c17146d1d34c913bba79ec12c91136dd"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2ce1c38c1c6c2ac1fdeef45e36156b56921b033ea4ec3af59fb88f643d3494e4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2ce1c38c1c6c2ac1fdeef45e36156b56921b033ea4ec3af59fb88f643d3494e4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2ded399808e92e8d59d2cf27690f9b864ccabdfb77196f31fe9d0199ca27719f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2ded399808e92e8d59d2cf27690f9b864ccabdfb77196f31fe9d0199ca27719f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2df4d7cae6ed92fbcaf0477c1c2ea15446afc5284631698d7e474fc98bdfb21f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2df4d7cae6ed92fbcaf0477c1c2ea15446afc5284631698d7e474fc98bdfb21f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/2f026677b778a672467f783880f7efad3f1eb99845d7dd593885fa5d91533206.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2f026677b778a672467f783880f7efad3f1eb99845d7dd593885fa5d91533206"
+    },
+    {
+      "path": "assets/frontend/images/breeds/30684ff2dc1072877166b8819415416fdc1b1b030f2a5da27f1d7d4022e1f1bf.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "30684ff2dc1072877166b8819415416fdc1b1b030f2a5da27f1d7d4022e1f1bf"
+    },
+    {
+      "path": "assets/frontend/images/breeds/31a4d4dc765d2bf3863139578cc00871fe53ff0d116fcd602860e6e60abd3e21.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "31a4d4dc765d2bf3863139578cc00871fe53ff0d116fcd602860e6e60abd3e21"
+    },
+    {
+      "path": "assets/frontend/images/breeds/34524ea6e1b68bd69180cb242e921f06777b5d8e8abb4fc70cf33a5fef484576.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "34524ea6e1b68bd69180cb242e921f06777b5d8e8abb4fc70cf33a5fef484576"
+    },
+    {
+      "path": "assets/frontend/images/breeds/345759a3a26c06135af1d372c8c4ec038bcc28b467ef33b72c2a8579247e0ec8.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "345759a3a26c06135af1d372c8c4ec038bcc28b467ef33b72c2a8579247e0ec8"
+    },
+    {
+      "path": "assets/frontend/images/breeds/34742bd75c5c2dcf879d9bc4c4f669d93b9bf777d13706074feadd6a62830030.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "34742bd75c5c2dcf879d9bc4c4f669d93b9bf777d13706074feadd6a62830030"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3573abc0f83c996fad5421bdfe50694fe41efaf422cdff196554a12464309145.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3573abc0f83c996fad5421bdfe50694fe41efaf422cdff196554a12464309145"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3743b1d5386a3b1fbb91aad93d44ca84fa9eba5f4c95b65bc22900e0bc8e9613.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3743b1d5386a3b1fbb91aad93d44ca84fa9eba5f4c95b65bc22900e0bc8e9613"
+    },
+    {
+      "path": "assets/frontend/images/breeds/388dc0449cdee2d6a2f4951d4cda9ce55e4c29f91d5bbd9723f0258783edb842.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "388dc0449cdee2d6a2f4951d4cda9ce55e4c29f91d5bbd9723f0258783edb842"
+    },
+    {
+      "path": "assets/frontend/images/breeds/392b28e6f5f6311c02c1c8392bdc079e8acfbe06bca322f50451f59b7d12b9cb.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "392b28e6f5f6311c02c1c8392bdc079e8acfbe06bca322f50451f59b7d12b9cb"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3a9c7562e6a5b82b160d058c47e7f08afe59829fc2294ea38182f0920fb4fd0b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3a9c7562e6a5b82b160d058c47e7f08afe59829fc2294ea38182f0920fb4fd0b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3b56576036101e3441093971e763f69a216ff7702d31656e0563d77f941c4701.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3b56576036101e3441093971e763f69a216ff7702d31656e0563d77f941c4701"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3c2b2342966f53ef7cc2a0bf952425f2b60de9ba6545b079574ee46d39bcd89d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3c2b2342966f53ef7cc2a0bf952425f2b60de9ba6545b079574ee46d39bcd89d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3c790e7b2a0f31df08e362f55bfb1f99965909cb41c9176f1415c999052bede1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3c790e7b2a0f31df08e362f55bfb1f99965909cb41c9176f1415c999052bede1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3c8d890a9e1a3f9913db9fa8483f170611ca7d9e4644839556f8336546b6d296.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3c8d890a9e1a3f9913db9fa8483f170611ca7d9e4644839556f8336546b6d296"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3c90823af6644ad209e415ce0a27309ba24fd7b09cdaa2ec17d660adbe243514.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3c90823af6644ad209e415ce0a27309ba24fd7b09cdaa2ec17d660adbe243514"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3cf8db0de45a169ad5ab0c866671d12a3167be3aefd55234a839b1bb9e8b50bc.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3cf8db0de45a169ad5ab0c866671d12a3167be3aefd55234a839b1bb9e8b50bc"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3d5f286ea3ae189bf619d2240cbb34c2639fa2b1b38d4919a3a7e89eaedf7977.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3d5f286ea3ae189bf619d2240cbb34c2639fa2b1b38d4919a3a7e89eaedf7977"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3dfd1e1ab555a23717074b1e47aa1fddd19c3ce00613c5399a3e1ddd7bfc3cff.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3dfd1e1ab555a23717074b1e47aa1fddd19c3ce00613c5399a3e1ddd7bfc3cff"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3e2e7ad1c0db330bd54d0241a366c4429218355e42433976d904d6a339876a3f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3e2e7ad1c0db330bd54d0241a366c4429218355e42433976d904d6a339876a3f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3efb01e1560f20627cb74ed31511d030e4684be6a929d3880a89bd0d80c4a72a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3efb01e1560f20627cb74ed31511d030e4684be6a929d3880a89bd0d80c4a72a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/3f67ef386cb0c72c2f2b6f314bf546753cc4954a83c4db139a577517700772e9.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3f67ef386cb0c72c2f2b6f314bf546753cc4954a83c4db139a577517700772e9"
+    },
+    {
+      "path": "assets/frontend/images/breeds/40990e90dda7b593e20169bd54990f208566c787cf4672d308bf377e40481835.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "40990e90dda7b593e20169bd54990f208566c787cf4672d308bf377e40481835"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4113143297d6b6c89eba15ef1df6369540bbf39115175f611d62bf556ebf98eb.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4113143297d6b6c89eba15ef1df6369540bbf39115175f611d62bf556ebf98eb"
+    },
+    {
+      "path": "assets/frontend/images/breeds/421475d2a2503aedb723eab394d4efaeaa445cd0c702f0afcd0d615001f71917.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "421475d2a2503aedb723eab394d4efaeaa445cd0c702f0afcd0d615001f71917"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4291c6fe9a72a8c0772141ebe8b0212670727d7c5ef9c0e1541184a826fefd01.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4291c6fe9a72a8c0772141ebe8b0212670727d7c5ef9c0e1541184a826fefd01"
+    },
+    {
+      "path": "assets/frontend/images/breeds/42c07f56f9c35cfe74bbfba2fd0ca32ff384e133ce320376fc256eae05fffcb5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "42c07f56f9c35cfe74bbfba2fd0ca32ff384e133ce320376fc256eae05fffcb5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/42fe195ffa7a41a2d4640d521e393f2adf81b7c0cfc5a542b9ee62cb84783ec7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "42fe195ffa7a41a2d4640d521e393f2adf81b7c0cfc5a542b9ee62cb84783ec7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/438d2e0a5b5793fa427ca933b7ab1a77616bfa51e1bdb008d8ee3dc25c5a992c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "438d2e0a5b5793fa427ca933b7ab1a77616bfa51e1bdb008d8ee3dc25c5a992c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/43a2358484255abe009f90de2abd98b1756087e09246786fbc44bfcdf87e216b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "43a2358484255abe009f90de2abd98b1756087e09246786fbc44bfcdf87e216b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/43b253bb8adc361e0b69a285462ff78c1e86de1877f96be8aedf078e6fdab6be.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "43b253bb8adc361e0b69a285462ff78c1e86de1877f96be8aedf078e6fdab6be"
+    },
+    {
+      "path": "assets/frontend/images/breeds/43f103556f2d7b21b8e0a85b906bf7399afb7ea1a50949f76938db67f74957f9.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "43f103556f2d7b21b8e0a85b906bf7399afb7ea1a50949f76938db67f74957f9"
+    },
+    {
+      "path": "assets/frontend/images/breeds/45ed84e19360bba002672972398e30d5f9d82e378449ff305c1f5b44575313a4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "45ed84e19360bba002672972398e30d5f9d82e378449ff305c1f5b44575313a4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/466dbcb55e11e0e223bd9c8b591acd9608983d82d8e18b84a607996790fe3fc0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "466dbcb55e11e0e223bd9c8b591acd9608983d82d8e18b84a607996790fe3fc0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4694b723ed90adb5070788ad067665c1511670d0fcc3fd247720733272dcb593.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4694b723ed90adb5070788ad067665c1511670d0fcc3fd247720733272dcb593"
+    },
+    {
+      "path": "assets/frontend/images/breeds/478134abe6eaa0f27d26c45094bfb16131061e685fb2d236211ec61b271965df.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "478134abe6eaa0f27d26c45094bfb16131061e685fb2d236211ec61b271965df"
+    },
+    {
+      "path": "assets/frontend/images/breeds/47c4e6e44b539cd46900f9b5ad2ee9134ab555929db4de09fb3342016f6c64f3.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "47c4e6e44b539cd46900f9b5ad2ee9134ab555929db4de09fb3342016f6c64f3"
+    },
+    {
+      "path": "assets/frontend/images/breeds/48174137662bf768a62ece60158a4003b08a93dc18e554ed3416e6042ee96631.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "48174137662bf768a62ece60158a4003b08a93dc18e554ed3416e6042ee96631"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4883ded8710a5585a6b5fde84124e606510c7b57e41a894ef1aa07c2d245ecdb.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4883ded8710a5585a6b5fde84124e606510c7b57e41a894ef1aa07c2d245ecdb"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4901a490a04e9ea330aa891cfbbd8e2db996d5675c800d4a72d25219f5942e1a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4901a490a04e9ea330aa891cfbbd8e2db996d5675c800d4a72d25219f5942e1a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/493add543c10d7c3750641ef3a1bd6c890bac84c908a490c37bafd2a7c77ea27.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "493add543c10d7c3750641ef3a1bd6c890bac84c908a490c37bafd2a7c77ea27"
+    },
+    {
+      "path": "assets/frontend/images/breeds/49828b7ae38c9b010020127c3d44312ea3ccc6f5b169b93c15d70d41361620f5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "49828b7ae38c9b010020127c3d44312ea3ccc6f5b169b93c15d70d41361620f5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4a36a41c615db36f885c3511600e4022e6bb290316342c5d935b59e797b098fa.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4a36a41c615db36f885c3511600e4022e6bb290316342c5d935b59e797b098fa"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4b83472fbb60dd99a6bc68fe7a99255ae2b9bca71c693d020265da7ab85b51d3.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4b83472fbb60dd99a6bc68fe7a99255ae2b9bca71c693d020265da7ab85b51d3"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4ba3be4dc7eb9a2d2272ede0409e2a422620391c9796fd80a5e242aeeebcdbab.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4ba3be4dc7eb9a2d2272ede0409e2a422620391c9796fd80a5e242aeeebcdbab"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4c70a89ead4cc85a6b3c1fce3a25b205691de950e56d7467dff881e4e9d02913.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4c70a89ead4cc85a6b3c1fce3a25b205691de950e56d7467dff881e4e9d02913"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4c8484673d85974d64aca69c8daae3cb477e5785e4e899da8f12e69d6895d6a3.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4c8484673d85974d64aca69c8daae3cb477e5785e4e899da8f12e69d6895d6a3"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4c85919c29d80fbfc7ca7c6cd1933ad3f07d734093ee2f0f83e3bde0faf02fa0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4c85919c29d80fbfc7ca7c6cd1933ad3f07d734093ee2f0f83e3bde0faf02fa0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4ca80ba454d26feb88e2a31c3f68f3704272ba9ef41e32ce3b8d5b0987c0f378.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4ca80ba454d26feb88e2a31c3f68f3704272ba9ef41e32ce3b8d5b0987c0f378"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4d4e6cfea2405c7ca82600c8f76870287344c8cfcd4ab40986ddf818df2259a6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4d4e6cfea2405c7ca82600c8f76870287344c8cfcd4ab40986ddf818df2259a6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/4dfec0747dea9a5e925884f2f11a2333add3e329bf400819fe9c8f486afc217d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4dfec0747dea9a5e925884f2f11a2333add3e329bf400819fe9c8f486afc217d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/50e7d46483e87ae01171f810fafd0ff184d2bb62e2effbbe586f38ff10a5ced0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "50e7d46483e87ae01171f810fafd0ff184d2bb62e2effbbe586f38ff10a5ced0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/51d19a805593fca763d04b7c63da9ac0ef06238feb6f0889a5793f007785ea39.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "51d19a805593fca763d04b7c63da9ac0ef06238feb6f0889a5793f007785ea39"
+    },
+    {
+      "path": "assets/frontend/images/breeds/51f00c0d6328d2793ab3e8621fdf830b071e4e65557f5b5b3b358f40cc15a89e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "51f00c0d6328d2793ab3e8621fdf830b071e4e65557f5b5b3b358f40cc15a89e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/531dc047c17833027e12726e0306341a981fcaed7718c8e27d90c2dc2802299b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "531dc047c17833027e12726e0306341a981fcaed7718c8e27d90c2dc2802299b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/546a613264c1ccdb3f489b331fdb006289aeeb37942c73a71f33e96b3df00aa6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "546a613264c1ccdb3f489b331fdb006289aeeb37942c73a71f33e96b3df00aa6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/54e16e3f00e83320ce2dd3e0c6fe6e7a4d37c9666f58c66f13cfbf9a0c3ab482.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "54e16e3f00e83320ce2dd3e0c6fe6e7a4d37c9666f58c66f13cfbf9a0c3ab482"
+    },
+    {
+      "path": "assets/frontend/images/breeds/558ff93d6064f40dbdbd2171d04350b94f96d82a8178b306b3a939c5bd8411db.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "558ff93d6064f40dbdbd2171d04350b94f96d82a8178b306b3a939c5bd8411db"
+    },
+    {
+      "path": "assets/frontend/images/breeds/567b9ae53ec1375fa0d60f84d15ee065946367ee5d9065dfffd0d80ec9308225.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "567b9ae53ec1375fa0d60f84d15ee065946367ee5d9065dfffd0d80ec9308225"
+    },
+    {
+      "path": "assets/frontend/images/breeds/57572f3467c87fb1e2573348eb89d8e40d74f66c4b62e0dc3421e95f801314e0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "57572f3467c87fb1e2573348eb89d8e40d74f66c4b62e0dc3421e95f801314e0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/57619999439aeb1d1b3b56f8af2d5fb253e98b5e2c8185afbd0a397d553a3160.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "57619999439aeb1d1b3b56f8af2d5fb253e98b5e2c8185afbd0a397d553a3160"
+    },
+    {
+      "path": "assets/frontend/images/breeds/578e8055fd6c99175047c206813f3452962fe235c38c2cfd2a4b447587716d58.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "578e8055fd6c99175047c206813f3452962fe235c38c2cfd2a4b447587716d58"
+    },
+    {
+      "path": "assets/frontend/images/breeds/58cf3d6e07ead1e8d2ee38ddc3f636d0fc6e195853f69882e3eee1ae761419c2.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "58cf3d6e07ead1e8d2ee38ddc3f636d0fc6e195853f69882e3eee1ae761419c2"
+    },
+    {
+      "path": "assets/frontend/images/breeds/58e445fca750c7a9931ac6649577dd69a534839a11cdbea33ca31ea9cad3b145.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "58e445fca750c7a9931ac6649577dd69a534839a11cdbea33ca31ea9cad3b145"
+    },
+    {
+      "path": "assets/frontend/images/breeds/58ec3103ac0162b252f3038735cc19c738b393a9ab0e58e29e4a1782866c8d89.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "58ec3103ac0162b252f3038735cc19c738b393a9ab0e58e29e4a1782866c8d89"
+    },
+    {
+      "path": "assets/frontend/images/breeds/58fab6e179a916f41fbd2fa8d72715aaf1b20da154c17ded956172e463498699.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "58fab6e179a916f41fbd2fa8d72715aaf1b20da154c17ded956172e463498699"
+    },
+    {
+      "path": "assets/frontend/images/breeds/5a87b027f86be00f9dcbe86bb35bc3c81a0251b303e3dccea4e02df303c213a5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "5a87b027f86be00f9dcbe86bb35bc3c81a0251b303e3dccea4e02df303c213a5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/5bbbb959379c2c3bb6b7cff3f1fbf67eec56c4f9bf3a54f7c1e6f625fb06df50.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "5bbbb959379c2c3bb6b7cff3f1fbf67eec56c4f9bf3a54f7c1e6f625fb06df50"
+    },
+    {
+      "path": "assets/frontend/images/breeds/5c83d8532c76bf1427c1b7d18bf266e5cd7c50d2c885b7dbfca172d7812c9d2b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "5c83d8532c76bf1427c1b7d18bf266e5cd7c50d2c885b7dbfca172d7812c9d2b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/5d7fb1a7952d7007a27a5e491102fcc3e7524884e134e29e1f2bb5778f4fbc94.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "5d7fb1a7952d7007a27a5e491102fcc3e7524884e134e29e1f2bb5778f4fbc94"
+    },
+    {
+      "path": "assets/frontend/images/breeds/5e2575ba4194b1a922ce1b36d4026cb20df1d1ced1fa7be1b105e14abe15a62a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "5e2575ba4194b1a922ce1b36d4026cb20df1d1ced1fa7be1b105e14abe15a62a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/5ea988e1d4ad53e6be9b71053a15b6052ef828e734ee2ba6e52bba917b61fd09.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "5ea988e1d4ad53e6be9b71053a15b6052ef828e734ee2ba6e52bba917b61fd09"
+    },
+    {
+      "path": "assets/frontend/images/breeds/61a148e523255f36001018b4dadf173fae3dada39c2cd5caac86f3c444fb9208.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "61a148e523255f36001018b4dadf173fae3dada39c2cd5caac86f3c444fb9208"
+    },
+    {
+      "path": "assets/frontend/images/breeds/61bc1352c7027abe00da6d067f02d50c258d3ccd8fc9f46b02f4c8d31d5a85f6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "61bc1352c7027abe00da6d067f02d50c258d3ccd8fc9f46b02f4c8d31d5a85f6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6253d40402b00ae41cebb5c80c720e9d54a14d90b146842daf38bff38ad86a0c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6253d40402b00ae41cebb5c80c720e9d54a14d90b146842daf38bff38ad86a0c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/628c60c7651f9f2b7a023a356cd05d39efb63d89dbde25cea091943dc342806d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "628c60c7651f9f2b7a023a356cd05d39efb63d89dbde25cea091943dc342806d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/643e128aedd760ee6ffd9a3e5db0ef1c1409f1910c8b304f7bc25f9d7c7d90bc.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "643e128aedd760ee6ffd9a3e5db0ef1c1409f1910c8b304f7bc25f9d7c7d90bc"
+    },
+    {
+      "path": "assets/frontend/images/breeds/654d369d7386ebcbf94eb1ffe96c46ccdd22618e52557ecd61ec055eb195eee7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "654d369d7386ebcbf94eb1ffe96c46ccdd22618e52557ecd61ec055eb195eee7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/65e47080e9dde28059b63f21fbf5e26344dd2fb7172ff41e4e7aaf6a0735f0be.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "65e47080e9dde28059b63f21fbf5e26344dd2fb7172ff41e4e7aaf6a0735f0be"
+    },
+    {
+      "path": "assets/frontend/images/breeds/66974c5ad7185473d7e3a247091bd745a3e6e8384a65455173984cbf540415ea.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "66974c5ad7185473d7e3a247091bd745a3e6e8384a65455173984cbf540415ea"
+    },
+    {
+      "path": "assets/frontend/images/breeds/66ce41ed7703bb4dcf1c6e71f3b5a2b3b56d043bc8caf490714bf72c6c8f5d30.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "66ce41ed7703bb4dcf1c6e71f3b5a2b3b56d043bc8caf490714bf72c6c8f5d30"
+    },
+    {
+      "path": "assets/frontend/images/breeds/688d6239dd2c0fe5f723a1241c96cb7a978ab050c856ff41bb5d98c763e5cd83.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "688d6239dd2c0fe5f723a1241c96cb7a978ab050c856ff41bb5d98c763e5cd83"
+    },
+    {
+      "path": "assets/frontend/images/breeds/68c61336bee9f0844771c0a4cfd8b50cc48b446c266b6c8f19b22bf80ad27c15.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "68c61336bee9f0844771c0a4cfd8b50cc48b446c266b6c8f19b22bf80ad27c15"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6975e0f4ae7c421bbcea4b00f7fc33cd40eaae757223745d35e7cc5b90a0f337.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6975e0f4ae7c421bbcea4b00f7fc33cd40eaae757223745d35e7cc5b90a0f337"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6b79dd86b4d26902cdc66b16bdb107f766277e5982cb82880b1e3707c89eb06f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6b79dd86b4d26902cdc66b16bdb107f766277e5982cb82880b1e3707c89eb06f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6d098efe5d81b2107e18d73b266b96cd5bfae0d8f730849cc30594b74ea5009d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6d098efe5d81b2107e18d73b266b96cd5bfae0d8f730849cc30594b74ea5009d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6d71282e134e800ec9e0366437344e1dedc856a00b13073c88a11d2a4f0bfde0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6d71282e134e800ec9e0366437344e1dedc856a00b13073c88a11d2a4f0bfde0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6f16c900e977c945a9168fa8ddc63dc8f1a1d4587b084f5e96da987fa5b4f83f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6f16c900e977c945a9168fa8ddc63dc8f1a1d4587b084f5e96da987fa5b4f83f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6f270fc410e312dc0b261b4884ceb58cdf24ff60a81c672343c0aedcc4b40d6c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6f270fc410e312dc0b261b4884ceb58cdf24ff60a81c672343c0aedcc4b40d6c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6f46295d077b14ea1e92163344686593310a9e87fde9be7faa68567b089faed5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6f46295d077b14ea1e92163344686593310a9e87fde9be7faa68567b089faed5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/6f67b2b1d9d886eb801adb80f95208ad49ea1a199fce043d5db1ac3cb069acc2.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6f67b2b1d9d886eb801adb80f95208ad49ea1a199fce043d5db1ac3cb069acc2"
+    },
+    {
+      "path": "assets/frontend/images/breeds/70954553aab5e0275aa127e13295031d8e347bcbc3419c1a070430ce63720d7f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "70954553aab5e0275aa127e13295031d8e347bcbc3419c1a070430ce63720d7f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7127023e1f842295aa0043e6f811535ab18700487212148e6a9dbe781cae74cb.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7127023e1f842295aa0043e6f811535ab18700487212148e6a9dbe781cae74cb"
+    },
+    {
+      "path": "assets/frontend/images/breeds/71cba9aaf897463e373e75131991a00ebf00fdb2029c624a16cf68dac4d80def.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "71cba9aaf897463e373e75131991a00ebf00fdb2029c624a16cf68dac4d80def"
+    },
+    {
+      "path": "assets/frontend/images/breeds/71cc9bba9ab5b4afa6627e163b77df63a82e209822960b08c58614f2b0936312.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "71cc9bba9ab5b4afa6627e163b77df63a82e209822960b08c58614f2b0936312"
+    },
+    {
+      "path": "assets/frontend/images/breeds/72929d44f8f5f497eabe497e26f1dfe37fbbd0160aef6c1ba58c49b3191fadff.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "72929d44f8f5f497eabe497e26f1dfe37fbbd0160aef6c1ba58c49b3191fadff"
+    },
+    {
+      "path": "assets/frontend/images/breeds/73b8ebae56a93a2feb2c46ef3ceb0c67f1a1c0ce9c06cafc5a9eed5f01d28105.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "73b8ebae56a93a2feb2c46ef3ceb0c67f1a1c0ce9c06cafc5a9eed5f01d28105"
+    },
+    {
+      "path": "assets/frontend/images/breeds/74bb2fd4566733842d4f6d560a91965e7efd846eac90ac41f1b03a5eaccf2d23.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "74bb2fd4566733842d4f6d560a91965e7efd846eac90ac41f1b03a5eaccf2d23"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7529bea6d85bb2559e1e7abfcdb2e5203b4d6b2191557bc7089d9b63c554904f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7529bea6d85bb2559e1e7abfcdb2e5203b4d6b2191557bc7089d9b63c554904f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/76b2eaf3666c811531cbc51e1f73a9edfac2c5302162ac26b78f7e8fb655adce.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "76b2eaf3666c811531cbc51e1f73a9edfac2c5302162ac26b78f7e8fb655adce"
+    },
+    {
+      "path": "assets/frontend/images/breeds/771a60283372228a2b8b96717fc0a29528228ba3b8bdc5ddb949315b8356ac23.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "771a60283372228a2b8b96717fc0a29528228ba3b8bdc5ddb949315b8356ac23"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7748e14c23cedfe52bc5b60aa2a1d009cb7591cb14f7e16d64d3a8d96a21e6bc.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7748e14c23cedfe52bc5b60aa2a1d009cb7591cb14f7e16d64d3a8d96a21e6bc"
+    },
+    {
+      "path": "assets/frontend/images/breeds/77bdec3acd1a611f4202c0b93edfeec9428b6a353a136430398d164b7d0e2dde.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "77bdec3acd1a611f4202c0b93edfeec9428b6a353a136430398d164b7d0e2dde"
+    },
+    {
+      "path": "assets/frontend/images/breeds/783a23a4fa4e307d57ef997f5c621aef876598494f689a73b4f541a9a5323bf2.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "783a23a4fa4e307d57ef997f5c621aef876598494f689a73b4f541a9a5323bf2"
+    },
+    {
+      "path": "assets/frontend/images/breeds/795181c6aec842bbcc89322d33d42b895aad5b447c306e2df7b0676d6bae0fe2.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "795181c6aec842bbcc89322d33d42b895aad5b447c306e2df7b0676d6bae0fe2"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7d21b4df11771f97de6954eae826ea6a47124e96aef92d1bd4a76c9921312f73.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7d21b4df11771f97de6954eae826ea6a47124e96aef92d1bd4a76c9921312f73"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7d71cfbc5db49d134814c3b07ef9b363f795be91b55ac12e18d9845f005e845c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7d71cfbc5db49d134814c3b07ef9b363f795be91b55ac12e18d9845f005e845c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7de66a373d336bda51358a97cb572971e19c60b10913e0f15aa4ead0a1544642.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7de66a373d336bda51358a97cb572971e19c60b10913e0f15aa4ead0a1544642"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7dfc3495e0b67665c81420e88a33c75917fa4ebdd28f6ae4ee961c93ebf66ede.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7dfc3495e0b67665c81420e88a33c75917fa4ebdd28f6ae4ee961c93ebf66ede"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7e6afdb491d3c0d566ec141e612692a0f88c51689f42bd4c4a3bf763c0b2ef4d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7e6afdb491d3c0d566ec141e612692a0f88c51689f42bd4c4a3bf763c0b2ef4d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7ed37f3c48c02807631ab0476ef3ae84439a959b199d3c6eaea06069251a6dae.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7ed37f3c48c02807631ab0476ef3ae84439a959b199d3c6eaea06069251a6dae"
+    },
+    {
+      "path": "assets/frontend/images/breeds/7fc81032549f0d2ae80a368f62d04a22c6610180bd218d9646d2d127f4f156fb.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "7fc81032549f0d2ae80a368f62d04a22c6610180bd218d9646d2d127f4f156fb"
+    },
+    {
+      "path": "assets/frontend/images/breeds/802e887352b0abdb4ec3260423de1608195985ad89417664d294536bea6329ec.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "802e887352b0abdb4ec3260423de1608195985ad89417664d294536bea6329ec"
+    },
+    {
+      "path": "assets/frontend/images/breeds/80376dcf3ea23057dd5f12a57b66b0303433986be17e8ade6f7e9f57a560cc75.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "80376dcf3ea23057dd5f12a57b66b0303433986be17e8ade6f7e9f57a560cc75"
+    },
+    {
+      "path": "assets/frontend/images/breeds/80cde2633223698c5586b22dc5747f73365586b36cdf3df8bd9be05e7dcd8aec.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "80cde2633223698c5586b22dc5747f73365586b36cdf3df8bd9be05e7dcd8aec"
+    },
+    {
+      "path": "assets/frontend/images/breeds/80e83442641c34030793df09e40498dd8f7b5dc12d4f015ad8d6dc498243e375.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "80e83442641c34030793df09e40498dd8f7b5dc12d4f015ad8d6dc498243e375"
+    },
+    {
+      "path": "assets/frontend/images/breeds/81a0f02ec92a2fa588964cfdb6aeb3f43e5a7154c291357f2872ed1e952f6d4e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "81a0f02ec92a2fa588964cfdb6aeb3f43e5a7154c291357f2872ed1e952f6d4e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/81b1246cd03f802699642b98b350ebf452f3f795540afb854c424c83925b77be.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "81b1246cd03f802699642b98b350ebf452f3f795540afb854c424c83925b77be"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8221ebf7ba33e39bd0a903ed5d884932ecb5ce26d562fd1361d468f8638fee1a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8221ebf7ba33e39bd0a903ed5d884932ecb5ce26d562fd1361d468f8638fee1a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/83a691d7d296049a6a47604a76c8af5d0898b1074b69439d6b310a272e3dcffa.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "83a691d7d296049a6a47604a76c8af5d0898b1074b69439d6b310a272e3dcffa"
+    },
+    {
+      "path": "assets/frontend/images/breeds/847b3d6584c3aee958239d20e851930646312b20ba71d52fe569d7957e6786ff.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "847b3d6584c3aee958239d20e851930646312b20ba71d52fe569d7957e6786ff"
+    },
+    {
+      "path": "assets/frontend/images/breeds/871fa2134ae1d767c93583afe22abb4ff9b58d99f43141ebaff9fa444dc412a5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "871fa2134ae1d767c93583afe22abb4ff9b58d99f43141ebaff9fa444dc412a5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/872816bae3f563b97dfc1305798e634a3b4f10dcb7fc78c3e5c84dd801081498.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "872816bae3f563b97dfc1305798e634a3b4f10dcb7fc78c3e5c84dd801081498"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8892cfbc1972d3f825cc32705435477ff842a47fff202a8a2138a7edbaf66a6f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8892cfbc1972d3f825cc32705435477ff842a47fff202a8a2138a7edbaf66a6f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/891610d09bd9bc8e29062b12282e9124b1b9079e45f45a5c889bb50b9485825b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "891610d09bd9bc8e29062b12282e9124b1b9079e45f45a5c889bb50b9485825b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8a79c2b0a534f4ce3f9e9e8a0ff4f0eb2d67049f09b320b7945318f59f8efa46.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8a79c2b0a534f4ce3f9e9e8a0ff4f0eb2d67049f09b320b7945318f59f8efa46"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8c65962f5aa8e1e7e9434d1732adfe0cceae19e282fd59fbe4e608dd00ad52d8.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8c65962f5aa8e1e7e9434d1732adfe0cceae19e282fd59fbe4e608dd00ad52d8"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8d163eaf1173c5ba12a83fb028d5747d7a965ad61c35bd8d61db2c3207ed5e06.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8d163eaf1173c5ba12a83fb028d5747d7a965ad61c35bd8d61db2c3207ed5e06"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8d50868c9a2747921b4c8e2a5efc8cb43ed517215a53dd0a3ff7f45fd39565dd.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8d50868c9a2747921b4c8e2a5efc8cb43ed517215a53dd0a3ff7f45fd39565dd"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8d6fc68b6951c88c9e4f2d35df00ac94e4fe2c2b2ff20ba58980fa59e86286f6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8d6fc68b6951c88c9e4f2d35df00ac94e4fe2c2b2ff20ba58980fa59e86286f6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8d7c1e4c40f58b171ecfd56e94531f57961d7ccd6c628c032176575e9b8400ae.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8d7c1e4c40f58b171ecfd56e94531f57961d7ccd6c628c032176575e9b8400ae"
+    },
+    {
+      "path": "assets/frontend/images/breeds/8f763ac79eddae946327e5f46de3ee67e5dd9611fdc986d60b1f2b2386a58c28.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "8f763ac79eddae946327e5f46de3ee67e5dd9611fdc986d60b1f2b2386a58c28"
+    },
+    {
+      "path": "assets/frontend/images/breeds/91465bd3d4b5d6e1e1a67dd470bf687ed634e18f8f5572677314a8d91f2bbf15.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "91465bd3d4b5d6e1e1a67dd470bf687ed634e18f8f5572677314a8d91f2bbf15"
+    },
+    {
+      "path": "assets/frontend/images/breeds/919819fe6e0b9171cc1c6fce3ac0b868d5df374d28944b778704ab7b963b7026.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "919819fe6e0b9171cc1c6fce3ac0b868d5df374d28944b778704ab7b963b7026"
+    },
+    {
+      "path": "assets/frontend/images/breeds/91a866f33eab548daf8a89ad96e15fd279464a86791301c23e6bfc7f69633e02.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "91a866f33eab548daf8a89ad96e15fd279464a86791301c23e6bfc7f69633e02"
+    },
+    {
+      "path": "assets/frontend/images/breeds/930df665c8357894faa727f3905fffb028b9c5dc061e835ac1b8a16808265425.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "930df665c8357894faa727f3905fffb028b9c5dc061e835ac1b8a16808265425"
+    },
+    {
+      "path": "assets/frontend/images/breeds/954d2363aaa50fc96c5fbf50996e2fb75ceccd464c5c24cb362328177106dae5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "954d2363aaa50fc96c5fbf50996e2fb75ceccd464c5c24cb362328177106dae5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/96800f215b330aaf384c6374c7a43430fb7826d3f7c756b37b495e66a36bbd4c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "96800f215b330aaf384c6374c7a43430fb7826d3f7c756b37b495e66a36bbd4c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/97525bb4d11d233c4a00bef5a62d942dcc26be0eb7ccf37ea019496f92e1347d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "97525bb4d11d233c4a00bef5a62d942dcc26be0eb7ccf37ea019496f92e1347d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/981a451a1338fc86bea59b89535f3e534cac74705aa56392bb41eb361b266787.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "981a451a1338fc86bea59b89535f3e534cac74705aa56392bb41eb361b266787"
+    },
+    {
+      "path": "assets/frontend/images/breeds/98c9b5175a3f734990f73612e7481a5b9b6c90a3e0990d058cce7b0667d93cb0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "98c9b5175a3f734990f73612e7481a5b9b6c90a3e0990d058cce7b0667d93cb0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9943a51c02bafc7050cc193b1275f13d76d6f88c4fb560d0e47e393c221c69ea.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9943a51c02bafc7050cc193b1275f13d76d6f88c4fb560d0e47e393c221c69ea"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9956940858e94a5c98b412bf2aacfc09362f26dbd5b2460fb7661d37eb335efb.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9956940858e94a5c98b412bf2aacfc09362f26dbd5b2460fb7661d37eb335efb"
+    },
+    {
+      "path": "assets/frontend/images/breeds/99c5758084843f7a2aa7af0db18ddd31d955b2eeea9c1b0f3ab134abc12abaf4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "99c5758084843f7a2aa7af0db18ddd31d955b2eeea9c1b0f3ab134abc12abaf4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/99c6cafa2055146d35455d6eb5e43d8a323d6c51d614ddcaeb2e34de9da4244b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "99c6cafa2055146d35455d6eb5e43d8a323d6c51d614ddcaeb2e34de9da4244b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9a3afc32624180a20e34fb4366181b46d3b7cd9304b2830ea4686e36cb30b851.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9a3afc32624180a20e34fb4366181b46d3b7cd9304b2830ea4686e36cb30b851"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9a3d44246427991b7e0ed9e7d1c9fe0ebdd5c40261bd883eb536a8b2399bd48f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9a3d44246427991b7e0ed9e7d1c9fe0ebdd5c40261bd883eb536a8b2399bd48f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9ab813d180f77a2b38d1fe65a80372024a1fccd8bb444ee061dc1cfab0cc4210.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9ab813d180f77a2b38d1fe65a80372024a1fccd8bb444ee061dc1cfab0cc4210"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9b458142f2f5f84b38d0b62eca2e6bb0809ed2e237051458aab4fa3898f66976.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9b458142f2f5f84b38d0b62eca2e6bb0809ed2e237051458aab4fa3898f66976"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9c1aa6c1eecda6604e6e196f60f9b1b18dff4e6e451bbe67ecabe8230d3f6cfd.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9c1aa6c1eecda6604e6e196f60f9b1b18dff4e6e451bbe67ecabe8230d3f6cfd"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9c4c2ee51792e8b79dadc41fc797bbc8f819b80bc06b91b660b7d04c0ae39dac.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9c4c2ee51792e8b79dadc41fc797bbc8f819b80bc06b91b660b7d04c0ae39dac"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9cbb0cf7d8c6af0679c44fa43a2d0f40677e86d26651e1fae7848087216f5ff5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9cbb0cf7d8c6af0679c44fa43a2d0f40677e86d26651e1fae7848087216f5ff5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9d116621c914b9f771657c52e5944ec7f80afb8ef82d353cf26927c0ddf5ccb8.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9d116621c914b9f771657c52e5944ec7f80afb8ef82d353cf26927c0ddf5ccb8"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9d5379a04898392c56f2344744852e566f76f4e43fca9206ada487f6849ff379.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9d5379a04898392c56f2344744852e566f76f4e43fca9206ada487f6849ff379"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9d540671ca68087ed93c41a3c18e5b871b033aec32a85ebef9f5bceaa149f648.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9d540671ca68087ed93c41a3c18e5b871b033aec32a85ebef9f5bceaa149f648"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9e3288f7b9354e014c167fabcb726177d8b2de0c7732aec100d70ca00cae13a1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9e3288f7b9354e014c167fabcb726177d8b2de0c7732aec100d70ca00cae13a1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9e339ded7c287f705f57a9dc53d3d56c98d34d9c75efff0e7fac4380373ab5a7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9e339ded7c287f705f57a9dc53d3d56c98d34d9c75efff0e7fac4380373ab5a7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9edf163f93122965a21df640cfc71ed31141de20e562bc4550392e4189ed8153.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9edf163f93122965a21df640cfc71ed31141de20e562bc4550392e4189ed8153"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9f57a04294a91c3f69fd211ee7b0a1185b5ca367aea8ed062cc6a0c1162729f2.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9f57a04294a91c3f69fd211ee7b0a1185b5ca367aea8ed062cc6a0c1162729f2"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9f8061abdd7643f7d335d23027a313da4a0c4758ae60bc45bdc72bbba87cc589.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9f8061abdd7643f7d335d23027a313da4a0c4758ae60bc45bdc72bbba87cc589"
+    },
+    {
+      "path": "assets/frontend/images/breeds/9ffcbde6081ab6692a593f14ba7556386376e1ed6107f2b3e7c3590be5911e61.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "9ffcbde6081ab6692a593f14ba7556386376e1ed6107f2b3e7c3590be5911e61"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a0b6de92a26aa9246563324d6701aeaba94f28c17811be8d3ac2da97a8162400.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a0b6de92a26aa9246563324d6701aeaba94f28c17811be8d3ac2da97a8162400"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a0f3b8c95901616be6d44aa2eda6af5bd2cbfcf672bbc86a0038b9eab3001876.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a0f3b8c95901616be6d44aa2eda6af5bd2cbfcf672bbc86a0038b9eab3001876"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a176826469f9ed2d4ec514e697c7034228f0b13a445c3eec57551c7cf98ab87b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a176826469f9ed2d4ec514e697c7034228f0b13a445c3eec57551c7cf98ab87b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a2219024660a6d513dda064c6e9fe517b1a4976c9e333cdd1dd429660ab638d4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a2219024660a6d513dda064c6e9fe517b1a4976c9e333cdd1dd429660ab638d4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a457a7114a5efa73f31f656e000da6599fc29dd4bc9b5437b24e68e6aee04174.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a457a7114a5efa73f31f656e000da6599fc29dd4bc9b5437b24e68e6aee04174"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a477e1ad5eac0d594557350928a1088441ce4ba4a4d3ba111854af395ef0213a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a477e1ad5eac0d594557350928a1088441ce4ba4a4d3ba111854af395ef0213a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a4c856ff8574e0f61f9f98baa0da80ae305005b3f251b7ffb479d7d6b6ce9169.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a4c856ff8574e0f61f9f98baa0da80ae305005b3f251b7ffb479d7d6b6ce9169"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a50eadb437e1a71ce2f4195f47e56f97fbcd11657ccf20e65b645f6ad4047295.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a50eadb437e1a71ce2f4195f47e56f97fbcd11657ccf20e65b645f6ad4047295"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a52fb5d9a1464ca9333b990acc43d67909f37ef684394deca7b4aca6a5ce050e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a52fb5d9a1464ca9333b990acc43d67909f37ef684394deca7b4aca6a5ce050e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a553a197b138e90cc3f9931ee95554f7ecae26b94c52f77bba47bc1a1977af42.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a553a197b138e90cc3f9931ee95554f7ecae26b94c52f77bba47bc1a1977af42"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a559151670915933f7bd523393e607122a77e98ee1d42b6759398e6d75f4da4b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a559151670915933f7bd523393e607122a77e98ee1d42b6759398e6d75f4da4b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a603cf318d4b35d53ef59ca1f00c4eeb8a80f97394f4e9ae79ecd913d9ff7768.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a603cf318d4b35d53ef59ca1f00c4eeb8a80f97394f4e9ae79ecd913d9ff7768"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a63f9621f9bd85b93f5a8c7e2ed704255537c0172d3f34f2cf85a39c6ae9a1bc.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a63f9621f9bd85b93f5a8c7e2ed704255537c0172d3f34f2cf85a39c6ae9a1bc"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a88a8818d0a3530b251de75e4c8e4057f93bedcd94818131f0e2ee334221618a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a88a8818d0a3530b251de75e4c8e4057f93bedcd94818131f0e2ee334221618a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/a89710fb6cce2f59115417a6ef82dfe11b605eeb65278f2347a7d20874c23b56.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "a89710fb6cce2f59115417a6ef82dfe11b605eeb65278f2347a7d20874c23b56"
+    },
+    {
+      "path": "assets/frontend/images/breeds/abc16c35af387ba307a2a5d972c0e862ab92f1d6a700f5f53b06f3e5696ee0fe.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "abc16c35af387ba307a2a5d972c0e862ab92f1d6a700f5f53b06f3e5696ee0fe"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ac276059620c55ab36e51ebae359c0d784683b1fdd15747852440c253446060d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ac276059620c55ab36e51ebae359c0d784683b1fdd15747852440c253446060d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ac6a658552a883399f8305a7a8c4a547df6c4135c1056ae1546dfb15f98f254d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ac6a658552a883399f8305a7a8c4a547df6c4135c1056ae1546dfb15f98f254d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/adeb6d709ef43eae6805df8065fca54b901e2b9b6fe1d8fe67b36289883e7ee1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "adeb6d709ef43eae6805df8065fca54b901e2b9b6fe1d8fe67b36289883e7ee1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/af187af1e285e0337676b0d5633acb1612d339f93166ebeb9731ed6e1761673b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "af187af1e285e0337676b0d5633acb1612d339f93166ebeb9731ed6e1761673b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/afba4ae1a53f381d3e55a0e874451d78095272a747c28f1d133e2ec200ae3499.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "afba4ae1a53f381d3e55a0e874451d78095272a747c28f1d133e2ec200ae3499"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b0cc936dd479d9c16b0e58972873829525f9b0898e802a3e0c9c33a1f37a0331.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b0cc936dd479d9c16b0e58972873829525f9b0898e802a3e0c9c33a1f37a0331"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b1c81fcc049078ac35d6ad85eae3a190b28054555ea50dad9c4e84dbf656e30c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b1c81fcc049078ac35d6ad85eae3a190b28054555ea50dad9c4e84dbf656e30c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b2333af388ec7a5e249f6d8574b581bbb0eeb8164b4465d76849cf7bcf4e907b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b2333af388ec7a5e249f6d8574b581bbb0eeb8164b4465d76849cf7bcf4e907b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b34ca52476a94dd37f477e4c8758b5ec46284a1656cbbdf90273ba135245a17a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b34ca52476a94dd37f477e4c8758b5ec46284a1656cbbdf90273ba135245a17a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b47cc57435a47ca54922162e5c52a927e4304b673156ecb14ae650ba9b415c1b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b47cc57435a47ca54922162e5c52a927e4304b673156ecb14ae650ba9b415c1b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b48a6fa3cda716691fb675d0089079242a512224517670aa0c6db55fd563ada7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b48a6fa3cda716691fb675d0089079242a512224517670aa0c6db55fd563ada7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b57a111d7fa64cab994c47b2d6fd9dc5f7dee3a21a3fddc4c5804fe354cdc824.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b57a111d7fa64cab994c47b2d6fd9dc5f7dee3a21a3fddc4c5804fe354cdc824"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b668fe0026810d1805eb7fe5cba81b3b43ff6ded13616978dd252b0e6767cb92.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b668fe0026810d1805eb7fe5cba81b3b43ff6ded13616978dd252b0e6767cb92"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b6b12d8d2aca68083c759f34f4999c62401dc6f513267237c676b4d707d1bc3b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b6b12d8d2aca68083c759f34f4999c62401dc6f513267237c676b4d707d1bc3b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b6e1f016f8d2fd2849adb401477c35a4751e5062c91da07e89f49c9fa439e0b6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b6e1f016f8d2fd2849adb401477c35a4751e5062c91da07e89f49c9fa439e0b6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b8253b7809b2413ae0da57e011d27e1dcf3304337567ad73a779152158b9bef8.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b8253b7809b2413ae0da57e011d27e1dcf3304337567ad73a779152158b9bef8"
+    },
+    {
+      "path": "assets/frontend/images/breeds/b8f1ecc78de13bbeeb6f3a9ea3af4aab53f76d926d799d53746d2d03b7b74035.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "b8f1ecc78de13bbeeb6f3a9ea3af4aab53f76d926d799d53746d2d03b7b74035"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bacbd97049294c3596c93dd29337a96e9aabc9498bc9becca83e002484f8d11d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bacbd97049294c3596c93dd29337a96e9aabc9498bc9becca83e002484f8d11d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bad8eebf84449ff60ca82638f291bcd34e826e12860fc6a1fb8ef8a259bf8ac9.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bad8eebf84449ff60ca82638f291bcd34e826e12860fc6a1fb8ef8a259bf8ac9"
+    },
+    {
+      "path": "assets/frontend/images/breeds/baffae1b44b4e5ac3605c4f46dcbc2f77fa23ccc21db40ad9d3031cd357be9f6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "baffae1b44b4e5ac3605c4f46dcbc2f77fa23ccc21db40ad9d3031cd357be9f6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bb278e5e7b42114b0777b48bcfbe338a1a73eabe465fbde9e412d2e085aec800.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bb278e5e7b42114b0777b48bcfbe338a1a73eabe465fbde9e412d2e085aec800"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bb37cc1a0feef932fc5adba5c23152530ccc124635447ff7f5b6ffc037e0cccf.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bb37cc1a0feef932fc5adba5c23152530ccc124635447ff7f5b6ffc037e0cccf"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bc3e051a90f54cf59ec0d36ff5e8ab9a6b92ba57bb95cfc7123b79e7d45a5a7a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bc3e051a90f54cf59ec0d36ff5e8ab9a6b92ba57bb95cfc7123b79e7d45a5a7a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bc8f3a14c119916d6cf04c31f796dd87849e40d944fb24697ebe4bc6b2b92773.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bc8f3a14c119916d6cf04c31f796dd87849e40d944fb24697ebe4bc6b2b92773"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bcec85f485ba94ab7cc1ffac5f59dd60131e8e6cae028ecd329fa43792541fea.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bcec85f485ba94ab7cc1ffac5f59dd60131e8e6cae028ecd329fa43792541fea"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bdb8ac289e1450140f75e375f68cb371c1a2924776eb4f5a57a4a6fd5a4cca30.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bdb8ac289e1450140f75e375f68cb371c1a2924776eb4f5a57a4a6fd5a4cca30"
+    },
+    {
+      "path": "assets/frontend/images/breeds/bded45e933d328292d9679fa3e7b7bd2318e9379a489ef1ff3bf1a39e24ea05b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bded45e933d328292d9679fa3e7b7bd2318e9379a489ef1ff3bf1a39e24ea05b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/be6277ac64e0ab2b7f2009f660621bb8846ac1d002d54dcdba4d1d8b7c3d0295.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "be6277ac64e0ab2b7f2009f660621bb8846ac1d002d54dcdba4d1d8b7c3d0295"
+    },
+    {
+      "path": "assets/frontend/images/breeds/be9cb7cf49c34d4565629fa770ee0536bfe0dd7f7a1b3ef0cc92fc7069b8fa57.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "be9cb7cf49c34d4565629fa770ee0536bfe0dd7f7a1b3ef0cc92fc7069b8fa57"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c04ab6a5f1f0337244ffe7f50a7dd81baf0f5feeb2003aea4698e96b2f8fd26f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c04ab6a5f1f0337244ffe7f50a7dd81baf0f5feeb2003aea4698e96b2f8fd26f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c086343c5cd8d760f6e417b99d7f7c882db6bc0ec1b491295e547b2c73d9e8b6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c086343c5cd8d760f6e417b99d7f7c882db6bc0ec1b491295e547b2c73d9e8b6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c10d10daf0e61a8f718c86084c7881d98117e658598337809babff6cacfd09e3.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c10d10daf0e61a8f718c86084c7881d98117e658598337809babff6cacfd09e3"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c244c859f6fd7c0f47c74677d2f759d1118f6e3dc6c2f0cfa50134d22e04e7d7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c244c859f6fd7c0f47c74677d2f759d1118f6e3dc6c2f0cfa50134d22e04e7d7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c31b40c4d7411e7ad0060d326e6aaca5ef6d0da7676aca52326656a50486c36b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c31b40c4d7411e7ad0060d326e6aaca5ef6d0da7676aca52326656a50486c36b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c37233f414a2bb8058c498831377ad956e9f7d2b4442a8cdd47b251d140efd45.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c37233f414a2bb8058c498831377ad956e9f7d2b4442a8cdd47b251d140efd45"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c3c8f4b84cd9506007f0e9c1f4cd51db9317629ee2109d2bcb48a1615beec559.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c3c8f4b84cd9506007f0e9c1f4cd51db9317629ee2109d2bcb48a1615beec559"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c455f6257aee941743be417411da9b7dba8bf2e71593937af336e113f8926bcf.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c455f6257aee941743be417411da9b7dba8bf2e71593937af336e113f8926bcf"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c64b0656c86d1602b77353f5fdc66b339a8f5d68ddd4fc72a373941c5f7ca133.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c64b0656c86d1602b77353f5fdc66b339a8f5d68ddd4fc72a373941c5f7ca133"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c79e24bf317c55322cb0e09588b58d6854068f239e9cc351fec2cfa8689fd972.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c79e24bf317c55322cb0e09588b58d6854068f239e9cc351fec2cfa8689fd972"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c8665e991c27d4fcaf8475bb3cb5edee17e37a8b7683cc991efaf5f56f1f48dd.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c8665e991c27d4fcaf8475bb3cb5edee17e37a8b7683cc991efaf5f56f1f48dd"
+    },
+    {
+      "path": "assets/frontend/images/breeds/c9914f61bc89a881e28f2c62ab5b9964637ff4adbb21f4a3fe9663f86599b1ef.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "c9914f61bc89a881e28f2c62ab5b9964637ff4adbb21f4a3fe9663f86599b1ef"
+    },
+    {
+      "path": "assets/frontend/images/breeds/caac5c7c46d2aa2fb22dd42bcf2b2832c04ea43ab5f7470a9f251ea94fa6bdaf.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "caac5c7c46d2aa2fb22dd42bcf2b2832c04ea43ab5f7470a9f251ea94fa6bdaf"
+    },
+    {
+      "path": "assets/frontend/images/breeds/cbd71ac0a3b30345db6fc5b26d7604ef9ab6bec7b7b0d04b73727360ddf34a4b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "cbd71ac0a3b30345db6fc5b26d7604ef9ab6bec7b7b0d04b73727360ddf34a4b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ccc6e1d303b80e71116e9c3d099d807646e928fe2a53f08307a9b12bbc62c05f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ccc6e1d303b80e71116e9c3d099d807646e928fe2a53f08307a9b12bbc62c05f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/cd9db90056bca73ade08df0a3b47a86e7dddd2846829d1ad1653405c2e033b02.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "cd9db90056bca73ade08df0a3b47a86e7dddd2846829d1ad1653405c2e033b02"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ce9ea30d3d9bfa166110d8785d0fd42b4beeb25958e75f8b790cf7606663cce7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ce9ea30d3d9bfa166110d8785d0fd42b4beeb25958e75f8b790cf7606663cce7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/cea4b0777e3772d131974c134845691597ad6f15610c8612f3727bcbdc0997a2.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "cea4b0777e3772d131974c134845691597ad6f15610c8612f3727bcbdc0997a2"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d06362e8bfe9671d5a88686ec1faa8f7186c4474868eb802aa8ea216ed86cdf5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d06362e8bfe9671d5a88686ec1faa8f7186c4474868eb802aa8ea216ed86cdf5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d1316cd07e0ebd5e8f6e88d231c9b3251a7785a7c3ad280204cecf9b3f452037.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d1316cd07e0ebd5e8f6e88d231c9b3251a7785a7c3ad280204cecf9b3f452037"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d1d4bc3aa1e6c5ae0ced85872976f4c54721c4688e9dbd8910c190108aaec488.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d1d4bc3aa1e6c5ae0ced85872976f4c54721c4688e9dbd8910c190108aaec488"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d3d883dafe2a90246a5f5489384292c62cf84cc783d36e17724acb6d275d7495.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d3d883dafe2a90246a5f5489384292c62cf84cc783d36e17724acb6d275d7495"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d4545f1dd7427f2407e8839509171017bd877b8bfccbf32c6be54f2fb39f3bf1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d4545f1dd7427f2407e8839509171017bd877b8bfccbf32c6be54f2fb39f3bf1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d5069ad33552387d1d8b97367318034ad576b8d4aa9de38d27b805b686171e48.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d5069ad33552387d1d8b97367318034ad576b8d4aa9de38d27b805b686171e48"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d6417e91dc8e787303e65b189d6a21608db580dc6242f1e10062bac03637eb19.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d6417e91dc8e787303e65b189d6a21608db580dc6242f1e10062bac03637eb19"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d82ad06780deaf081b88c4b703431f8484d8754352eac3f93d34b51e11f89fc9.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d82ad06780deaf081b88c4b703431f8484d8754352eac3f93d34b51e11f89fc9"
+    },
+    {
+      "path": "assets/frontend/images/breeds/d863bbe5354a5f15b73ef7d86ff4d01b99b23a91a347c78b3cdb438c1aea6d52.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "d863bbe5354a5f15b73ef7d86ff4d01b99b23a91a347c78b3cdb438c1aea6d52"
+    },
+    {
+      "path": "assets/frontend/images/breeds/da1087bec70153eba146c625eff4f7efea0ce10161b99055d87ac35f6107842c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "da1087bec70153eba146c625eff4f7efea0ce10161b99055d87ac35f6107842c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/da2195ccb094771c4ef33ea3936680adc6a69a7a10640e5d25378360eb699386.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "da2195ccb094771c4ef33ea3936680adc6a69a7a10640e5d25378360eb699386"
+    },
+    {
+      "path": "assets/frontend/images/breeds/da6674bbf8f4e3128be9d6a856847b2d22fec82500dbd9fa37c5329099e00934.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "da6674bbf8f4e3128be9d6a856847b2d22fec82500dbd9fa37c5329099e00934"
+    },
+    {
+      "path": "assets/frontend/images/breeds/daecf5e67d1bd02607514b4c84ca820192f57b376b67c2ad8eae6ebb3cefb77f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "daecf5e67d1bd02607514b4c84ca820192f57b376b67c2ad8eae6ebb3cefb77f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/db2046db1bf31c8627220ab8c07413b6ec0d7a230952b61e69fc81f5127756d7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "db2046db1bf31c8627220ab8c07413b6ec0d7a230952b61e69fc81f5127756d7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/dbaa0581367bcd6170f90d9fa761436007eda334a073b75cc582fa71b665f4e5.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "dbaa0581367bcd6170f90d9fa761436007eda334a073b75cc582fa71b665f4e5"
+    },
+    {
+      "path": "assets/frontend/images/breeds/dbe58ec87b8facb523dfb42888f419396a601370a06e623887eca0c1ae358c5e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "dbe58ec87b8facb523dfb42888f419396a601370a06e623887eca0c1ae358c5e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/dc1573313b36f447df3906af267c40b5854e4a6bd523c48c0d2a4ede4560d6f1.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "dc1573313b36f447df3906af267c40b5854e4a6bd523c48c0d2a4ede4560d6f1"
+    },
+    {
+      "path": "assets/frontend/images/breeds/dfbd3758bf8e1f2e9b8eaab9f5eb792f65a179c3997cc27e5418928475984ab0.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "dfbd3758bf8e1f2e9b8eaab9f5eb792f65a179c3997cc27e5418928475984ab0"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e03b6b9464dedd3c2cbff08c07e1d3dbbeeaf19ee246eccc844836c04cd39bba.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e03b6b9464dedd3c2cbff08c07e1d3dbbeeaf19ee246eccc844836c04cd39bba"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e241bb3963d8eca5554ad0e381c417b5d4a297257c42efaf5a89b06255e4e2e7.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e241bb3963d8eca5554ad0e381c417b5d4a297257c42efaf5a89b06255e4e2e7"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e32b5308d53d2b111aeac9766457f44f5fc88258ef8300e3aeeef0a14ea352b8.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e32b5308d53d2b111aeac9766457f44f5fc88258ef8300e3aeeef0a14ea352b8"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e37b8083c2fc297109ae61e48337db647388f84204b3a869be07891fb884debf.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e37b8083c2fc297109ae61e48337db647388f84204b3a869be07891fb884debf"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e3d97786001df99702d4db0f3da70ffe80febb2121146d0b4901c45be684123a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e3d97786001df99702d4db0f3da70ffe80febb2121146d0b4901c45be684123a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e45a001c9305226ba3ee8129d3338ea88ee0bdc2d5969695435e975436103603.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e45a001c9305226ba3ee8129d3338ea88ee0bdc2d5969695435e975436103603"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e54d1f6a493ce616a3fbf27c7e02fad7b071c1b2babe18223761f8e68dc729c4.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e54d1f6a493ce616a3fbf27c7e02fad7b071c1b2babe18223761f8e68dc729c4"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e58598a00b6bfe474e8bb5e4cceefb9e7d5ba4aa862cf48bd2bc3267cbbccd9b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e58598a00b6bfe474e8bb5e4cceefb9e7d5ba4aa862cf48bd2bc3267cbbccd9b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e5bfbd0ae665185942aee9a6dbcf0533af5b3715dc8bd2b9d096e141ce7c2c5d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e5bfbd0ae665185942aee9a6dbcf0533af5b3715dc8bd2b9d096e141ce7c2c5d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e60480ef3b62f27547603cb2a5c88ece5ef4e183bed1d4d95af0286980d7b07f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e60480ef3b62f27547603cb2a5c88ece5ef4e183bed1d4d95af0286980d7b07f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e6656d9b6b837627c2a2020506481fc9ae519c989ded7f387176db5764d6d71a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e6656d9b6b837627c2a2020506481fc9ae519c989ded7f387176db5764d6d71a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e7374e9b88eea8dc20dab621a2858b4f7ae6f454f27dacf9ea6b92cccf255232.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e7374e9b88eea8dc20dab621a2858b4f7ae6f454f27dacf9ea6b92cccf255232"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e74eedb2ab9f9a4d1e340a9d60e0022b1cc99430f30a78ba754c34273eb4d4de.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e74eedb2ab9f9a4d1e340a9d60e0022b1cc99430f30a78ba754c34273eb4d4de"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e81202ff62faade11c68f659b9bf9c574e5105b5cffe52ab835657b332b2628c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e81202ff62faade11c68f659b9bf9c574e5105b5cffe52ab835657b332b2628c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/e9f49596026d3db3839abea96c484fe37d7ac5af47e7bb0c42c970cd43f58813.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e9f49596026d3db3839abea96c484fe37d7ac5af47e7bb0c42c970cd43f58813"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ea0a097935da6d587e2dd7ab52717ce7d0942de9883e2bf55664543ad1ee9dbd.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ea0a097935da6d587e2dd7ab52717ce7d0942de9883e2bf55664543ad1ee9dbd"
+    },
+    {
+      "path": "assets/frontend/images/breeds/eacc49bb738875158bb37379e043bffcc99d4a2060c1ddc1d0f3a71eaa274cba.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "eacc49bb738875158bb37379e043bffcc99d4a2060c1ddc1d0f3a71eaa274cba"
+    },
+    {
+      "path": "assets/frontend/images/breeds/eae1db182776eec17d6e6ad9fabbe719bfd7338681a93c3a8f1c2adc9551e405.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "eae1db182776eec17d6e6ad9fabbe719bfd7338681a93c3a8f1c2adc9551e405"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ebcee9168b75321c075431ff0710350b3528c0d7987a1e2254b8317229683d63.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ebcee9168b75321c075431ff0710350b3528c0d7987a1e2254b8317229683d63"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ec1912f8a72ec2f194ca95faaf3da2e8a7184180616bf370139fec5649161a27.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ec1912f8a72ec2f194ca95faaf3da2e8a7184180616bf370139fec5649161a27"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ecac3759bfed244c3dee0f3830df1f554cdf3570964b6a44e2f29238d44ff91a.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ecac3759bfed244c3dee0f3830df1f554cdf3570964b6a44e2f29238d44ff91a"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ed73b66ba9f7de398671289e33b5e3f86e2c9dfde5c91532fdeec46c71d4e03e.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ed73b66ba9f7de398671289e33b5e3f86e2c9dfde5c91532fdeec46c71d4e03e"
+    },
+    {
+      "path": "assets/frontend/images/breeds/eebb5e20476941d74d6d83d9d33caa4edc2703318113ecf2cc779f5dc00a8c15.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "eebb5e20476941d74d6d83d9d33caa4edc2703318113ecf2cc779f5dc00a8c15"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ef9acf9a2f842aae1e45a1d5ece897905409eee7c987dfa6ae93fd012f3ee262.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ef9acf9a2f842aae1e45a1d5ece897905409eee7c987dfa6ae93fd012f3ee262"
+    },
+    {
+      "path": "assets/frontend/images/breeds/ef9d16786d2ec1b59fd9ab6ad1e53b99c50b16973588cd97bcc36299a8d893de.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ef9d16786d2ec1b59fd9ab6ad1e53b99c50b16973588cd97bcc36299a8d893de"
+    },
+    {
+      "path": "assets/frontend/images/breeds/efc12f5bfef35ff1ec032704c2bfce944a4ad098e5d4d2742ea43c4059876099.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "efc12f5bfef35ff1ec032704c2bfce944a4ad098e5d4d2742ea43c4059876099"
+    },
+    {
+      "path": "assets/frontend/images/breeds/efc2d70cb7a97e3c43afb515697041b314e67b5b68a08b1626f08998d0d81553.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "efc2d70cb7a97e3c43afb515697041b314e67b5b68a08b1626f08998d0d81553"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f033f61acdfb7cf865e5e958c019e57b9e2522de13307df131f2748b19d67399.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f033f61acdfb7cf865e5e958c019e57b9e2522de13307df131f2748b19d67399"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f223ffa5d2baa208b60c9206f66a89e554c108a83b0c267154607be50e86fc62.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f223ffa5d2baa208b60c9206f66a89e554c108a83b0c267154607be50e86fc62"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f24791de512424bb1b2908119e05dcda2c1692ccad6ec3218b46bbe14a7eeeec.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f24791de512424bb1b2908119e05dcda2c1692ccad6ec3218b46bbe14a7eeeec"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f289c846e26dab2e3bac91425fc8785ee6e56bd37f3b4231e729ee0ee6c19636.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f289c846e26dab2e3bac91425fc8785ee6e56bd37f3b4231e729ee0ee6c19636"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f3290b48a0f307ba5fe03c8ada6b3f58c8fb8a818231ec0856f4f1138c24476f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f3290b48a0f307ba5fe03c8ada6b3f58c8fb8a818231ec0856f4f1138c24476f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f421b0b27f63d2ee42579328e847eb5781d617ec88a2a8ead4e7bd8a639036bc.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f421b0b27f63d2ee42579328e847eb5781d617ec88a2a8ead4e7bd8a639036bc"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f43490ccfbf990ab00ecc2c927cc270e2f11a854671d2aabfc07538050460c27.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f43490ccfbf990ab00ecc2c927cc270e2f11a854671d2aabfc07538050460c27"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f53d1371963ddbc0b5065bde3f8fbd7676c497c845002f0ad9b3e76bd12f1c54.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f53d1371963ddbc0b5065bde3f8fbd7676c497c845002f0ad9b3e76bd12f1c54"
+    },
+    {
+      "path": "assets/frontend/images/breeds/f5fdad621ffa1b094e54af2be37c1c034320e771c7d7e1c3aa6452ff06d2979f.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f5fdad621ffa1b094e54af2be37c1c034320e771c7d7e1c3aa6452ff06d2979f"
+    },
+    {
+      "path": "assets/frontend/images/breeds/fa2ac65f260cd9d44fb4e4767c76b335016c4fb57d261952a81f115ac579660c.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "fa2ac65f260cd9d44fb4e4767c76b335016c4fb57d261952a81f115ac579660c"
+    },
+    {
+      "path": "assets/frontend/images/breeds/fc3f9c042284a4f32211e32f620586fd487ec290f6cb90cec958b2f3be3ff19d.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "fc3f9c042284a4f32211e32f620586fd487ec290f6cb90cec958b2f3be3ff19d"
+    },
+    {
+      "path": "assets/frontend/images/breeds/fcd680e6c8a790cf13a33b48e14145e9d6809f02d9c60a1fa143df5aad7575e6.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "fcd680e6c8a790cf13a33b48e14145e9d6809f02d9c60a1fa143df5aad7575e6"
+    },
+    {
+      "path": "assets/frontend/images/breeds/fcdd7e77fef319f871e147bc21f1e1c33403a9ac145a0d9bf1c08517cf9a357b.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "fcdd7e77fef319f871e147bc21f1e1c33403a9ac145a0d9bf1c08517cf9a357b"
+    },
+    {
+      "path": "assets/frontend/images/breeds/fd8ad0f26d88f517335eb6cd9f2c0439bb28da56ed1c641402b4c046cf7a0895.jpg",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "fd8ad0f26d88f517335eb6cd9f2c0439bb28da56ed1c641402b4c046cf7a0895"
+    },
+    {
+      "path": "assets/frontend/index/block-01.js",
+      "kind": "modified",
+      "baseline_sha256": "dee227ac2ceca3b1e138c0596fea0ecd15e016e770a48143e6391406b0e8f928",
+      "updated_sha256": "f3b6c1a528cf4e4962b6841e023c336323ed0db431eee4966113193fdf6789ed"
+    },
+    {
+      "path": "assets/frontend/index/block-04.js",
+      "kind": "modified",
+      "baseline_sha256": "7c10c26030d8d8866b6a6893fc040fa351da09789f808058b821a364ebbda4ac",
+      "updated_sha256": "b344d5cb171f5575a3ff1e366d7e7015702859793627dfdf140ed13cdb93e641"
+    },
+    {
+      "path": "assets/frontend/index/block-47.js",
+      "kind": "modified",
+      "baseline_sha256": "4aac9ccc8b0b99f271b414e963b85d32416b20f4d0050d21a9bca307d4ec4017",
+      "updated_sha256": "0d64f0d5f263b33c188cf503c68e7cc2046d18c65c7e03432e5e205260241cc9"
+    },
+    {
+      "path": "assets/frontend/index/pharmacyRoomV9133.js",
+      "kind": "modified",
+      "baseline_sha256": "82e06e2c6a4e502495ffd4a4cf76985c22156d96768bbb4dba38e13b23b951f0",
+      "updated_sha256": "c380ae71343ad09b8bf2894bf812759df8c2e59c18449f3ef0ae4e138750f8a0"
+    },
+    {
+      "path": "assets/frontend/manifest.json",
+      "kind": "modified",
+      "baseline_sha256": "1a1ff92b911a0147a44c9050b2c2e2fb67f449c291a9683520ed1a8b3cf56dc3",
+      "updated_sha256": "b14d46bf6bbc36b410db4deede2b3fcae6093540d71596aef1b4f3d011bc591e"
+    },
+    {
+      "path": "clinic/checkout.py",
+      "kind": "modified",
+      "baseline_sha256": "7b163b6a6ef0083d80c6fa8367e6cd62f0e401519d8ce0c69d68ef23baba8818",
+      "updated_sha256": "9dab1c1cb58bfb7e705a3ee8ea15f1b18468fcbefc7dff501d68f63539eff0d0"
+    },
+    {
+      "path": "clinic/gateway.py",
+      "kind": "modified",
+      "baseline_sha256": "c73c002649a667c08da53893307c3e3e6137c5cf5438b2f276e1e0bb6da13b65",
+      "updated_sha256": "d580cdc1c664aca49003ed2a7a0dc33b2a76881bc631a2e6b1bdb1ed34433890"
+    },
+    {
+      "path": "clinic/medical.py",
+      "kind": "modified",
+      "baseline_sha256": "aef4a1e5e90285ce78b1a8b9cfff0535be088bf0035196e1e624790fd54e36fb",
+      "updated_sha256": "805e00c1304948c562588f8822d47aa9917e7d3fe1fa77b9ccdf76054a316f07"
+    },
+    {
+      "path": "clinic/pharmacy.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "ea1937269c26266fa0bab2e7124c0ec991226af5287d117dcb48238375e9e8f0"
+    },
+    {
+      "path": "clinic/pos_workflow.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "58355fb401ffed191f981f26774a32c0500ba29fadc0c65581bf1cb7a4c40b52"
+    },
+    {
+      "path": "clinic/tests_medical.py",
+      "kind": "modified",
+      "baseline_sha256": "83e73d841e57086b280d10adafdb5fb77b8f9feb8c0a23fd06e337d0c4be8867",
+      "updated_sha256": "57caa147dffd2557c5241e07b3cfc6be15a51a7efb03da944397dcba7c5c6fb1"
+    },
+    {
+      "path": "clinic/tests_workflow_http.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "dcc0f063fb54fef0e45baa2260cd023c12f509fd877b70c3f3899516b4d12053"
+    },
+    {
+      "path": "clinic/views.py",
+      "kind": "modified",
+      "baseline_sha256": "c97df1a78072db68054b8216ef0146b42fcc81ff40f5ca7f81186e357bf4be5e",
+      "updated_sha256": "95c30ee4530f532c8bb721780d6f52358720f7374370a437b4ba2093cc34d99a"
+    },
+    {
+      "path": "config/settings.py",
+      "kind": "modified",
+      "baseline_sha256": "424db8eb94e2470742989e1ba9b652b3ed7e4fa3d615f0ebd874a86127896851",
+      "updated_sha256": "cffd6bc29ae7f1858a8aa900e880609b79ba840b41787da14387a1268bf0b7aa"
+    },
+    {
+      "path": "config/urls.py",
+      "kind": "modified",
+      "baseline_sha256": "52f6b78cfcc60dfcced3b171ce6ea08646d17664ab1af605f1f7d8a300e8dc98",
+      "updated_sha256": "6c6038d2fe37a385b057f8af634b64bc0b9d9297ff8837af9d435a90a704d1ad"
+    },
+    {
+      "path": "tests/checkout-return-ui.cjs",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "4dd2ed74ad373105cf01537948c79bff24552c24feba75b790b89bdf1154dc70"
+    },
+    {
+      "path": "tests/checkout-ui.cjs",
+      "kind": "modified",
+      "baseline_sha256": "764d930f5265f7a300479b070bbaa492cfda377bffed744371d20218ad5eff3c",
+      "updated_sha256": "09cc14004a8f72a6e047c6081586982af02714640412869aab5d4221cb920337"
+    },
+    {
+      "path": "tests/medical-ui.cjs",
+      "kind": "modified",
+      "baseline_sha256": "f377c98a3df98154e87c3845e70a2687d6f4af3aee51e01f9cf4729593600218",
+      "updated_sha256": "c61414cf1bc91cbd9558775f71798dc90ff0887ce307a57c5461ddcf7cd56fe1"
+    },
+    {
+      "path": "tests/period-receipt-ui.cjs",
+      "kind": "modified",
+      "baseline_sha256": "04a9f83813effab751074e75c835cc74911dc87f1d807adf1efeb006a4e3e7f2",
+      "updated_sha256": "dfcc46512c0061f402eacc4830436f2d6dbd7f652a2395a2b3e37a44cb42e738"
+    },
+    {
+      "path": "tests/period-summary-ui.cjs",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e2dda5ec85c41bf457d7b9cfdefa7242196b912a9f43cb0214873e1769799399"
+    },
+    {
+      "path": "tests/reconciliation-ui.cjs",
+      "kind": "modified",
+      "baseline_sha256": "e899fd0db85bd3a49a4cde672f676e440a104cbe1aa736e292aedbeed9c75557",
+      "updated_sha256": "d51236ddf798196781bf75cef2fe476b2ca42864bc1d83daa7eaa2eeae7b2e2f"
+    },
+    {
+      "path": "tests/workflow-routing.cjs",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "2ea0801f5960ee2a2829725de11e43e69ccb6f594b46d1fd1b4dec1fd2eb9b34"
+    },
+    {
+      "path": "tools/compare_update.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "84ddf936c1f50ddac281668bcd6b80676bf13154814d09bd4aeda910424c76a9"
+    },
+    {
+      "path": "tools/verify_integration.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "6fabcbc9ce64e29e0ab2ae7932e1aa68d40c1c2c50676cbb887e7dca1189e154"
+    },
+    {
+      "path": "tools/verify_medical_reads.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "254edab801480aa306b33f6facb77e39a4fced4728c270cc8430a5a9c01d158f"
+    },
+    {
+      "path": "tools/verify_workflow_contracts.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "cc90fcdaf41b48a90508c8ee514a6a26b1002f1ca423b016f6243625ccf66d96"
+    },
+    {
+      "path": "tools/apply_update.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "3b9d634c3fd202a015c8c3f18f7afa7def1d189ef113150af801165f7a3e4b4d"
+    },
+    {
+      "path": "tools/test_apply_update.py",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "bb8ddfb5fe952ba9d76fb547e58bafbd17c0b2c12907afe4141c859dc1e8c160"
+    },
+    {
+      "path": "update-windows.ps1",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "e73023221f1ed67cc66ec7d2ccf933a014b374223414fe30d02388a667b8c9df"
+    },
+    {
+      "path": "WINDOWS_UPDATE.md",
+      "kind": "added",
+      "baseline_sha256": null,
+      "updated_sha256": "f16caab3a2f4c8a52f8aa7daf88dca04f62c883756f34b996a487e65f4c3fdad"
+    }
+  ]
+}

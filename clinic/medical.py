@@ -1,5 +1,6 @@
 """Medical record writes only; visit transitions and billing keep their routes."""
 import json
+from concurrent.futures import ThreadPoolExecutor
 from uuid import UUID
 from urllib.parse import urlencode
 from django.http import JsonResponse
@@ -8,6 +9,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from .views import bearer_token, verified_context, upstream, GatewayError, error_response
 from .prescription_validation import validate_prescriptions
+
+# Only authenticated reads run here. Claim verification remains in the caller;
+# no medical write, billing operation or automatic retry is submitted to this pool.
+_record_read_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix='medical-read')
+_UNREAD = object()
 
 
 def uuid_value(value):
@@ -45,15 +51,23 @@ def rows(table, params, token):
     return result
 
 
-def verify_visit(data, context, token):
+def verify_visit(data, context, token, prefetch_record=False):
     tenant=context['profile']['tenant_id']
     appointments=rows('appointments',{'select':'id,pet_id,status', 'tenant_id':'eq.'+tenant,
                                      'id':'eq.'+data['appointment_id'],'pet_id':'eq.'+data['pet_id'],'limit':'2'},token)
     if len(appointments)!=1 or appointments[0].get('id')!=data['appointment_id'] or appointments[0].get('pet_id')!=data['pet_id'] or appointments[0].get('status')!='診間看診中':
         raise GatewayError(409,'本次掛號已不是這筆看診狀態，請保留輸入並核對候診。')
-    verified=upstream('/rest/v1/rpc/verify_clinic_visit_v51',token,method='POST',payload={'p_pet_id':data['pet_id'],'p_claim_id':data['claim_id']})
-    if verified is not True:
-        raise GatewayError(403,'接診權已變更或沒有病歷編輯權限，請保留輸入並重新核對。')
+    record_job = _record_read_pool.submit(saved_record, data, tenant, token) if prefetch_record else None
+    try:
+        verified=upstream('/rest/v1/rpc/verify_clinic_visit_v51',token,method='POST',payload={'p_pet_id':data['pet_id'],'p_claim_id':data['claim_id']})
+        if verified is not True:
+            raise GatewayError(403,'接診權已變更或沒有病歷編輯權限，請保留輸入並重新核對。')
+        return record_job.result() if record_job is not None else None
+    finally:
+        if record_job is not None:
+            # Cancellation only affects a read that has not started. A running
+            # read may finish, but its result is never used after failed checks.
+            record_job.cancel()
 
 
 def saved_record(data, tenant, token):
@@ -66,13 +80,14 @@ def matches(record, payload):
     return isinstance(record,dict) and all(record.get(key)==value for key,value in payload.items())
 
 
-def save_record(data, tenant, token):
+def save_record(data, tenant, token, previous=_UNREAD):
     payload={'id':data['request_id'],'tenant_id':tenant,'pet_id':data['pet_id'],
              'status':'候診中' if data['mode']=='waiting' else '診間看診中',
              'chief_complaint':data['chief'],'prescription_details':data['prescriptions']}
     if data['mode']=='checkout':
         payload['vaccine_info']={'django_visit_v1':{'appointment_id':data['appointment_id'],'claim_id':data['claim_id']}}
-    previous=saved_record(data,tenant,token)
+    if previous is _UNREAD:
+        previous=saved_record(data,tenant,token)
     replayed=bool(previous)
     if previous is None:
         try:
@@ -121,8 +136,8 @@ def medical_action(request, action):
         token=bearer_token(request)
         context=verified_context(token)
         data=parameters(request,action)
-        verify_visit(data,context,token)
-        result=save_record(data,context['profile']['tenant_id'],token) if action=='save' else revise_record(data,token) if action=='revise' else save_archive(data,token)
+        previous=verify_visit(data,context,token,prefetch_record=action=='save')
+        result=save_record(data,context['profile']['tenant_id'],token,previous=previous) if action=='save' else revise_record(data,token) if action=='revise' else save_archive(data,token)
         return JsonResponse({'data':result,'tenant_id':context['profile']['tenant_id'],'user_id':context['user']['id']})
     except GatewayError as exc:
         return error_response(exc)

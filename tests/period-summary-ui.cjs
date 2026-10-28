@@ -1,0 +1,14 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('assets/frontend/index/block-75.js','utf8');
+const start=source.indexOf('function periodEscapeV932'),end=source.indexOf('\n(function(){',start);const ctx={Intl,Date,Map,Number,console};vm.createContext(ctx);vm.runInContext(source.slice(start,end),ctx);
+const invoice=(id,items,discount=0,paid=null,refunded=0)=>{const subtotal=items.reduce((n,i)=>n+i.subtotal,0),total=subtotal-discount;return {id,items,subtotal,discount,total,paid:paid??total,refunded,issue:'',voided_at:null,payments:[],refunds:[],event_at:'2026-10-20T01:00:00Z',created_at:'2026-10-20T01:00:00Z'};};
+const a=invoice('a',[{name:'針劑',subtotal:3000},{name:'口服藥',subtotal:1000},{name:'掛號費',subtotal:300}]);
+const b=invoice('b',[{name:'針劑',subtotal:2000},{name:'口服藥',subtotal:1500},{name:'掛號費',subtotal:300}]);
+const d={clinic:{name:'測試醫院'},owner:{name:'王'},pet:{name:'小白'},from:'2026-10-01',to:'2026-10-27',basis:'issued',as_of:'2026-10-27T01:00:00Z',invoices:[a,b],pending:[],summary:{receipt_allowed:true,paid:8100,refunded:0,net:8100}};
+const totals=ctx.periodReceiptTotalsV20261027(d);assert.deepEqual(JSON.parse(JSON.stringify(totals.groups)),[{name:'針劑',amount:5000},{name:'口服藥',amount:2500},{name:'掛號費',amount:600}]);assert.equal(totals.net,8100);
+const html=ctx.periodDocumentV932(d,true);assert.match(html,/期間費用彙總收據/);assert.match(html,/期間實際支付總額/);assert.equal((html.match(/<td>針劑<\/td>/g)||[]).length,1);assert.doesNotMatch(html,/原帳單：/);
+const detail=ctx.periodDocumentV932({...d,summary:{...d.summary,billed:8100,due:0,unknown:0,issue_count:0,unassigned_refund_count:0,voided_residual:0}},false);assert.match(detail,/原帳單：/);assert.equal((detail.match(/<td>針劑<\/td>/g)||[]).length,2);
+const c=invoice('c',[{name:'針劑',subtotal:1000},{name:'口服藥',subtotal:1000}],200,1000,100);const extra={...d,invoices:[a,c,{...b,voided_at:'2026-10-26'}, {...b,test_excluded:true}],summary:{receipt_allowed:true,paid:5300,refunded:100,net:5200}};const result=ctx.periodReceiptTotalsV20261027(extra);assert.equal(result.discounts,200);assert.equal(result.unpaid,800);assert.equal(result.refunds,100);assert.equal(result.net,5200);const xhtml=ctx.periodDocumentV932(extra,true);assert.match(xhtml,/折扣總計/);assert.match(xhtml,/已列帳單尚未付清/);assert.match(xhtml,/退款總計/);
+assert.throws(()=>ctx.periodReceiptTotalsV20261027({...d,invoices:[{...a,items:[]},b]}),/小計不符/);assert.throws(()=>ctx.periodReceiptTotalsV20261027({...d,summary:{...d.summary,net:999}}),/彙總金額/);
+const escape=invoice('x',[{name:'<script>',subtotal:3.33}]);const ed={...d,invoices:[escape],summary:{receipt_allowed:true,paid:3.33,refunded:0,net:3.33}};assert.match(ctx.periodDocumentV932(ed,true),/&lt;script&gt;/);
+console.log('Period summary: same-name grouping, detail preserved, discount, partial payment, refunds, exclusions, mismatch, decimals and HTML escaping passed.');

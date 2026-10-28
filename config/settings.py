@@ -10,6 +10,7 @@ MIDDLEWARE = ['django.middleware.security.SecurityMiddleware', 'django.middlewar
 DATABASES = {}
 USE_TZ = True
 TIME_ZONE = 'Asia/Taipei'
+GENBLUE_EDITION = 'django-workflow-20261028-r3'
 SUPABASE_URL = os.environ.get('SUPABASE_URL', '').rstrip('/')
 SUPABASE_PUBLISHABLE_KEY = os.environ.get('SUPABASE_PUBLISHABLE_KEY', '')
 

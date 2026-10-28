@@ -126,7 +126,7 @@ def gateway(request,upstream_path):
 
 
 def gateway_script(request):
-    config={'supabaseUrl':settings.SUPABASE_URL,'publishableKey':settings.SUPABASE_PUBLISHABLE_KEY,'edition':'checkout-speed-20261024'}
+    config={'supabaseUrl':settings.SUPABASE_URL,'publishableKey':settings.SUPABASE_PUBLISHABLE_KEY,'edition':settings.GENBLUE_EDITION}
     text=json.dumps(config,ensure_ascii=True).replace('<','\\u003c')
     script=(settings.BASE_DIR/'assets'/'integrated-gateway.js').read_text(encoding='utf-8')
     response=HttpResponse('window.GENBLUE_CONFIG='+text+';\n'+script,content_type='text/javascript; charset=utf-8')

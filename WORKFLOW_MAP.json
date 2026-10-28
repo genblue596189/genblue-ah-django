@@ -1,0 +1,118 @@
+{
+  "edition": "django-workflow-20261028",
+  "scope": "本次相關流程的維護對照；不是全部 API 安全稽核或正式站驗收",
+  "workflows": [
+    {
+      "workflow": "登入與院所",
+      "route": "/api/session/",
+      "module": "clinic/views.py",
+      "entry": "verified_context",
+      "data_owner": "Supabase Auth／profile／trial",
+      "constraint": "即時寫入查核；唯讀快取沿用原規則"
+    },
+    {
+      "workflow": "搜尋",
+      "route": "/api/search/pets/",
+      "module": "clinic/search.py",
+      "entry": "search_pets",
+      "data_owner": "owners／pets",
+      "constraint": "既有搜尋條件及院所篩選"
+    },
+    {
+      "workflow": "建檔",
+      "route": "/api/records/<entity>/",
+      "module": "clinic/records.py",
+      "entry": "create_record",
+      "data_owner": "owners／pets",
+      "constraint": "保留原 request_id"
+    },
+    {
+      "workflow": "掛號",
+      "route": "/api/registration/",
+      "module": "clinic/registration.py",
+      "entry": "register_pet",
+      "data_owner": "appointments",
+      "constraint": "原單程序鎖與資料庫約束；不宣稱分散式交易"
+    },
+    {
+      "workflow": "指定醫師與接診",
+      "route": "/api/clinic/<action>/",
+      "module": "clinic/doctors.py",
+      "entry": "doctor_action",
+      "data_owner": "既有接診 RPC",
+      "constraint": "保留接診占用及原 SQL 權限"
+    },
+    {
+      "workflow": "病歷與處方儲存",
+      "route": "/api/medical/<action>/",
+      "module": "clinic/medical.py",
+      "entry": "medical_action",
+      "data_owner": "medical_records／原封存 RPC",
+      "constraint": "接診權查核與既有儲存編號讀取可重疊；兩者成功才寫入"
+    },
+    {
+      "workflow": "返回候診與歸檔",
+      "route": "/api/medical-visit/<action>/",
+      "module": "clinic/visit_status.py",
+      "entry": "visit_status_action",
+      "data_owner": "appointments／既有 claim RPC",
+      "constraint": "原流程保留"
+    },
+    {
+      "workflow": "處方計算",
+      "route": "/api/prescription/calculate/",
+      "module": "clinic/prescription.py",
+      "entry": "prescription_calculate",
+      "data_owner": "clinic/prescription_math.py",
+      "constraint": "已完成，不改既有劑量與單位規則"
+    },
+    {
+      "workflow": "送待付款與收款",
+      "route": "/api/checkout/<action>/",
+      "module": "clinic/checkout.py",
+      "entry": "checkout_action",
+      "data_owner": "pos_v77／家庭待付款 RPC",
+      "constraint": "SQL 維持庫存與帳款交易；不自動重試寫入"
+    },
+    {
+      "workflow": "待付款讀取與調劑",
+      "route": "/api/pos/<action>/",
+      "module": "clinic/pos_workflow.py",
+      "entry": "pos_action",
+      "data_owner": "pos_v77",
+      "constraint": "固定動作與資料格式；原版本號"
+    },
+    {
+      "workflow": "配藥室交接",
+      "route": "/api/pharmacy/<action>/",
+      "module": "clinic/pharmacy.py",
+      "entry": "pharmacy_action",
+      "data_owner": "pharmacy_room_v9133",
+      "constraint": "原送單 UUID／版本；SQL 權限與交接狀態"
+    },
+    {
+      "workflow": "期間對帳",
+      "route": "/api/period-reconciliation/",
+      "module": "clinic/period_reconciliation.py",
+      "entry": "reconcile",
+      "data_owner": "period_reconcile_v20261027",
+      "constraint": "原管理者核對／撤銷限制"
+    },
+    {
+      "workflow": "LINE 預約審核",
+      "route": "/api/booking-review/<action>/",
+      "module": "clinic/line_booking.py",
+      "entry": "review_action",
+      "data_owner": "ob_line_staff_v1",
+      "constraint": "原通知 outbox／排程，不改部署"
+    },
+    {
+      "workflow": "既有相容路徑",
+      "route": "/api/supabase/<path>/",
+      "module": "clinic/gateway.py",
+      "entry": "gateway",
+      "data_owner": "明確 API allowlist／RLS",
+      "constraint": "其餘穩定入口保留；未知 RPC 不猜寫"
+    }
+  ]
+}
