@@ -11,19 +11,21 @@ function posLabelV77(label,input,parent){const l=posNodeV77('label',label+' ');l
 function posMoneyV77(n){return 'NT$ '+Number(n||0).toLocaleString('zh-TW',{maximumFractionDigits:2});}
 function posMethodV77(value){if(/現金|Cash/.test(value))return '現金';if(/信用卡|Credit Card/.test(value))return '信用卡';if(/轉帳/.test(value))return '轉帳';if(/行動支付|LinePay/.test(value))return '行動支付';throw Error('未付款不能列入收款，請送至待付款');}
 function posTotalsV77(d){const sub=d.lines.reduce((s,l)=>s+Number(l.quantity)*Number(l.unit_price),0)+d.medicationGroups.reduce((s,g)=>s+Number(g.price),0);const discount=Number(d.discount);if(!Number.isFinite(sub)||!Number.isFinite(discount)||discount<0||discount>sub)throw Error('折扣或合計不正確');d.subtotal=sub;d.total=sub-discount;return d;}
-async function posCheckoutDjangoV7(action,data){
+async function posCheckoutDjangoV7(action,data,base='/api/checkout/'){
  const scope=posScopeNowV77(),tenant=String(CURRENT_TENANT_ID),userId=CURRENT_USER?.id;
+ const pendingChange=['edit','cancel','dispensing'].includes(action);
+ const unconfirmed=pendingChange?'待付款變更結果尚未確認，請重新載入原帳單核對，勿直接重送或另建帳單':'收款結果尚未確認，請保留帳單並核對上次收款';
  if(!scope)throw Error('請先登入');
  const {data:{session},error}=await _supabase.auth.getSession();if(error)throw error;
- if(!session||session.user.id!==userId||scope!==posScopeNowV77())throw Error('登入身分已變更，請保留帳單並核對上次收款');
- const response=await fetch('/api/checkout/'+action+'/',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,'Content-Type':'application/json'},body:JSON.stringify(data),cache:'no-store'});
+ if(!session||session.user.id!==userId||scope!==posScopeNowV77())throw Error('登入身分已變更，請保留帳單並核對原操作');
+ const response=await fetch(base+action+'/',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,'Content-Type':'application/json'},body:JSON.stringify(data),cache:'no-store'});
  const result=await response.json();
- if(scope!==posScopeNowV77())throw Error('登入身分已變更，請回原帳號核對這次收款結果');
- if(!response.ok){const e=Error(result.error||'收款結果尚未確認，請保留帳單並核對上次收款');if(result.code)e.code=result.code;throw e;}
- if(result.tenant_id!==tenant||result.user_id!==userId)throw Error('院所／身分回覆不符，請保留帳單並核對上次收款');
+ if(scope!==posScopeNowV77())throw Error('登入身分已變更，請回原帳號核對這次操作結果');
+ if(!response.ok){const e=Error(result.error||unconfirmed);if(result.code)e.code=result.code;throw e;}
+ if(result.tenant_id!==tenant||result.user_id!==userId)throw Error('院所／身分回覆不符，請保留帳單並核對原操作');
  return result.data;
 }
-async function posRpcV77(action,data={}){const scope=posScopeNowV77();if(!scope)throw Error('請先登入');if(['stage','direct','pay'].includes(action))return posCheckoutDjangoV7(action,data);const {data:result,error}=await _supabase.rpc('pos_v77',{p_action:action,p_data:data});if(scope!==posScopeNowV77())throw Error('登入身分已變更');if(error){const e=Error(error.message);e.code=error.code;throw e;}return result;}
+async function posRpcV77(action,data={}){const scope=posScopeNowV77();if(!scope)throw Error('請先登入');if(['stage','direct','pay','edit','cancel'].includes(action))return posCheckoutDjangoV7(action,data);if(['list','work_list_v854','finance_status','reissue_links_v854','daily_summary','bank_pending','dispensing'].includes(action))return posCheckoutDjangoV7(action,data,'/api/pos/');const {data:result,error}=await _supabase.rpc('pos_v77',{p_action:action,p_data:data});if(scope!==posScopeNowV77())throw Error('登入身分已變更');if(error){const e=Error(error.message);e.code=error.code;throw e;}return result;}
 function posRejectedV77(e){return /^(GB_REQUEST_REJECTED|P0001|42501|22[0-9A-Z]{3}|23[0-9A-Z]{3}|40001|40P01)$/.test(e.code||'');}
 async function posFrozenRpcV77(action,key,data){const frozen=posFrozenV77(key,data);try{const r=await posRpcV77(action,frozen);sessionStorage.removeItem(posKeyV77(key));return r;}catch(e){if(posRejectedV77(e))sessionStorage.removeItem(posKeyV77(key));throw e;}}
 async function posActionV77(fn){if(posBusyV77){document.getElementById('posMessageV77').textContent='正在處理，請稍候，勿重複操作。';return;}posBusyV77=true;document.getElementById('posMessageV77').textContent='正在處理…';try{await fn();}catch(e){document.getElementById('posMessageV77').textContent=e.message;alert(e.message+'。資料保留，請核對後再操作。');}finally{posBusyV77=false;}}

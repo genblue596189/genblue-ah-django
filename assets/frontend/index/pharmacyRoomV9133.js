@@ -6,11 +6,15 @@ function pharmacyKeyV9133(){return 'genblue-pharmacy-send:'+pharmacyScopeV9133()
 function pharmacyNodeV9133(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;}
 function pharmacyMessageV9133(text){document.getElementById('pharmacyMessageV9133').textContent=text;}
 async function pharmacyRpcV9133(action,data={}){
- const scope=pharmacyScopeV9133();if(!scope)throw Error('請先登入');
- const {data:reply,error}=await _supabase.rpc('pharmacy_room_v9133',{p_action:action,p_data:data});
- if(scope!==pharmacyScopeV9133())throw Error('登入已變更，請重新核對');
- if(error){const e=Error(error.code==='PGRST202'?'請先執行 pharmacy_room_v91_33.sql，再重新登入。':error.message);e.code=error.code;throw e;}
- if(reply?.tenant_id!==CURRENT_TENANT_ID)throw Error('配藥室院所回覆不符');return reply;
+ const scope=pharmacyScopeV9133(),tenant=CURRENT_TENANT_ID,userId=CURRENT_USER?.id;if(!scope)throw Error('請先登入');
+ const {data:{session},error}=await _supabase.auth.getSession();if(error)throw error;
+ if(!session||session.user.id!==userId||scope!==pharmacyScopeV9133())throw Error('登入已變更，請保留原送單編號並重新核對');
+ const response=await fetch('/api/pharmacy/'+encodeURIComponent(action)+'/',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,'Content-Type':'application/json'},body:JSON.stringify(data),cache:'no-store'});
+ const result=await response.json();
+ if(scope!==pharmacyScopeV9133())throw Error('登入已變更，請回原帳號核對操作結果');
+ if(!response.ok){const e=Error(result.error||'配藥操作結果尚未確認，請保留原送單編號並重新讀取');if(result.code)e.code=result.code;throw e;}
+ if(result.tenant_id!==tenant||result.user_id!==userId||result.data?.tenant_id!==tenant)throw Error('配藥室院所／身分回覆不符，請保留原送單編號並核對');
+ return result.data;
 }
 async function pharmacyActionV9133(fn){if(pharmacyV9133.busy)return;pharmacyV9133.busy=true;document.querySelectorAll('#pharmacy button,#pharmacySendModalV9133 button').forEach(b=>b.disabled=true);try{await fn();}catch(e){pharmacyMessageV9133('尚未確認完成：'+e.message);alert(e.message+'。請保留資料，重新讀取核對。');}finally{pharmacyV9133.busy=false;document.querySelectorAll('#pharmacy button,#pharmacySendModalV9133 button').forEach(b=>b.disabled=false);}}
 function pharmacyButtonV9133(label,fn,kind='secondary'){const b=pharmacyNodeV9133('button',label);b.type='button';b.className='btn-'+kind;b.onclick=()=>pharmacyActionV9133(fn);return b;}
