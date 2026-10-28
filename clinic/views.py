@@ -23,7 +23,7 @@ class GatewayError(Exception):
         self.message = message
         self.code = code
 
-def upstream(path, token, method="GET", payload=None, pos_errors=False, record_errors=False):
+def upstream(path, token, method="GET", payload=None, pos_errors=False, record_errors=False, workflow_errors=False):
     url = settings.SUPABASE_URL
     parsed = urlsplit(url)
     local = parsed.hostname in ('localhost', '127.0.0.1', '::1')
@@ -68,6 +68,23 @@ def upstream(path, token, method="GET", payload=None, pos_errors=False, record_e
                 detail = json.loads(exc.read(8192))
                 message = detail.get('message') if isinstance(detail, dict) else None
                 code = detail.get('code') if isinstance(detail, dict) else None
+                if workflow_errors and path == '/rest/v1/rpc/pharmacy_room_v9133':
+                    import re
+                    if isinstance(code, str) and re.fullmatch(r'(P0001|42501|22[0-9A-Z]{3}|23[0-9A-Z]{3}|40001|40P01)', code):
+                        safe_messages = {
+                            '配藥單已由其他人更新，請重新讀取',
+                            '前次送單內容不同，請先核對配藥室',
+                            '本次掛號已送配藥室，請勿重複送出',
+                            '本次掛號與處方不符或已結束',
+                            '看診權已變更，請重新核對',
+                            '病歷處方已變更，請退回醫師重新確認',
+                            '配藥處方與帳單用藥數量不符',
+                            '沒有配藥室權限，請管理者指派',
+                        }
+                        safe = message if message in safe_messages else '資料庫已拒絕這次配藥操作，請重新讀取原單並核對權限、處方及交接狀態。'
+                        raise GatewayError(403 if code == '42501' else 409, safe, code) from None
+                    if code == 'PGRST202':
+                        raise GatewayError(503, '目前資料庫未提供配藥室介面，請保留原請求並核對部署版本。') from None
                 if record_errors and method == 'POST' and path.split('?')[0] in ('/rest/v1/owners','/rest/v1/pets'):
                     import re
                     if isinstance(code,str) and re.fullmatch(r'(P0001|42501|22[0-9A-Z]{3}|23[0-9A-Z]{3})',code):
@@ -116,7 +133,7 @@ def booking(request): return page('booking.html')
 @require_GET
 def imaging(request): return page('imaging-share.html')
 @require_GET
-def health(request): return JsonResponse({'service':'genblue-django', 'edition':'checkout-speed-20261024'})
+def health(request): return JsonResponse({'service':'genblue-django', 'edition':settings.GENBLUE_EDITION})
 def bearer_token(request):
     parts = request.headers.get('Authorization', '').split()
     if len(parts) != 2 or parts[0].lower() != 'bearer' or len(parts[1]) > 16384:

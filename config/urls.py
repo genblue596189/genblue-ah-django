@@ -11,6 +11,8 @@ from clinic.prescription import prescription_calculate
 from clinic.frontend_assets import frontend_asset
 from clinic.records import create_record
 from clinic.period_reconciliation import reconcile
+from clinic.pos_workflow import pos_action
+from clinic.pharmacy import pharmacy_action
 
 from clinic.line_booking import review_page,review_action
 
@@ -27,6 +29,8 @@ urlpatterns = [
     path('api/period-reconciliation/', reconcile),
     path('api/prescription/calculate/', prescription_calculate),
     path('api/checkout/<str:action>/', checkout_action),
+    path('api/pos/<str:action>/', pos_action),
+    path('api/pharmacy/<str:action>/', pharmacy_action),
     path('api/medical-visit/<str:action>/', visit_status_action),
     path('api/medical/<str:action>/', medical_action),
     path('api/clinic/<str:action>/', doctor_action),

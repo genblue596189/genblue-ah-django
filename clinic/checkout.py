@@ -11,7 +11,8 @@ from django.views.decorators.http import require_POST
 from .views import bearer_token,verified_context,upstream,GatewayError,error_response
 from .medical import uuid_value,invalid_json_constant
 
-ACTIONS={'stage','direct','pay','family_pending'}
+ACTIONS={'stage','direct','pay','family_pending','edit','cancel'}
+PENDING_ACTIONS={'edit','cancel'}
 FUNCTIONS={'checkout_with_inventory','checkout_clinic_doctor_v57','checkout_clinic_medicine_groups_v64','checkout_family_v74'}
 METHODS={'現金','信用卡','轉帳','行動支付'}
 
@@ -33,9 +34,16 @@ def parameters(request,action,tenant):
         data=json.loads(request.body,parse_constant=invalid_json_constant)
         expected={'id','draft'} if action=='stage' else ({'id','payload','method','shift_id','tendered'} if action=='direct' else {'id','pending_id','version','method','shift_id','tendered'})
         if action=='family_pending': expected={'id','entries','method','shift_id','tendered'}
+        if action in PENDING_ACTIONS:
+            expected={'id','version','draft'} if action=='edit' else {'id','version'}
         if not isinstance(data,dict) or set(data)!=expected: raise ValueError()
         uuid_value(data['id'])
-        if action=='stage':
+        if action in PENDING_ACTIONS:
+            if type(data['version']) is not int or data['version']<1: raise ValueError()
+            if action=='edit':
+                if not isinstance(data['draft'],dict): raise ValueError()
+                uuid_value(data['draft']['billingAppointmentId'])
+        elif action=='stage':
             if not isinstance(data['draft'],dict): raise ValueError()
             uuid_value(data['draft']['billingAppointmentId'])
         else:
@@ -69,7 +77,9 @@ def parameters(request,action,tenant):
 def validate_result(result,action,data,tenant):
     try:
         if isinstance(result,dict) and 'tenant_id' in result and result['tenant_id']!=tenant: raise ValueError()
-        if action=='family_pending':
+        if action in PENDING_ACTIONS:
+            if not isinstance(result,dict) or result.get('ok') is not True: raise ValueError()
+        elif action=='family_pending':
             if not isinstance(result,dict) or result.get('request_id')!=data['id'] or not isinstance(result.get('invoices'),list): raise ValueError()
             if {e['pending_id'] for e in result['invoices']}!={e['pending_id'] for e in data['entries']} or len(result['invoices'])!=len(data['entries']): raise ValueError()
             for entry in result['invoices']: uuid_value(entry['invoice_id'])
@@ -88,6 +98,8 @@ def validate_result(result,action,data,tenant):
         else: raise ValueError()
     except (ValueError,TypeError,KeyError):
         # SQL could already have committed. Never mark this as a rejected request.
+        if action in PENDING_ACTIONS:
+            raise GatewayError(502,'待付款變更結果尚未確認，請重新載入原帳單核對，勿直接重送或另建帳單。') from None
         raise GatewayError(502,'收款回覆未能完整確認，請保留原請求並核對上次收款，勿重新建帳。') from None
 
 
@@ -100,6 +112,10 @@ def checkout_action(request,action):
         token=bearer_token(request);context=verified_context(token)
         tenant=context['profile']['tenant_id']
         data=parameters(request,action,tenant)
+        if action in PENDING_ACTIONS and not can_bill(context['profile']):
+            raise GatewayError(403,'此帳號沒有修改待付款的權限，本次未送出變更。','GB_REQUEST_REJECTED')
+        if action=='cancel' and context['profile'].get('role')!='admin':
+            raise GatewayError(403,'只有管理者可以取消待付款，本次未送出變更。','GB_REQUEST_REJECTED')
         # Stage eligibility/claim ownership is checked by existing POS SQL.
         if action in ('direct','pay','family_pending') and not can_bill(context['profile']):
             raise GatewayError(403,'此帳號沒有收款權限，尚未送出收款。','GB_REQUEST_REJECTED')
