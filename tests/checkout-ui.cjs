@@ -24,7 +24,9 @@ const args={p_tenant_id:'A',p_category:'商品',p_total:30,p_subtotal:30,p_disco
  s=setup([{ok:false,body:{error:'回覆不完整'}}]);await assert.rejects(s.ctx.posDirectV77('checkout_with_inventory',args));assert.equal(s.storage.size,1);
  s=setup([{body:{tenant_id:'B',user_id:'u',data:'invoice'}}]);await assert.rejects(s.ctx.posDirectV77('checkout_with_inventory',args));assert.equal(s.storage.size,1);
  s=setup([{...success,changeScope:true}]);await assert.rejects(s.ctx.posDirectV77('checkout_with_inventory',args));assert.equal(s.storage.size,1);
- s=setup([]);await s.ctx.posRpcV77('list');assert.equal(s.calls.length,0);assert.equal(s.rpcCalls.length,1);
- for(const action of ['stage','direct','pay']){s=setup([success]);await s.ctx.posRpcV77(action,{id:'fixed-request'});assert.equal(s.calls[0].url,'/api/checkout/'+action+'/');assert.equal(s.rpcCalls.length,0);assert.equal(s.calls[0].payload.id,'fixed-request');}
- console.log('Checkout UI checks passed: only three actions migrated, unchanged payload/request ID, ambiguous failures retain recovery data, definitive rejections clear safely, scope mismatches preserve requests, existing POS reads unchanged.');
+ s=setup([success]);await s.ctx.posRpcV77('list');assert.equal(s.calls[0].url,'/api/pos/list/');assert.equal(s.rpcCalls.length,0);
+ for(const action of ['stage','direct','pay','edit','cancel']){s=setup([success]);await s.ctx.posRpcV77(action,{id:'fixed-request'});assert.equal(s.calls[0].url,'/api/checkout/'+action+'/');assert.equal(s.rpcCalls.length,0);assert.equal(s.calls[0].payload.id,'fixed-request');}
+ for(const action of ['work_list_v854','finance_status','reissue_links_v854','daily_summary','bank_pending','dispensing']){s=setup([success]);await s.ctx.posRpcV77(action,{id:'original'});assert.equal(s.calls[0].url,'/api/pos/'+action+'/');assert.equal(s.calls[0].payload.id,'original');assert.equal(s.rpcCalls.length,0);}
+ s=setup([]);await s.ctx.posRpcV77('today_work',{id:'keep-original'});assert.equal(s.calls.length,0);assert.equal(s.rpcCalls.length,1);
+ console.log('Checkout UI checks passed: named Django routes preserve payloads/request IDs; uncertain failures retain recovery; SQL rejections retain codes; remaining legacy actions keep original routing.');
 })().catch(e=>{console.error(e);process.exit(1)});
